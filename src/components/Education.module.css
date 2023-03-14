@@ -1,0 +1,24 @@
+.title {
+    text-align: center;
+}
+
+.parent {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+tr {
+    padding: 20px;
+}
+
+th {
+    background-color: #2C3333;
+    color: antiquewhite;
+    margin: 10px;
+}
+
+input {
+    margin: 20px 20px;
+    
+}
