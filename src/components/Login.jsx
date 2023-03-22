@@ -1,11 +1,9 @@
-
-
-import "./Login.css";
+import styles from "./Login.module.css";
 function Login() {
     
     return (
-        <div className="login-page">
-            <div className="login-card">
+        <div className={styles.loginPage}>
+            <div className={styles.loginCard}>
                 <form action="#" method="post">
                     <h1> LOGIN</h1>
                     <p>User name</p>
