@@ -8,12 +8,17 @@ function Publications() {
             <div className={styles.parent}>
                 <div className={styles.left}>
                         <h2>Add new row</h2>
-                        <label for="type">Type</label>
-                        <input type="radio" id="journal" name="types" value="JOURNAL"/><br />
-                        <input type="radio" id="conference" name="types" value="CONFERENCE"/><br />
-                        <input type="radio" id="patent" name="types" value="PATENT"/><br />
-                        <input type="radio" id="poster" name="types" value="POSTER"/><br />
-                        <input type="radio" id="proceeding" name="types" value="CONFERENCE PROCEEDING"/><br />
+                        <label for="type">Type</label><br />
+                        <input type="radio" id="journal" name="types" value="JOURNAL"/>
+                        <label for="type">JOURNAL</label>
+                        <input type="radio" id="conference" name="types" value="CONFERENCE"/>
+                        <label for="type">CONFERENCE</label>
+                        <input type="radio" id="patent" name="types" value="PATENT"/>
+                        <label for="type">PATENT</label>                   
+                        <input type="radio" id="poster" name="types" value="POSTER"/>
+                        <label for="type">POSTER</label>
+                        <input type="radio" id="proceeding" name="types" value="CONFERENCE PROCEEDING"/>
+                        <label for="type">CONFERENCE PROCEEDING</label><br />
                         <label for="title">TITLE</label>
                         <input type="text" id="title" /><br />
                         <label for="nameofjournal">Name of Publication</label>
