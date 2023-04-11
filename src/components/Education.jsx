@@ -74,7 +74,7 @@ function Education() {
                     </div>
                 </div>
             
-                <div className={styles.right}>
+                {/*<div className={styles.right}>
                     <h2>Degrees</h2>
                     <table>
                         <tr>
@@ -96,7 +96,7 @@ function Education() {
                             </tr>)
                         }))}
                     </table>
-                </div>
+                    </div>*/}
             </div>
             
         </div>
