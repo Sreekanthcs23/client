@@ -19,9 +19,15 @@ function Education() {
     const [data,setData] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/education/data').then((response) => {
-            setData(response.data)
-        });
+        try {
+            Axios.get('http://localhost:3001/education/data').then((response) => {
+                setData(response.data)
+            });
+        }catch(e)
+        {
+            console.log(e);
+        }
+        
     },[]);
 
     const submitForm = () => {
