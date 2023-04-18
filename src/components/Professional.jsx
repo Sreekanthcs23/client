@@ -1,4 +1,4 @@
-import "./Professional.css";
+import styles from "./Professional.module.css";
 
 
 function Professional() {
