@@ -6,6 +6,8 @@ import Professional from "./components/Professional";
 import Education from "./components/Education";
 import Awards from "./components/Awards";
 import Publications from "./components/Publications";
+import ProfilePage from "./components/ProfilePage";
+import FundedProject from "./components/research/FundedProject";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route exact path = "/education" element = {<Education />}></Route>
           <Route exact path = "/awards" element = {<Awards />}></Route>
           <Route exact path = "/publications" element = {<Publications />}></Route>
+          <Route exact path = "/profile" element = {<ProfilePage />}></Route>
+          <Route exact path = "/fundedproject" element = {<FundedProject />}></Route>
         </Routes>
      </div>
     </Router>
