@@ -5,7 +5,7 @@ import Personal from "./components/Personal";
 import Professional from "./components/Professional";
 import Education from "./components/Education";
 import Awards from "./components/Awards";
-import Publications from "./components/Publications";
+import Publications from "./components/research/Publications";
 import ProfilePage from "./components/ProfilePage";
 import FundedProject from "./components/research/FundedProject";
 
