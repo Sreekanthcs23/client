@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import Axios from "axios";
-import styles from "./Education.module.css";
+import styles from "./ResearchGuide.module.css";
 import {HiAcademicCap} from "react-icons/hi2";
 import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
@@ -9,47 +9,39 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
-function Education() {
-    const [degree,setDegree] = useState("");
-    const [branch,setBranch] = useState("");
-    const [specialization,setSpecialization] = useState("");
-    const [university,setUniversity] = useState("");
+function ResearchGuide() {
+    const [name,setName] = useState("");
     const [date,setDate] = useState("");
-    const [marks,setMarks] = useState("");
+    const [area,setArea] = useState("");
+    const [topic,setTopic] = useState("");
+    const [publication,setPublication] = useState("");
     const [data,setData] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/education/data').then((response) => {
+        Axios.get('http://localhost:3001/researchguide/data').then((response) => {
             setData(response.data)
         });
     },[]);
 
     const submitForm = () => {
-        Axios.post('http://localhost:3001/education',{
-            degree:degree,
-            branch:branch,
-            specialization:specialization,
-            university:university,
+        Axios.post('http://localhost:3001/researchguide',{
+            name:name,
             date:date,
-            marks:marks
+            area:area,
+            topic:topic,
+            publication:publication
         }).then(() => { alert("submitted") });
     } 
 
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>Education</h1>
+            <h1 className={styles.title}>RESEARCH GUIDE</h1>
             <div className={styles.parent}>
                 <div className={styles.left}>
                     <div className="form">
-                        <label for="degree"><HiAcademicCap/>Degree</label>
-                        <input type="text" id="degree" onChange={(e) => {setDegree(e.target.value)}} /><br />
-                        <label for="branch">Branch</label>
-                        <input type="text" id="branch" onChange={(e) => {setBranch(e.target.value)}} /><br />
-                        <label for="specialization">Specialization</label>
-                        <input type="text" id="specialization" onChange={(e) => {setSpecialization(e.target.value)}} /><br />
-                        <label for="university"><HiBuildingLibrary/>University</label>
-                        <input type="text" id="university" onChange={(e) => {setUniversity(e.target.value)}} /><br />
-                        <label for="date"><IoCalendarSharp/>Date of acquiring</label>
+                        <label for="name">Scholar Name</label>
+                        <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />
+                        <label for="date"><IoCalendarSharp/>Date Of Joining</label>
                         <DatePicker
                             className="custom-datepicker"
                             id="date"
@@ -59,10 +51,13 @@ function Education() {
                             showYearDropdown
                             scrollableMonthYearDropdown
                         />
-                        <label for="marks">Marks</label>
-                        <input type="text" id="marks" onChange={(e) => {setMarks(e.target.value)}} /><br />
-                        <label for="certificate"><HiDocumentArrowUp/>Certificate</label>
-                        <input type="file" id="certificate" /><br />
+                        <label for="area">Area</label>
+                        <input type="text" id="area" onChange={(e) => {setArea(e.target.value)}} /><br />
+                        <label for="topic">Topic</label>
+                        <input type="text" id="topic" onChange={(e) => {setTopic(e.target.value)}} /><br />
+                        <label for="publication">Publication</label>
+                        <input type="text" id="publication" onChange={(e) => {setPublication(e.target.value)}} /><br /><br/>
+                      
                         <button onClick={submitForm}>Add</button>
                     </div>
                 </div>
@@ -96,4 +91,4 @@ function Education() {
     )
 }
 
-export default Education;
+export default ResearchGuide;

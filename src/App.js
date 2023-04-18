@@ -8,6 +8,9 @@ import Awards from "./components/Awards";
 import Publications from "./components/research/Publications";
 import ProfilePage from "./components/ProfilePage";
 import FundedProject from "./components/research/FundedProject";
+import Consultancy from "./components/research/Consultancy";
+import GuidedProject from "./components/research/GuidedProject"
+import ResearchGuide from "./components/research/ResearchGuide"
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route exact path = "/publications" element = {<Publications />}></Route>
           <Route exact path = "/profile" element = {<ProfilePage />}></Route>
           <Route exact path = "/fundedproject" element = {<FundedProject />}></Route>
+          <Route exact path = "/consultancy" element = {<Consultancy />}></Route>
+          <Route exact path = "/guidedproject" element = {<GuidedProject />}></Route>
+          <Route exact path = "/researchguide" element = {<ResearchGuide />}></Route>
         </Routes>
      </div>
     </Router>
