@@ -97,4 +97,4 @@ function Research() {
     )
 }
 
-export default Education;
+export default Research;

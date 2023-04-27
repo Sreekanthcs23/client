@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from "./components/Login.jsx";
+import Home from "./components/Home.jsx";
 import Personal from "./components/Personal";
 import Professional from "./components/Professional";
 import Education from "./components/Education";
@@ -14,7 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route exact path = "/" element = {<Login />}></Route>
+          <Route exact path = "/" element = {<Home />}></Route>
           <Route exact path = "/personal" element = {<Personal />}></Route>
           <Route exact path = "/professional" element = {<Professional />}></Route>
           <Route exact path = "/education" element = {<Education />}></Route>

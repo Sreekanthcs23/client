@@ -19,13 +19,13 @@ function FundedProject() {
     const [data,setData] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/fundedproject/data').then((response) => {
+        Axios.get('http://localhost:3001/fundedproject/select').then((response) => {
             setData(response.data)
         });
     },[]);
 
     const submitForm = () => {
-        Axios.post('http://localhost:3001/fundedproject',{
+        Axios.post('http://localhost:3001/fundedproject/insert',{
             name:name,
             agency:agency,
             amount:amount,

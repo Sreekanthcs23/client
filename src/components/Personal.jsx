@@ -9,7 +9,7 @@ function Personal() {
             <h1>My Profile</h1>
       <img src="./components/profile.jpg" alt="Myimage" width="200" />
       <Button EduIcon={<SchoolIcon/>}variant="outlined" color="secondary" onClick={() => { window.location.href = '/education' }}>EDUCATION</Button>
-      <Button variant="outlined" onClick={() => { window.location.href = '/awards' }}>AWARDS</Button>
+      <Button variant="outlined" onClick={() => { window.location.href = '/fundedProject' }}>Projects</Button>
       <Button variant="outlined" onClick={() => { window.location.href = '/publications' }}>PUBLICATIONS</Button>
         </div>
     )
