@@ -89,7 +89,6 @@ function Education() {
                 { isVisible &&
                 <div className={styles.left}>
                     <div className="form">
-                        <h2>Add new row</h2>
                         <label for="degree"><HiAcademicCap/>Degree</label>
                         <input type="text" id="degree" onChange={(e) => {setDegree(e.target.value)}} /><br />
                         <label for="branch">Branch</label>
