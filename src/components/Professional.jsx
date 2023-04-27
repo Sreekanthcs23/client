@@ -6,15 +6,17 @@ function Professional() {
     return (
         
         <div class="container">
+            <div class="c1">
 	<h1>PROFESSIONAL EXPERIENCE</h1>
+    </div>
     <br></br><br></br>
         <table>
             <tr class="table-header">
-                <div class="header__item" ><a id="name" class="filter__link" href="#">Joining Date</a></div>
-                <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">Joining Designation</a></div>
-                <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Date of Declaration</a></div>
-                <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Promotion date</a></div>
-                <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Promotion Designation</a></div>
+                <div class="header__item" ><a id="join_date" class="filter__link" href="#">Joining Date</a></div>
+                <div class="header__item"><a id="join_designation" class="filter__link filter__link--number" href="#">Joining Designation</a></div>
+                <div class="header__item"><a id="date_of_declaration" class="filter__link filter__link--number" href="#">Date of Declaration</a></div>
+                <div class="header__item"><a id="promotion_date" class="filter__link filter__link--number" href="#">Promotion date</a></div>
+                <div class="header__item"><a id="promotion_designation" class="filter__link filter__link--number" href="#">Promotion Designation</a></div>
                 <div class="header__item"><a id="remarks" class="filter__link filter__link--number" href="#">Remarks</a></div>
             </tr>
             <div class="table-content">	
@@ -44,7 +46,8 @@ function Professional() {
                 </div>
             </div>	
         </table>
-        <button >
+        <button onClick={() => window.location.href = 'http://localhost:3000/Addprofession'}>
+  
         <div class="spinner">Add
 </div></button>
     

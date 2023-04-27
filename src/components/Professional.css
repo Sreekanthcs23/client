@@ -19,7 +19,9 @@ h5,
 h6 {
   margin: 0;
 }
-
+.c1{
+	
+}
 .container {
   max-width: 1000px;
   margin-right: auto;
@@ -102,7 +104,7 @@ button {
 
 	
 	border-radius: 2em;
-	padding: 12.75px 4px;
+	padding: 12.75px 14px;
 
 	background: blue;
 	color: white;
@@ -111,19 +113,36 @@ button {
 	align-items: center;
 
 	cursor: wait;
+
+	&:active .spinner,
+	&:focus .spinner,
+	&:hover .spinner {
+		--width: 1em;
+		--offset-r: 0.333em;
+		--offset-l: -0.333em;
+		opacity: 1;
+
+		animation: 1s load infinite;
+
+		@keyframes load {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+	}
 }
 
 .spinner {
-	--size: 1.25em;
+	--size: 2.25em;
 	--offset-r: calc(var(--size) * -1);
-	--offset-l: 0;
-	--opacity: 0;
+	--offset-l: 1;
+	--opacity: .1;
 
 	position: relative;
 	display: inline-flex;
 
-	height: var(--size);
-	width: var(--size);
+	height: var(--size+5);
+	width: var(--size+2);
 
 	margin-top: calc(var(--size) * -0.5);
 	margin-right: var(--offset-r);
@@ -141,21 +160,3 @@ button {
 }
 
 
-button {
-	&:active .spinner,
-	&:focus .spinner,
-	&:hover .spinner {
-		--width: 1em;
-		--offset-r: 0.333em;
-		--offset-l: -0.333em;
-		opacity: 1;
-
-		animation: 0.966s load infinite;
-
-		@keyframes load {
-			to {
-				transform: rotate(360deg);
-			}
-		}
-	}
-}
