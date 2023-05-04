@@ -6,7 +6,7 @@ import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
 function FundedProject() {
