@@ -1,3 +1,29 @@
+.home_navbar {
+    width: 100%;
+    top: 0;
+    position:fixed;
+}
+
+.home_parent {
+    margin-top: 50px;
+}
+
+.home_left {
+    height: 100vh;
+    width: 16%;
+    float: left;
+    
+   left: 0;
+   position: fixed;
+}
+
+.home_right {
+    height: 100vh;
+    width: 84%;
+    float: right;
+    background-color: rgb(207, 213, 216);
+}
+
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -7,16 +33,26 @@
     height: 300px;
     width: 300px;
     margin: 0 auto;
-    margin-top: 200px;
+    margin-top: 100px;
 }
 
 .gridItem {
-    background-color: #4CAF50;
-    color: white;
-    font-size: 24px;
+    background-color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     padding: 10px;
     text-align: center;
+    height: 120px;
+    width: 200px;
+    margin: 30px;
+    font-size: 15px;
 }
+
+.svg_icons {
+    transform: scale(3);
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: rgb(71, 72, 72);
+}
+
 

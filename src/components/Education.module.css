@@ -1,5 +1,5 @@
 .page {
-    background-color: #eaeaead2;
+    background-color: #7e7b7b9b;
 }
 
 .edu_div {
@@ -18,17 +18,17 @@
 
 .edu_left {
     height: 100vh;
-    width: 20%;
+    width: 16%;
     float: left;
-    
    left: 0;
    position: fixed;
 }
 
 .edu_right {
-    height: 100vh;
-    width: 80%;
+    height: 100%;
+    width: 84%;
     float: right;
+    background-color: aqua;
 }
 
 .page h1 {
