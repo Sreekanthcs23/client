@@ -9,7 +9,7 @@ import DatePicker from "react-datepicker";
 //import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
-function FundedProject() {
+function Consultancy() {
     const [agency,setAgency] = useState("");
     const [amount,setAmount] = useState("");
     const [year,setYear] = useState("");
@@ -75,4 +75,4 @@ function FundedProject() {
     )
 }
 
-export default FundedProject;
+export default Consultancy;
