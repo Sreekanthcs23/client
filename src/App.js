@@ -4,6 +4,7 @@ import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import Personal from "./components/Personal";
 import Professional from "./components/Professional";
+import Research from "./components/Research";
 import Education from "./components/Education";
 import Awards from "./components/Awards";
 import Publications from "./components/research/Publications";
@@ -23,6 +24,7 @@ function App() {
           <Route exact path = "/personal" element = {<Personal />}></Route>
           <Route exact path = "/professional" element = {<Professional />}></Route>
           <Route exact path = "/education" element = {<Education />}></Route>
+          <Route exact path = "/research" element = {<Research />}></Route>
           <Route exact path = "/awards" element = {<Awards />}></Route>
           <Route exact path = "/publications" element = {<Publications />}></Route>
           <Route exact path = "/profile" element = {<ProfilePage />}></Route>

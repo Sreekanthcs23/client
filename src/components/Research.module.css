@@ -1,0 +1,62 @@
+.page {
+    background-color: #7e7b7b9b;
+}
+
+.res_navbar {
+    width: 100%;
+    top: 0;
+    position:fixed;
+}
+
+.res_parent {
+    margin-top: 50px;
+}
+
+.res_left {
+    height: 100vh;
+    width: 16%;
+    float: left;
+   left: 0;
+   position: fixed;
+}
+
+.res_right {
+    height: 100%;
+    width: 84%;
+    float: right;
+    background-color: aqua;
+}
+
+.res_tab_bar {
+    height: 50px;
+    width: 100%;
+    background-color: #bdbebf;
+}
+
+.res_tab_list {
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    height: 100%;
+    padding: 0;
+    width: auto;
+}
+
+.res_tab_item {
+    font-size: 15px;
+    height: 100%;
+    width: auto;
+    list-style-type: none;
+    margin: 0%;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.res_tab_item:hover {
+    cursor: pointer;
+    background-color: #161616;
+}
+
+res_content {
+    height: 100%;
+}
