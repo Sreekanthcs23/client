@@ -42,6 +42,7 @@ function Education() {
     },[]);
 
     const submitForm = () => {
+        toggleVisibilty();
         Axios.post('http://localhost:3001/education/insert',{
             degree:degree,
             branch:branch,
@@ -98,8 +99,9 @@ function Education() {
                 </div>
                 
                 <div className={styles.edu_right}>
-                    <h1 className={styles.title}>Education</h1> <button onClick={toggleVisibilty}>Update</button>
-                    <h2>Degrees</h2>
+                    {!isVisible && <div>
+                        <h1 className={styles.title}>Education</h1> <button onClick={toggleVisibilty}>Update</button>
+                        <h2>Degrees</h2>
                         <div className={styles.edu_div}>
                          {data1.map((item => {
                             return (<Edurow
@@ -114,6 +116,8 @@ function Education() {
                              </Edurow>)
                             }))}
                         </div>
+                    </div> }
+                   
 
                         { isVisible &&
                 <div className={styles.edu_form}>
