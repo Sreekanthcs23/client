@@ -3,8 +3,9 @@
 }
 
 .edu_div {
-    padding:0%;
-    width:120%
+    padding-left:5%;
+    padding-right:5%;
+    width:118%
 }
 
 .edu_navbar {
@@ -27,9 +28,9 @@
 
 .edu_right {
     height: 100%;
-    width: 84%;
+    width: 85%;
     float: right;
-    background-color: aqua;
+    background-color: rgb(3, 34, 53);
 }
 
 .page h1 {
