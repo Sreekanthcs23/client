@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import Axios from "axios";
-import Edurow from "./Edurow";
+import Tearow from "./Tearow";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import styles from "./Teaching.module.css";
@@ -82,37 +82,37 @@ function Teaching() {
 
     return (
         <div className={styles.page}>
-            <div className={styles.edu_navbar}>
+            <div className={styles.tea_navbar}>
                 <Navbar />
             </div>
             
             
-            <div className={styles.edu_parent}>
-                <div className={styles.edu_left}>
+            <div className={styles.tea_parent}>
+                <div className={styles.tea_left}>
                     <Sidebar />
                 </div>
                 
-                <div className={styles.edu_right}>
+                <div className={styles.tea_right}>
                     {!isVisible && <div>
                         <h1 className={styles.title}>Teaching</h1> <button onClick={toggleVisibilty}>Update</button>
                         <h2>Batches</h2>
-                        <div className={styles.edu_div}>
+                        <div className={styles.tea_div}>
                          {data1.map((item => {
-                            return (<Edurow
+                            return (<Tearow
                                 id={item.id}
                                 year={item.year}
 				                batch={item.batch}
                                 branch={item.branch}
                                 subcode={item.subcode}
                                 subname={item.subname}>
-                             </Edurow>)
+                             </Tearow>)
                             }))}
                         </div>
                     </div> }
                    
 
                         { isVisible &&
-                <div className={styles.edu_form}>
+                <div className={styles.tea_form}>
                     
                     <div className={styles.form}>
                         <h1>Update details</h1>

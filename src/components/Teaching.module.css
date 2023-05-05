@@ -2,23 +2,25 @@
     background-color: #7e7b7b9b;
 }
 
-.edu_div {
+.tea_div {
     padding-left:5%;
     padding-right:5%;
     width:118%
 }
 
-.edu_navbar {
+.tea_navbar {
     width: 100%;
     top: 0;
     position:fixed;
 }
 
-.edu_parent {
+.tea_parent {
     margin-top: 50px;
+    width:100%;
+    padding-left:40px;
 }
 
-.edu_left {
+.tea_left {
     height: 100vh;
     width: 16%;
     float: left;
@@ -26,9 +28,9 @@
    position: fixed;
 }
 
-.edu_right {
+.tea_right {
     height: 100%;
-    width: 85%;
+    width: 84%;
     float: right;
     background-color: rgb(3, 34, 53);
 }
