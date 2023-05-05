@@ -12,6 +12,7 @@ import FundedProject from "./components/research/FundedProject";
 import Consultancy from "./components/research/Consultancy";
 import GuidedProject from "./components/research/GuidedProject"
 import ResearchGuide from "./components/research/ResearchGuide"
+import Teaching from "./components/Teaching";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path = "/consultancy" element = {<Consultancy />}></Route>
           <Route exact path = "/guidedproject" element = {<GuidedProject />}></Route>
           <Route exact path = "/researchguide" element = {<ResearchGuide />}></Route>
+          <Route exact path = "/teaching" element = {<Teaching/>}></Route>
         </Routes>
      </div>
     </Router>
