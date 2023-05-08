@@ -1,96 +1,87 @@
 .page {
-    margin: 50px;
-    font-family: Arial, sans-serif;
-   
-   }
-  
-  .title {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 30px;
-  }
-  
-  .parent {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-top: 30px;
-    
-  }
-  
-  .left {
-    flex-basis: 100%;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ddd;
-    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
-  }
-  
-  .form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  label {
-    font-size: 18px;
-    margin-top: 20px;
-  }
-  
-  input[type="text"] {
+    background-color: #7e7b7b9b;
+}
+
+.edu_div {
+    padding-left:5%;
+    padding-right:5%;
+    width:118%
+}
+
+.edu_navbar {
     width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-top: 5px;
+    top: 0;
+    position:fixed;
+}
+
+.edu_parent {
+    margin-top: 50px;
+}
+
+.edu_left {
+    height: 100vh;
+    width: 16%;
+    float: left;
+   left: 0;
+   position: fixed;
+}
+
+.edu_right {
+    height: 100%;
+    width: 85%;
+    float: right;
+    background-color: rgb(3, 34, 53);
+}
+
+.page h1 {
+    margin-left: 100px;
+}
+
+.page h2 {
+    margin-left: 200px;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.form input[type="text"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-weight: 1.1rem;
     font-size: 16px;
-  }
-  
-  input[type="file"] {
-    margin-top: 5px;
-  }
-  
-  button {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #f3b58c;
-    color: white;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    
     border: none;
-    border-radius: 5px;
+    outline: none;
+    background-color: #fff;
+}
+
+.form input[type="file"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+
+.date_input {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    font-weight: 1.1rem;
+    font-size: 16px;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.form label {
+    margin-bottom: 20px;
+    font-weight: 1.3rem;
     font-size: 18px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .right {
-    flex-basis: 50%;
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px #ddd;
-    overflow: scroll;
-    background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
-  }
-  
-  @media only screen and (max-width: 600px) {
-    .parent {
-      flex-direction: column;
-      
-    }
-  
-    .left, .right {
-      flex-basis: 100%;
-    }
-  
-    table {
-      font-size: 14px;
-    }
-  }
+}

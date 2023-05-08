@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from "react";
 import Table from 'react-bootstrap/Table';
 import Axios from "axios";
+import Edurow from "./Edurow";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import styles from "./Education.module.css";
 import {HiAcademicCap} from "react-icons/hi2";
 import {HiBuildingLibrary} from "react-icons/hi2";
@@ -8,7 +11,7 @@ import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-/*import "./CustomDatePicker.css";*/
+//import "./CustomDatePicker.css";
 
 function Education() {
     const [degree,setDegree] = useState("");
@@ -39,6 +42,7 @@ function Education() {
     },[]);
 
     const submitForm = () => {
+        toggleVisibilty();
         Axios.post('http://localhost:3001/education/insert',{
             degree:degree,
             branch:branch,
@@ -49,46 +53,77 @@ function Education() {
         }).then(() => { alert("submitted") });
     } 
 
+    const data1 = [
+        {
+            id:1,
+            degree:"B-Tech",
+            branch:"CSE",
+            specialization:"Machine learninng",
+            university:"IIT",
+            college:"IIT Bombay",
+            date_of_acq:"16-08-2020",
+            marks:"9.5"
+        },
+        {
+            id:2,
+            degree:"M-Tech",
+            branch:"CSE",
+            specialization:"Machine learninng",
+            university:"IIT",
+            college:"IIT Bombay",
+            date_of_acq:"16-08-2020",
+            marks:"9.5"
+        },
+        {
+            id:3,
+            degree:"Phd",
+            branch:"CSE",
+            specialization:"Machine learninng",
+            university:"IIT",
+            college:"IIT Bombay",
+            date_of_acq:"16-08-2020",
+            marks:"9.5"
+        }
+    ]
+
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>Education</h1>
-            <div className={styles.parent}>
-                
+            <div className={styles.edu_navbar}>
+                <Navbar />
+            </div>
             
-                <div className={styles.right}>
-                    <h2>Degrees</h2>
-                    <Table stripped bordered hover size="sm">
-                        <thead>
-                         <tr>
-                            <th width="170">Degree</th>
-                            <th width="170">Branch</th>
-                            <th width="170">Specialization</th>
-                            <th width="170">University</th>
-                            <th width="170">Date of acquiring</th>
-                            <th width="170">Marks</th>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         {data.map((item => {
-                            return (<tr>
-                                <td>{item.degree}</td>
-                                <td>{item.branch}</td>
-                                <td>{item.specialization}</td>
-                                <td>{item.university}</td>
-                                <td>{item.date_of_acq.toString().slice(0,10)}</td>
-                                <td>{item.marks}</td>
-                             </tr>)
-                            }))}
-                        </tbody>
-                        
-                    </Table>
+            
+            <div className={styles.edu_parent}>
+                <div className={styles.edu_left}>
+                    <Sidebar />
                 </div>
-
-                <button onClick={toggleVisibilty}>Update</button>
                 
-                { isVisible &&
-                <div className={styles.left}>
-                    <div className="form">
+                <div className={styles.edu_right}>
+                    {!isVisible && <div>
+                        <h1 className={styles.title}>Education</h1> <button onClick={toggleVisibilty}>Update</button>
+                        <h2>Degrees</h2>
+                        <div className={styles.edu_div}>
+                         {data1.map((item => {
+                            return (<Edurow
+                                id={item.id}
+                                degree={item.degree}
+                                branch={item.branch}
+                                specialization={item.specialization}
+                                university={item.university}
+                                college={item.college}
+                                date={item.date_of_acq.toString().slice(0,10)}
+                                marks={item.marks} >
+                             </Edurow>)
+                            }))}
+                        </div>
+                    </div> }
+                   
+
+                        { isVisible &&
+                <div className={styles.edu_form}>
+                    
+                    <div className={styles.form}>
+                        <h1>Update details</h1>
                         <label for="degree"><HiAcademicCap/>Degree</label>
                         <input type="text" id="degree" onChange={(e) => {setDegree(e.target.value)}} /><br />
                         <label for="branch">Branch</label>
@@ -99,7 +134,7 @@ function Education() {
                         <input type="text" id="university" onChange={(e) => {setUniversity(e.target.value)}} /><br />
                         <label for="date"><IoCalendarSharp/>Date of acquiring</label>
                         <DatePicker
-                            className="custom-datepicker"
+                            className={styles.date_input}
                             id="date"
                             selected={date}
                             onChange={(date) => setDate(date)}
@@ -114,6 +149,11 @@ function Education() {
                         <button onClick={submitForm}>Add</button>
                     </div>
                 </div> }
+                </div>
+
+                
+                
+                
             </div>
             
         </div>

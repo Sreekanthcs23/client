@@ -6,10 +6,10 @@ import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+//import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
-function FundedProject() {
+function Consultancy() {
     const [agency,setAgency] = useState("");
     const [amount,setAmount] = useState("");
     const [year,setYear] = useState("");
@@ -75,4 +75,4 @@ function FundedProject() {
     )
 }
 
-export default FundedProject;
+export default Consultancy;

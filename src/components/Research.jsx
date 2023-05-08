@@ -1,98 +1,45 @@
-import React,{useState,useEffect} from "react";
-import Axios from "axios";
+import { useState } from "react";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
+import Consultancy from "./research/Consultancy";
+import FundedProject from "./research/FundedProject";
+import GuidedProject from "./research/GuidedProject";
+import Publications from "./research/Publications";
+import ResearchGuide from "./research/ResearchGuide";
 import styles from "./Research.module.css";
-import {HiAcademicCap} from "react-icons/hi2";
-import {HiBuildingLibrary} from "react-icons/hi2";
-import {HiDocumentArrowUp} from "react-icons/hi2";
-import {IoCalendarSharp} from "react-icons/io5";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-/*import "./CustomDatePicker.css";*/
 
 function Research() {
-    const [publication,setPublication] = useState("");
-    const [branch,setBranch] = useState("");
-    const [specialization,setSpecialization] = useState("");
-    const [university,setUniversity] = useState("");
-    const [date,setDate] = useState("");
-    const [marks,setMarks] = useState("");
-    const [data,setData] = useState([]);
 
-    useEffect(() => {
-        Axios.get('http://localhost:3001/education/data').then((response) => {
-            setData(response.data)
-        });
-    },[]);
-
-    const submitForm = () => {
-        Axios.post('http://localhost:3001/education',{
-            degree:degree,
-            branch:branch,
-            specialization:specialization,
-            university:university,
-            date:date,
-            marks:marks
-        }).then(() => { alert("submitted") });
-    } 
+    const [currentTab,setCurrentTab] = useState("Consultancy");
 
     return (
-        <div className={styles.page}>
-            <h1 className={styles.title}>Education</h1>
-            <div className={styles.parent}>
-                <div className={styles.left}>
-                    <div className="form">
-                        <h2>Add new row</h2>
-                        <label for="degree"><HiAcademicCap/>Degree</label>
-                        <input type="text" id="degree" onChange={(e) => {setDegree(e.target.value)}} /><br />
-                        <label for="branch">Branch</label>
-                        <input type="text" id="branch" onChange={(e) => {setBranch(e.target.value)}} /><br />
-                        <label for="specialization">Specialization</label>
-                        <input type="text" id="specialization" onChange={(e) => {setSpecialization(e.target.value)}} /><br />
-                        <label for="university"><HiBuildingLibrary/>University</label>
-                        <input type="text" id="university" onChange={(e) => {setUniversity(e.target.value)}} /><br />
-                        <label for="date"><IoCalendarSharp/>Date of acquiring</label>
-                        <DatePicker
-                            className="custom-datepicker"
-                            id="date"
-                            selected={date}
-                            onChange={(date) => setDate(date)}
-                            dateFormat="dd/MM/yyyy"
-                            showYearDropdown
-                            scrollableMonthYearDropdown
-                        />
-                        <label for="marks">Marks</label>
-                        <input type="text" id="marks" onChange={(e) => {setMarks(e.target.value)}} /><br />
-                        <label for="certificate"><HiDocumentArrowUp/>Certificate</label>
-                        <input type="file" id="certificate" /><br />
-                        <button onClick={submitForm}>Add</button>
+        <div className={styles.res_page}>
+            <div className={styles.res_navbar}>
+                <Navbar />
+            </div>
+            <div className={styles.res_parent}>
+                <div className={styles.res_left}>
+                    <Sidebar />
+                </div>
+                <div className={styles.res_right}>
+                    <div className={styles.res_tab_bar}>
+                        <ul className={styles.res_tab_list}>
+                            <li className={styles.res_tab_item} id="Consultancy" onClick={(e) => {setCurrentTab(e.target.id)}}>Consultancy</li>
+                            <li className={styles.res_tab_item} id="FundedProject" onClick={(e) => {setCurrentTab(e.target.id)}}>Funded Projects</li>
+                            <li className={styles.res_tab_item} id="GuidedProject" onClick={(e) => {setCurrentTab(e.target.id)}}>Guided Projects</li>
+                            <li className={styles.res_tab_item} id="Publications" onClick={(e) => {setCurrentTab(e.target.id)}}>Publications</li>
+                            <li className={styles.res_tab_item} id="ResearchGuide" onClick={(e) => {setCurrentTab(e.target.id)}}>Research Guide</li>
+                        </ul>
+                    </div>
+                    <div className={styles.res_content}>
+                        {(currentTab == "Consultancy") && <Consultancy />}
+                        {(currentTab == "FundedProject") && <FundedProject />}
+                        {(currentTab == "GuidedProject") && <GuidedProject />}
+                        {(currentTab == "Publications") && <Publications />}
+                        {(currentTab == "ResearchGuide") && <ResearchGuide />}
                     </div>
                 </div>
-            
-                {/*<div className={styles.right}>
-                    <h2>Degrees</h2>
-                    <table>
-                        <tr>
-                            <th>Degree</th>
-                            <th>Branch</th>
-                            <th>Specialization</th>
-                            <th>University</th>
-                            <th>Date of acquiring</th>
-                            <th>Marks</th>
-                        </tr>
-                        {data.map((item => {
-                            return (<tr>
-                                <td>{item.degree}</td>
-                                <td>{item.branch}</td>
-                                <td>{item.specialization}</td>
-                                <td>{item.university}</td>
-                                <td>{item.dateofacq.toString().slice(0,10)}</td>
-                                <td>{item.marks}</td>
-                            </tr>)
-                        }))}
-                    </table>
-                    </div>*/}
             </div>
-            
         </div>
     )
 }
