@@ -22,7 +22,7 @@ function Sidebar() {
                     <div className={styles.sidebar_title}>Education</div>
                 </li>
                 <li className={styles.sidebar_row} id={window.location.pathname == "/teaching" ? "active" : ""} onClick={()=> {window.location.pathname = "/teaching"}}>
-                    <div className={styles.sidebar_icon}><CastForEducationIcon /></div>
+                    <div className={styles.sidebar_icon}><CastForEducation /></div>
                     <div className={styles.sidebar_title}>Teaching</div>
                 </li>
                 <li className={styles.sidebar_row} id={window.location.pathname == "/examination" ? "active" : ""} onClick={()=> {window.location.pathname = "/examination"}}>
