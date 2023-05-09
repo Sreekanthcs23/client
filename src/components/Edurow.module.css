@@ -1,8 +1,8 @@
 
 .main_div {
     width: 80%;
-    border-radius: 15px;
-    -moz-border-radius: 15px;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
     background-color: white;
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
     margin-bottom: 50px;

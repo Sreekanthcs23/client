@@ -1,6 +1,4 @@
-.page {
-    background-color: #7e7b7b9b;
-}
+
 
 .res_navbar {
     width: 100%;
@@ -18,19 +16,19 @@
     float: left;
    left: 0;
    position: fixed;
+ 
 }
 
 .res_right {
     height: 100%;
     width: 84%;
     float: right;
-    background-color: aqua;
 }
 
 .res_tab_bar {
     height: 50px;
     width: 100%;
-    background-color: #bdbebf;
+    background-color: #83baf1;
 }
 
 .res_tab_list {

@@ -101,7 +101,7 @@ function Education() {
                 <div className={styles.edu_right}>
                     {!isVisible && <div>
                         <h1 className={styles.title}>Education</h1> <button onClick={toggleVisibilty}>Update</button>
-                        <h2>Degrees</h2>
+                        <h2 className={styles.title2}>Degrees</h2>
                         <div className={styles.edu_div}>
                          {data1.map((item => {
                             return (<Edurow

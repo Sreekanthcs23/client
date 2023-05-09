@@ -1,13 +1,14 @@
 import React,{useState,useEffect} from "react";
+import Table from 'react-bootstrap/Table';
 import Axios from "axios";
+import Fundrow from "./Fundrow";
+import Sidebar from '../../components/Sidebar';
 import styles from "./FundedProject.module.css";
-import {HiAcademicCap} from "react-icons/hi2";
-import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-/*import "./CustomDatePicker.css";*/
+//import "./CustomDatePicker.css";
 
 function FundedProject() {
     const [name,setName] = useState("");
@@ -17,14 +18,28 @@ function FundedProject() {
     const [date,setDate] = useState("");
     const [status,setStatus] = useState("");
     const [data,setData] = useState([]);
+    
+    const [isVisible,setIsVisible] = useState(false);
+
+    function toggleVisibilty() {
+        setIsVisible(!isVisible);
+    }
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/fundedproject/select').then((response) => {
-            setData(response.data)
-        });
+        try {
+            Axios.get('http://localhost:3001/fundedproject/select').then((response) => {
+                setData(response.data)
+                console.log(response.data);
+            });
+        }catch(e)
+        {
+            console.log(e);
+        }
+        
     },[]);
 
     const submitForm = () => {
+        toggleVisibilty();
         Axios.post('http://localhost:3001/fundedproject/insert',{
             name:name,
             agency:agency,
@@ -35,12 +50,66 @@ function FundedProject() {
         }).then(() => { alert("submitted") });
     } 
 
+    const data1 = [
+        {
+            id:1,
+            name:"A",
+            agency:"A1",
+            amount:10000,
+            period:"1 Year",
+            date:"16-08-2020",
+            status:"CLOSED"
+        },
+        {
+            id:2,
+            name:"B",
+            agency:"B2",
+            amount:20000,
+            period:"3 Year",
+            date:"16-08-2021",
+            status:"OPEN"
+        },
+        {
+            id:3,
+            name:"C",
+            agency:"C3",
+            amount:25000,
+            period:"1 Year",
+            date:"16-08-2023",
+            status:"OPEN"
+        }
+    ]
+
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>FUNDED PROJECTS</h1>
-            <div className={styles.parent}>
-                <div className={styles.left}>
-                    <div className="form">
+           
+            
+            <div className={styles.fund_parent}>
+                
+                <div className={styles.fund_right}>
+                    {!isVisible && <div>
+                        <h1 className={styles.title}>Funded Project</h1> <button onClick={toggleVisibilty}>Update</button>
+                        <div className={styles.fund_div}>
+                         {data1.map((item => {
+                            return (<Fundrow
+                                id={item.id}
+                                name={item.name}
+                                agency={item.agency}
+                                amount={item.amount}
+                                period={item.period}
+                                date={item.date.toString().slice(0,10)}
+                                status={item.status} >
+                             </Fundrow>)
+                            }))}
+                        </div>
+                    </div> }
+                   
+
+                        { isVisible &&
+                <div className={styles.fund_form}>
+                    
+                    <div className={styles.form}>
+                        <h1>Update details</h1>
                         <label for="name">Project Name</label>
                         <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />
                         <label for="agency">Agency</label>
@@ -68,31 +137,12 @@ function FundedProject() {
                         <input type="file" id="letter" /><br />
                         <button onClick={submitForm}>Submit</button>
                     </div>
+                </div> }
                 </div>
-            
-                {/*<div className={styles.right}>
-                    <h2>Degrees</h2>
-                    <table>
-                        <tr>
-                            <th>Degree</th>
-                            <th>Branch</th>
-                            <th>Specialization</th>
-                            <th>University</th>
-                            <th>Date of acquiring</th>
-                            <th>Marks</th>
-                        </tr>
-                        {data.map((item => {
-                            return (<tr>
-                                <td>{item.degree}</td>
-                                <td>{item.branch}</td>
-                                <td>{item.specialization}</td>
-                                <td>{item.university}</td>
-                                <td>{item.dateofacq.toString().slice(0,10)}</td>
-                                <td>{item.marks}</td>
-                            </tr>)
-                        }))}
-                    </table>
-                    </div>*/}
+
+                
+                
+                
             </div>
             
         </div>

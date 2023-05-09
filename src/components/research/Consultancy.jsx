@@ -1,6 +1,9 @@
 import React,{useState,useEffect} from "react";
 import Axios from "axios";
-import styles from "./FundedProject.module.css";
+import styles from "./Consultancy.module.css";
+import Consrow from "./Consrow";
+import Navbar from "../../components/Navbar";
+import Sidebar from '../../components/Sidebar';
 import {HiAcademicCap} from "react-icons/hi2";
 import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
@@ -14,61 +17,98 @@ function Consultancy() {
     const [amount,setAmount] = useState("");
     const [year,setYear] = useState("");
     const [data,setData] = useState([]);
+    const [isVisible,setIsVisible] = useState(false);
+
+    function toggleVisibilty() {
+        setIsVisible(!isVisible);
+    }
+
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/consultancy/data').then((response) => {
-            setData(response.data)
-        });
+        try {
+            Axios.get('http://localhost:3001/consultancy/select').then((response) => {
+                setData(response.data)
+                console.log(response.data);
+            });
+        }catch(e)
+        {
+            console.log(e);
+        }
+        
     },[]);
 
     const submitForm = () => {
-        Axios.post('http://localhost:3001/consultancy',{
+        toggleVisibilty();
+        Axios.post('http://localhost:3001/consultancy/insert',{
             agency:agency,
             amount:amount,
             year:year
         }).then(() => { alert("submitted") });
     } 
-
+    const data1 = [
+        {
+            id:1,
+            agency:'ABC',
+            amount:10000,
+            year:2001
+        },
+        {
+            id:2,
+            agency:'DEF',
+            amount:20000,
+            year:2005
+        },
+        {
+            id:3,
+             agency:'GHI',
+            amount:25000,
+            year:2010
+        }
+    ]
     return (
         <div className={styles.page}>
-            <h1 className={styles.title}>CONSULTANCY</h1>
-            <div className={styles.parent}>
-                <div className={styles.left}>
-                    <div className="form">
+            
+            
+            <div className={styles.cons_parent}>
+               
+                
+                <div className={styles.cons_right}>
+                    {!isVisible && <div>
+                        <h1 className={styles.title}>Consultancy</h1> <button onClick={toggleVisibilty}>Update</button>
+                        <div className={styles.cons_div}>
+                         {data1.map((item => {
+                            return (<Consrow
+                                id={item.id}
+                                agency={item.agency}
+                                amount={item.amount}
+                                year={item.year} >
+                             </Consrow>)
+                            }))}
+                        </div>
+                    </div> }
+                   
+
+                        { isVisible &&
+                <div className={styles.cons_form}>
+                    
+                    <div className={styles.form}>
+                        <h1>Update details</h1>
                         <label for="agency">Agency</label>
                         <input type="text" id="agency" onChange={(e) => {setAgency(e.target.value)}} /><br />
+                        <label for="Amount">Amount</label>
+                        <input type="text" id="amount" onChange={(e) => {setAmount(e.target.value)}} /><br />
                         <label for="year">Year</label>
                         <input type="text" id="year" onChange={(e) => {setYear(e.target.value)}} /><br />
-                        <label for="amount">Amount</label>
-                        <input type="text" id="amount" onChange={(e) => {setAmount(e.target.value)}} /><br />
-                        <br/>
-                        <button onClick={submitForm}>Submit</button>
+                        <label for="certificate"><HiDocumentArrowUp/>Certificate</label>
+                        <input type="file" id="certificate" /><br />
+                        <button onClick={submitForm}>Add</button>
                     </div>
+                </div> }
                 </div>
-            
-                {/*<div className={styles.right}>
-                    <h2>Degrees</h2>
-                    <table>
-                        <tr>
-                            <th>Degree</th>
-                            <th>Branch</th>
-                            <th>Specialization</th>
-                            <th>University</th>
-                            <th>Date of acquiring</th>
-                            <th>Marks</th>
-                        </tr>
-                        {data.map((item => {
-                            return (<tr>
-                                <td>{item.degree}</td>
-                                <td>{item.branch}</td>
-                                <td>{item.specialization}</td>
-                                <td>{item.university}</td>
-                                <td>{item.dateofacq.toString().slice(0,10)}</td>
-                                <td>{item.marks}</td>
-                            </tr>)
-                        }))}
-                    </table>
-                    </div>*/}
+
+                
+                
+                
             </div>
             
         </div>
