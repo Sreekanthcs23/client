@@ -3,7 +3,7 @@ import './App.css';
 import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import Personal from "./components/Personal";
-import Professional from "./components/Professional";
+import Professional from "./components/professional/Professional";
 import Research from "./components/Research";
 import Education from "./components/Education";
 import Awards from "./components/Awards";
