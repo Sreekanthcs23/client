@@ -1,14 +1,15 @@
 import React,{useState,useEffect} from "react";
 import Axios from "axios";
 import styles from "./Consultancy.module.css";
-import Consrow from "./Consrow";
-import Navbar from "../../components/Navbar";
-import Sidebar from '../../components/Sidebar';
 import {HiAcademicCap} from "react-icons/hi2";
 import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
 //import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
@@ -93,6 +94,34 @@ function Consultancy() {
                     
                     <div className={styles.form}>
                         <h1>Update details</h1>
+        <div className={styles.con_page}>
+
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+            >
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/"
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/research/consultancy"
+                >
+                    Consultancy
+                </Link>
+            </Breadcrumbs>
+
+            <div className={styles.con_parent}>
+                <div className={styles.left}>
+                    <div className="form">
                         <label for="agency">Agency</label>
                         <input type="text" id="agency" onChange={(e) => {setAgency(e.target.value)}} /><br />
                         <label for="Amount">Amount</label>

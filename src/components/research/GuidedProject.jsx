@@ -3,7 +3,13 @@ import Axios from "axios";
 import Guidrow from "./Guidrow";
 import Sidebar from '../../components/Sidebar';
 import styles from "./GuidedProject.module.css";
-//import "./CustomDatePicker.css";
+import {IoCalendarSharp} from "react-icons/io5";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
 
 function GuidedProject() {
     const [sname,setSname] = useState("");
@@ -93,6 +99,32 @@ function GuidedProject() {
                     
                     <div className={styles.form}>
                         <h1>Update details</h1>
+        <div className={styles.guid_page}>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+            >
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/"
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/research/consultancy"
+                >
+                    Guided Project
+                </Link>
+            </Breadcrumbs>
+
+            <div className={styles.guid_parent}>
+                <div className={styles.left}>
                         <label for="sname">Student Name</label>
                         <input type="text" id="sname" onChange={(e) => {setSname(e.target.value)}} /><br />
                         <label for="pname">Project Name</label>

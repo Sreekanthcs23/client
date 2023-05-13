@@ -7,6 +7,10 @@ import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
 /*import "./CustomDatePicker.css";*/
 
 function ResearchGuide() {
@@ -34,9 +38,31 @@ function ResearchGuide() {
     } 
 
     return (
-        <div className={styles.page}>
-            <h1 className={styles.title}>RESEARCH GUIDE</h1>
-            <div className={styles.parent}>
+        <div className={styles.resguid_page}>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+            >
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/"
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/research/consultancy"
+                >
+                    Research Guide
+                </Link>
+            </Breadcrumbs>
+
+            <div className={styles.resguid_parent}>
                 <div className={styles.left}>
                     <div className="form">
                         <label for="name">Scholar Name</label>

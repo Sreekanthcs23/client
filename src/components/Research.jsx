@@ -7,40 +7,52 @@ import GuidedProject from "./research/GuidedProject";
 import Publications from "./research/Publications";
 import ResearchGuide from "./research/ResearchGuide";
 import styles from "./Research.module.css";
+import Paper from "@mui/material/Paper";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
 
 function Research() {
-
-    const [currentTab,setCurrentTab] = useState("Consultancy");
+    
+    const [currentTab, setCurrentTab] = useState("Consultancy");
 
     return (
         <div className={styles.res_page}>
             <div className={styles.res_navbar}>
                 <Navbar />
             </div>
-            <div className={styles.res_parent}>
-                <div className={styles.res_left}>
+                <div className={styles.res_sidebar}>
                     <Sidebar />
                 </div>
-                <div className={styles.res_right}>
+                <div className={styles.res_content}>
                     <div className={styles.res_tab_bar}>
-                        <ul className={styles.res_tab_list}>
-                            <li className={styles.res_tab_item} id="Consultancy" onClick={(e) => {setCurrentTab(e.target.id)}}>Consultancy</li>
-                            <li className={styles.res_tab_item} id="FundedProject" onClick={(e) => {setCurrentTab(e.target.id)}}>Funded Projects</li>
-                            <li className={styles.res_tab_item} id="GuidedProject" onClick={(e) => {setCurrentTab(e.target.id)}}>Guided Projects</li>
-                            <li className={styles.res_tab_item} id="Publications" onClick={(e) => {setCurrentTab(e.target.id)}}>Publications</li>
-                            <li className={styles.res_tab_item} id="ResearchGuide" onClick={(e) => {setCurrentTab(e.target.id)}}>Research Guide</li>
-                        </ul>
+                        <Paper square>
+                            <Tabs
+                                value={currentTab}
+                                textColor="primary"
+                                indicatorColor="primary"
+                                onChange={(event, newValue) => {
+                                        setCurrentTab(newValue);
+                                }}
+                                centered
+                            >
+                                <Tab value="Consultancy" label="Consultancy" />
+                                <Tab value="FundedProject" label="FundedProject" />
+                                <Tab value="GuidedProject" label="GuidedProject" />
+                                <Tab value="Publications" label="Publications" />
+                                <Tab value="ResearchGuide" label="ResearchGuide" />
+                            </Tabs>
+        
+                        </Paper>
                     </div>
-                    <div className={styles.res_content}>
+                    <div className={styles.res_current}>
                         {(currentTab == "Consultancy") && <Consultancy />}
                         {(currentTab == "FundedProject") && <FundedProject />}
                         {(currentTab == "GuidedProject") && <GuidedProject />}
                         {(currentTab == "Publications") && <Publications />}
                         {(currentTab == "ResearchGuide") && <ResearchGuide />}
-                    </div>
+                    </div>        
                 </div>
             </div>
-        </div>
     )
 }
 

@@ -8,7 +8,11 @@ import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-//import "./CustomDatePicker.css";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
+/*import "./CustomDatePicker.css";*/
 
 function FundedProject() {
     const [name,setName] = useState("");
@@ -81,7 +85,30 @@ function FundedProject() {
     ]
 
     return (
-        <div className={styles.page}>
+        <div className={styles.fund_page}>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+            >
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/"
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/research/consultancy"
+                >
+                    Funded Project
+                </Link>
+            </Breadcrumbs>
+
            
             
             <div className={styles.fund_parent}>
@@ -110,6 +137,11 @@ function FundedProject() {
                     
                     <div className={styles.form}>
                         <h1>Update details</h1>
+        
+
+            <div className={styles.fund_parent}>
+                <div className={styles.left}>
+                    <div className="form">
                         <label for="name">Project Name</label>
                         <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />
                         <label for="agency">Agency</label>
