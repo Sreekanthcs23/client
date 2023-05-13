@@ -1,10 +1,4 @@
 
-
-
-.edu_div {
-    padding-left:5%;
-    padding-right:5%;
-    width:118%
 .edu_page {
     width: 100%;
     height:100%;
@@ -19,31 +13,14 @@
     z-index: 100;
 }
 
-.edu_parent {
-    margin-top: 50px;
-}
-
-.edu_left {
-    height: 100vh;
-    width: 16%;
-    float: left;
-    left: 0;
-    position: fixed;
-}
-
-.edu_right {
-    height: 100%;
-    width: 84%;
-    float: right;
-    background-color: rgb(3, 34, 53);
 .edu_sidebar {
     position: fixed;
     top: 0;
     left: 0;
     width: 250px;
-    height: 100%;
     z-index: 99;
-    margin-top:50px;
+    margin-top: 50px;
+    height: 100%;
 }
 
 .edu_content {
