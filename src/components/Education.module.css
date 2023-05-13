@@ -24,8 +24,18 @@
 }
 
 .edu_content {
-    margin-left: 350px;
-    margin-top: 75px;
+    margin-left: 280px;
+    margin-top: 90px;
+    
+}
+
+.edu_div {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.edu_list {
+    margin-top: 20px;
 }
 
 .edu_page h1 {
@@ -36,47 +46,60 @@
     margin-left: 200px;
 }
 
-.form {
-    width: 100%;
-    height: 100%;
-    text-align: center;
+.edu_form {
+    width: 500px;
+    height: 650px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
 }
 
-.form input[type="text"] {
-    margin-left: 50px;
+.edu_form_title {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 20px;
-    font-weight: 1.1rem;
-    font-size: 16px;
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    
-    border: none;
-    outline: none;
-    background-color: #fff;
+  }
+
+.edu_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.form input[type="file"] {
+.edu_form input[type="file"] {
     margin-left: 50px;
     margin-bottom: 20px;
+    margin-top: 10px
 }
 
 .date_input {
-    margin-left: 50px;
-    margin-bottom: 20px;
+    margin-left: 10px;
     font-weight: 1.1rem;
     font-size: 16px;
     width: 300px;
-    height: 50px;
     border-radius: 20px;
-    
     border: none;
     outline: none;
     background-color: #fff;
 }
 
-.form label {
-    margin-bottom: 20px;
-    font-weight: 1.3rem;
-    font-size: 18px;
+.edu_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
 }
+
+
+.edu_form_button {
+    text-align: center;
+}
+ 
