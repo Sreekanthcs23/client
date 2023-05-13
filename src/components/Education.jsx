@@ -15,6 +15,12 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import AdjustIcon from "@mui/icons-material/Adjust";
+import Button from "@mui/material/Button";
 //import "./CustomDatePicker.css";
 
 function Education() {
@@ -101,37 +107,43 @@ function Education() {
       </div>
 
       <div className={styles.edu_content}>
-        {!isVisible && (
-          <div>
-            <Breadcrumbs
-              separator={<NavigateNextIcon fontSize="small" />}
-              aria-label="breadcrumb"
-            >
-              <Link
-                underline="hover"
-                sx={{ display: "flex", alignItems: "center" }}
-                color="inherit"
-                href="/home"
-              >
-                <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-                Home
-              </Link>
-              <Link
-                underline="hover"
-                sx={{ display: "flex", alignItems: "center" }}
-                color="inherit"
-                href="/research/consultancy"
-              >
-                Education
-              </Link>
-            </Breadcrumbs>
+        <Breadcrumbs
+          separator={<NavigateNextIcon fontSize="small" />}
+          aria-label="breadcrumb"
+        >
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/home"
+          >
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            Home
+          </Link>
+          <Link
+            underline="hover"
+            sx={{ display: "flex", alignItems: "center" }}
+            color="inherit"
+            href="/research/consultancy"
+          >
+            Education
+          </Link>
+        </Breadcrumbs>
 
-            <div className={styles.edu_div}>
-              <button onClick={toggleVisibilty}>Update</button>
+        {!isVisible && (
+          <div className={styles.edu_div}>
+            <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibilty}
+            >
+              UPDATE
+            </Button>
+            <div className={styles.edu_list}>
               {data1.map((item) => {
                 return (
                   <Edurow
-                    id={item.id}
+                    key={item.id}
                     degree={item.degree}
                     branch={item.branch}
                     specialization={item.specialization}
@@ -148,12 +160,13 @@ function Education() {
 
         {isVisible && (
           <div className={styles.edu_form}>
-            <div className={styles.form}>
-              <h1>Update details</h1>
+            <h1 className={styles.edu_form_title}>Update details</h1>
+            <div className={styles.edu_form_left}>
               <label for="degree">
                 <HiAcademicCap />
                 Degree
               </label>
+              <br />
               <input
                 type="text"
                 id="degree"
@@ -162,7 +175,10 @@ function Education() {
                 }}
               />
               <br />
-              <label for="branch">Branch</label>
+              <label for="branch">
+                <AccountTreeIcon fontSize="small" /> Branch
+              </label>
+              <br />
               <input
                 type="text"
                 id="branch"
@@ -171,7 +187,10 @@ function Education() {
                 }}
               />
               <br />
-              <label for="specialization">Specialization</label>
+              <label for="specialization">
+                <AdjustIcon fontSize="small" /> Specialization
+              </label>
+              <br />
               <input
                 type="text"
                 id="specialization"
@@ -180,10 +199,13 @@ function Education() {
                 }}
               />
               <br />
+            </div>
+            <div className={styles.edu_form_right}>
               <label for="university">
                 <HiBuildingLibrary />
                 University
               </label>
+              <br />
               <input
                 type="text"
                 id="university"
@@ -196,6 +218,7 @@ function Education() {
                 <IoCalendarSharp />
                 Date of acquiring
               </label>
+              <br />
               <DatePicker
                 className={styles.date_input}
                 id="date"
@@ -205,7 +228,12 @@ function Education() {
                 showYearDropdown
                 scrollableMonthYearDropdown
               />
-              <label for="marks">Marks</label>
+              <br />
+              <label for="marks">
+                <ScoreboardIcon fontSize="small" />
+                Marks
+              </label>
+              <br />
               <input
                 type="text"
                 id="marks"
@@ -218,9 +246,19 @@ function Education() {
                 <HiDocumentArrowUp />
                 Certificate
               </label>
-              <input type="file" id="certificate" />
               <br />
-              <button onClick={submitForm}>Add</button>
+              <input type="file" id="certificate" />
+            </div>
+            <br />
+            <div className={styles.edu_form_button}>
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<AddIcon />}
+                onClick={submitForm}
+              >
+                ADD
+              </Button>
             </div>
           </div>
         )}
