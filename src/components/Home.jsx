@@ -19,7 +19,7 @@ function Home() {
                     <div className={styles.gridContainer}>
                         <button className={styles.gridItem}><AccountBoxIcon className={styles.svg_icons} /><br /><Link to="/profile" style={{textDecoration:"none",color: "#474748"}}>Profile</Link></button>
                         <button className={styles.gridItem}><Link to="/professional" style={{textDecoration:"none",color: "#474748"}}>Professional</Link></button>
-                        <button className={styles.gridItem}>Teaching</button>
+                        <button className={styles.gridItem}><Link to="/teaching" style={{textDecoration:"none"}}>Teaching</Link></button>
                         <button className={styles.gridItem}><Link to="/research" style={{textDecoration:"none",color: "#474748"}}>Research</Link></button>
                         <button className={styles.gridItem}>Examination</button>
                         <button className={styles.gridItem}><Link to="/education" style={{textDecoration:"none"}}>Education</Link></button>
