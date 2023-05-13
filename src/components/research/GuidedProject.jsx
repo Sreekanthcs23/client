@@ -4,6 +4,10 @@ import styles from "./GuidedProject.module.css";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
 
 function GuidedProjet() {
     const [sname,setSname] = useState("");
@@ -29,9 +33,31 @@ function GuidedProjet() {
         }).then(() => { alert("submitted") });
     }
     return (
-        <div>
-            <h1 className={styles.title}>GUIDED PROJECTS</h1>
-            <div className={styles.parent}>
+        <div className={styles.guid_page}>
+            <Breadcrumbs
+                separator={<NavigateNextIcon fontSize="small" />}
+                aria-label="breadcrumb"
+            >
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/"
+                >
+                    <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                    Home
+                </Link>
+                <Link
+                    underline="hover"
+                    sx={{ display: 'flex', alignItems: 'center' }}
+                    color="inherit"
+                    href="/research/consultancy"
+                >
+                    Guided Project
+                </Link>
+            </Breadcrumbs>
+
+            <div className={styles.guid_parent}>
                 <div className={styles.left}>
                         <label for="sname">Student Name</label>
                         <input type="text" id="sname" onChange={(e) => {setSname(e.target.value)}} /><br />

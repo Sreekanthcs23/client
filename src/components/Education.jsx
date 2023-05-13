@@ -11,6 +11,10 @@ import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+import Link from '@mui/material/Link';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import HomeIcon from '@mui/icons-material/Home';
 //import "./CustomDatePicker.css";
 
 function Education() {
@@ -87,22 +91,43 @@ function Education() {
     ]
 
     return (
-        <div className={styles.page}>
+        <div className={styles.edu_page}>
             <div className={styles.edu_navbar}>
                 <Navbar />
             </div>
             
-            
-            <div className={styles.edu_parent}>
-                <div className={styles.edu_left}>
+                <div className={styles.edu_sidebar}>
                     <Sidebar />
                 </div>
                 
-                <div className={styles.edu_right}>
+                <div className={styles.edu_content}>
                     {!isVisible && <div>
-                        <h1 className={styles.title}>Education</h1> <button onClick={toggleVisibilty}>Update</button>
-                        <h2>Degrees</h2>
+
+                        <Breadcrumbs
+                            separator={<NavigateNextIcon fontSize="small" />}
+                            aria-label="breadcrumb"
+                        >
+                            <Link
+                                underline="hover"
+                                sx={{ display: 'flex', alignItems: 'center' }}
+                                color="inherit"
+                                href="/home"
+                            >
+                                <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+                                Home
+                            </Link>
+                            <Link
+                                underline="hover"
+                                sx={{ display: 'flex', alignItems: 'center' }}
+                                color="inherit"
+                                href="/research/consultancy"
+                            >
+                                Education
+                            </Link>
+                        </Breadcrumbs>
+
                         <div className={styles.edu_div}>
+                        <button onClick={toggleVisibilty}>Update</button>
                          {data1.map((item => {
                             return (<Edurow
                                 id={item.id}
@@ -150,11 +175,6 @@ function Education() {
                     </div>
                 </div> }
                 </div>
-
-                
-                
-                
-            </div>
             
         </div>
     )
