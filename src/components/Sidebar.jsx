@@ -3,6 +3,7 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import SchoolIcon from '@mui/icons-material/School';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import styles from "./Sidebar.module.css";
 
 function Sidebar() {
@@ -28,6 +29,10 @@ function Sidebar() {
                 <li className={styles.sidebar_row} id={window.location.pathname == "/examination" ? "active" : ""} onClick={()=> {window.location.pathname = "/examination"}}>
                     <div className={styles.sidebar_icon}><BorderColorIcon /></div>
                     <div className={styles.sidebar_title}>Examination</div>
+                </li>
+                <li className={styles.sidebar_row} id={window.location.pathname == "/professional" ? "active" : ""} onClick={()=> {window.location.pathname = "/professional"}}>
+                    <div className={styles.sidebar_icon}><WorkHistoryIcon /></div>
+                    <div className={styles.sidebar_title}>Professional Experience</div>
                 </li>
             </ul>
         </div>

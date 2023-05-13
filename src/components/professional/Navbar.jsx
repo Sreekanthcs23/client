@@ -8,7 +8,7 @@ function Navbar() {
                     <a href="#">Logo</a>
                 </div>
                 <ul className={styles.navLinks}>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="http://localhost:3000/home#">Home</a></li>
                     <li><a href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>

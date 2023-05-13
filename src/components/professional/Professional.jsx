@@ -5,8 +5,6 @@ import Profrow from "./Profrow";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import styles from "./Professional.module.css";
-import {HiAcademicCap} from "react-icons/hi2";
-import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
@@ -83,7 +81,8 @@ function Professional() {
                     
                     <div className={styles.edu_right}>
                         {!isVisible && <div>
-                            <h1 className={styles.title}>PROFESSIONAL EXPERIENCE</h1> <button onClick={toggleVisibilty}>Update</button>
+                            <h1 className={styles.title}>PROFESSIONAL EXPERIENCE</h1>
+                             
                             <h2>Current Position</h2>
                             <div className={styles.edu_div}>
                              {data1.map((item => {
@@ -100,10 +99,10 @@ function Professional() {
                                 }))}
                             </div>
                         </div> }
-                       
+
+                        <button className={styles.submit_button} onClick={toggleVisibilty}>Change Details</button>
     
-                            { isVisible &&
-                    <div className={styles.edu_form}>
+                            { isVisible &&  <div className={styles.edu_form}>
                         
                         <div className={styles.form}>
                             <h1>Update details</h1>
@@ -114,7 +113,7 @@ function Professional() {
                                 id="joiningdate"
                                 selected={joiningdate}
                                 onChange={(joiningdate) => setJoiningdate(joiningdate)}
-                                dateFormat="dd/MM/yyyy"
+                                dateFormat="dd/mm/yyyy"
                                 showYearDropdown
                                 scrollableMonthYearDropdown
                             />
@@ -128,7 +127,7 @@ function Professional() {
                                 id="dateofproblemdeclaration"
                                 selected={dateofproblemdeclaration}
                                 onChange={(dateofproblemdeclaration) => setDateofproblemdeclaration(dateofproblemdeclaration)}
-                                dateFormat="dd/MM/yyyy"
+                                dateFormat="dd/mm/yyyy"
                                 showYearDropdown
                                 scrollableMonthYearDropdown
                             />
@@ -147,7 +146,7 @@ function Professional() {
                             <label for="promotiondesignation">Promotion Designation</label>
                             <input type="text" id="promotiondesignation" onChange={(e) => {setPromotiondesignation(e.target.value)}} /><br />
                             
-                            <label for="longleaveinfo"><HiBuildingLibrary/>Long Leave Info</label>
+                            <label for="longleaveinfo">Long Leave Info</label>
                             <input type="text" id="longleaveinfo" onChange={(e) => {setLongleaveinfo(e.target.value)}} /><br />
                             
                          
