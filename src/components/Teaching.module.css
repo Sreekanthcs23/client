@@ -30,8 +30,8 @@
 }
 
 .tea_div {
-    margin-top: 30px;
-    margin-left: 50px;
+    padding-top: 30px;
+    padding-left: 200px;
 }
 
 .tea_list {
@@ -47,8 +47,8 @@
 }
 
 .tea_form {
-    width: 500px;
-    height: 650px;
+    width: 450px;
+    height: 850px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;

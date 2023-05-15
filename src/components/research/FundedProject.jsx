@@ -114,128 +114,131 @@ function FundedProject() {
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.fund_div}>
-        {!isVisible && (
-          <div>
-            <Button
-              variant="outlined"
-              startIcon={<EditIcon />}
-              onClick={toggleVisibilty}
-            >
-              UPDATE
-            </Button>
-            <div className={styles.fund_div}>
-              {data1.map((item) => {
-                return (
-                  <Fundrow
-                    id={item.id}
-                    name={item.name}
-                    agency={item.agency}
-                    amount={item.amount}
-                    period={item.period}
-                    date={item.date.toString().slice(0, 10)}
-                    status={item.status}
-                  ></Fundrow>
-                );
-              })}
-            </div>
+      {!isVisible && (
+        <div className={styles.fund_div}>
+          <Button
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={toggleVisibilty}
+          >
+            UPDATE
+          </Button>
+          <div className={styles.fund_div}>
+            {data1.map((item) => {
+              return (
+                <Fundrow
+                  id={item.id}
+                  name={item.name}
+                  agency={item.agency}
+                  amount={item.amount}
+                  period={item.period}
+                  date={item.date.toString().slice(0, 10)}
+                  status={item.status}
+                ></Fundrow>
+              );
+            })}
           </div>
-        )}
+        </div>
+      )}
 
-        {isVisible && (
-          <div className={styles.fund_form}>
-            <h1 className={styles.fund_form_title}>Update Details</h1>
-                <label for="name">Project Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
-                />
-                <br />
-                <label for="agency">Agency</label>
-                <input
-                  type="text"
-                  id="agency"
-                  onChange={(e) => {
-                    setAgency(e.target.value);
-                  }}
-                />
-                <br />
-                <label for="amount">Amount</label>
-                <input
-                  type="text"
-                  id="amount"
-                  onChange={(e) => {
-                    setAmount(e.target.value);
-                  }}
-                />
-                <br />
-                <label for="period">Period</label>
-                <input
-                  type="text"
-                  id="period"
-                  onChange={(e) => {
-                    setPeriod(e.target.value);
-                  }}
-                />
-                <br />
-                <label for="date">
-                  <IoCalendarSharp />
-                  Date Of Sanction
-                </label>
-                <DatePicker
-                  className="custom-datepicker"
-                  id="date"
-                  selected={date}
-                  onChange={(date) => setDate(date)}
-                  dateFormat="dd/MM/yyyy"
-                  showYearDropdown
-                  scrollableMonthYearDropdown
-                />
-                <label for="status">Status</label>
-                <input
-                  type="radio"
-                  id="active"
-                  name="status"
-                  value="Active"
-                  onChange={(e) => {
-                    setStatus(e.target.value);
-                  }}
-                />
-                <label for="type">Active</label>
-                <input
-                  type="radio"
-                  id="closed"
-                  name="types"
-                  value="Closed"
-                  onChange={(e) => {
-                    setStatus(e.target.value);
-                  }}
-                />
-                <label for="type">Closed</label>
-                <br />
-                <label for="letter">
-                  <HiDocumentArrowUp />
-                  Sanction Letter
-                </label>
-                <input type="file" id="letter" />
-                <br />
-                <div className={styles.fund_form_button}>
-              <Button
-                variant="contained"
-                color="success"
-                startIcon={<AddIcon />}
-                onClick={submitForm}
-              >
-                SUBMIT
-              </Button>
-              </div>
-              </div>
-          
-        )}
-      </div>
+      {isVisible && (
+        <div className={styles.fund_form}>
+          <h1 className={styles.fund_form_title}>Update Details</h1>
+          <label for="name">Project Name</label>
+          <br />
+          <input
+            type="text"
+            id="name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <br />
+          <label for="agency">Agency</label>
+          <br />
+          <input
+            type="text"
+            id="agency"
+            onChange={(e) => {
+              setAgency(e.target.value);
+            }}
+          />
+          <br />
+          <label for="amount">Amount</label>
+          <br />
+          <input
+            type="text"
+            id="amount"
+            onChange={(e) => {
+              setAmount(e.target.value);
+            }}
+          />
+          <br />
+          <label for="period">Period</label>
+          <br />
+          <input
+            type="text"
+            id="period"
+            onChange={(e) => {
+              setPeriod(e.target.value);
+            }}
+          />
+          <br />
+          <label for="date">
+            <IoCalendarSharp />
+            Date Of Sanction
+          </label>
+          <br />
+          <DatePicker
+            className="custom-datepicker"
+            id="date"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            dateFormat="dd/MM/yyyy"
+            showYearDropdown
+            scrollableMonthYearDropdown
+          />
+          <label for="status">Status</label>
+          <input
+            type="radio"
+            id="active"
+            name="status"
+            value="Active"
+            onChange={(e) => {
+              setStatus(e.target.value);
+            }}
+          />
+          <label for="type">Active</label>
+          <input
+            type="radio"
+            id="closed"
+            name="types"
+            value="Closed"
+            onChange={(e) => {
+              setStatus(e.target.value);
+            }}
+          />
+          <label for="type">Closed</label>
+          <br />
+          <label for="letter">
+            <HiDocumentArrowUp />
+            Sanction Letter
+          </label>
+          <br />
+          <input type="file" id="letter" />
+          <br />
+          <div className={styles.fund_form_button}>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<AddIcon />}
+              onClick={submitForm}
+            >
+              SUBMIT
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -1,12 +1,11 @@
 .guid_content {
-    margin-left: 280px;
-    margin-top: 90px;
-    
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .guid_div {
-    margin-top: 30px;
-    margin-left: 50px;
+    padding-top: 30px;
+    padding-left: 200px;
 }
 
 .guid_list {
@@ -22,8 +21,8 @@
 }
 
 .guid_form {
-    width: 500px;
-    height: 650px;
+    width: 350px;
+    height: 450px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -40,6 +39,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-left: 60px;
   }
 
 .guid_form input[type="text"] {

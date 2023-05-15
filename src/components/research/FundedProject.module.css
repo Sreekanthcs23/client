@@ -1,12 +1,12 @@
 .fund_content {
-    margin-left: 280px;
-    margin-top: 90px;
+    margin-left: 20px;
+    margin-top: 20px;
     
 }
 
 .fund_div {
-    margin-top: 30px;
-    margin-left: 50px;
+    padding-top: 30px;
+    padding-left: 50px;
 }
 
 .fund_list {
@@ -22,8 +22,8 @@
 }
 
 .fund_form {
-    width: 500px;
-    height: 650px;
+    width: 450px;
+    height: 600px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -40,6 +40,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-left: 100px;
   }
 
 .fund_form input[type="text"] {
@@ -51,6 +52,12 @@
 }
 
 .fund_form input[type="file"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px
+}
+
+.fund_form input[type="radio"] {
     margin-left: 50px;
     margin-bottom: 20px;
     margin-top: 10px

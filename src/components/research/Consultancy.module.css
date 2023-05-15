@@ -1,14 +1,11 @@
-
-
 .cons_content {
-    margin-left: 280px;
-    margin-top: 90px;
-    
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 .cons_div {
-    margin-top: 30px;
-    margin-left: 50px;
+    padding-left: 200px;
+    padding-top: 30px;
 }
 
 .cons_list {
@@ -24,8 +21,8 @@
 }
 
 .cons_form {
-    width: 500px;
-    height: 650px;
+    width: 350px;
+    height: 400px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -42,6 +39,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
+    margin-left: 60px;
   }
 
 .cons_form input[type="text"] {

@@ -101,85 +101,87 @@ function GuidedProject() {
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.guid_div}>
-        {!isVisible && (
-          <div>
-           <Button
-              variant="outlined"
-              startIcon={<EditIcon />}
-              onClick={toggleVisibilty}
-            >
-              UPDATE
-            </Button>
-            <div className={styles.guid_list}>
-              {data1.map((item) => {
-                return (
-                  <Guidrow
-                    id={item.id}
-                    sname={item.sname}
-                    pname={item.pname}
-                    batch={item.batch}
-                    publication={item.publication}
-                  ></Guidrow>
-                );
-              })}
-            </div>
+      {!isVisible && (
+        <div className={styles.guid_div}>
+          <Button
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={toggleVisibilty}
+          >
+            UPDATE
+          </Button>
+          <div className={styles.guid_list}>
+            {data1.map((item) => {
+              return (
+                <Guidrow
+                  id={item.id}
+                  sname={item.sname}
+                  pname={item.pname}
+                  batch={item.batch}
+                  publication={item.publication}
+                ></Guidrow>
+              );
+            })}
           </div>
-        )}
+        </div>
+      )}
 
-        {isVisible && (
-          <div className={styles.guid_form}>
-              <h1 className={styles.cons_form_title}>Update Details</h1>
-              <label for="sname">Student Name</label>
-              <input
-                type="text"
-                id="sname"
-                onChange={(e) => {
-                  setSname(e.target.value);
-                }}
-              />
-              <br />
-              <label for="pname">Project Name</label>
-              <input
-                type="text"
-                id="pname"
-                onChange={(e) => {
-                  setPname(e.target.value);
-                }}
-              />
-              <br />
-              <label for="batch">Batch</label>
-              <input
-                type="text"
-                id="batch"
-                onChange={(e) => {
-                  setBatch(e.target.value);
-                }}
-              />
-              <br />
-              <label for="publication">Publication</label>
-              <input
-                type="text"
-                id="publication"
-                onChange={(e) => {
-                  setPublication(e.target.value);
-                }}
-              />
-              <br />
-              <br />
-              <div className={styles.guid_form_button}>
-              <Button
-                variant="contained"
-                color="success"
-                startIcon={<AddIcon />}
-                onClick={submitForm}
-              >
-                SUBMIT
-              </Button>
-            </div>
-            </div>
-        )}
-      </div>
+      {isVisible && (
+        <div className={styles.guid_form}>
+          <h1 className={styles.guid_form_title}>Update Details</h1>
+          <label for="sname">Student Name</label>
+          <br />
+          <input
+            type="text"
+            id="sname"
+            onChange={(e) => {
+              setSname(e.target.value);
+            }}
+          />
+          <br />
+          <label for="pname">Project Name</label>
+          <br />
+          <input
+            type="text"
+            id="pname"
+            onChange={(e) => {
+              setPname(e.target.value);
+            }}
+          />
+          <br />
+          <label for="batch">Batch</label>
+          <br />
+          <input
+            type="text"
+            id="batch"
+            onChange={(e) => {
+              setBatch(e.target.value);
+            }}
+          />
+          <br />
+          <label for="publication">Publication</label>
+          <br />
+          <input
+            type="text"
+            id="publication"
+            onChange={(e) => {
+              setPublication(e.target.value);
+            }}
+          />
+          <br />
+          <br />
+          <div className={styles.guid_form_button}>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<AddIcon />}
+              onClick={submitForm}
+            >
+              SUBMIT
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -97,12 +97,12 @@ function Consultancy() {
       {!isVisible && (
         <div className={styles.cons_div}>
           <Button
-              variant="outlined"
-              startIcon={<EditIcon />}
-              onClick={toggleVisibilty}
-            >
-              UPDATE
-            </Button>
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={toggleVisibilty}
+          >
+            UPDATE
+          </Button>
           <div className={styles.cons_list}>
             {data1.map((item) => {
               return (
@@ -123,6 +123,7 @@ function Consultancy() {
           <h1 className={styles.cons_form_title}>Update Details</h1>
 
           <label for="agency">Agency</label>
+          <br />
           <input
             type="text"
             id="agency"
@@ -132,6 +133,7 @@ function Consultancy() {
           />
           <br />
           <label for="Amount">Amount</label>
+          <br />
           <input
             type="text"
             id="amount"
@@ -141,6 +143,7 @@ function Consultancy() {
           />
           <br />
           <label for="year">Year</label>
+          <br />
           <input
             type="text"
             id="year"
@@ -153,18 +156,19 @@ function Consultancy() {
             <HiDocumentArrowUp />
             Certificate
           </label>
+          <br />
           <input type="file" id="certificate" />
           <br />
           <div className={styles.cons_form_button}>
-              <Button
-                variant="contained"
-                color="success"
-                startIcon={<AddIcon />}
-                onClick={submitForm}
-              >
-                SUBMIT
-              </Button>
-            </div>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<AddIcon />}
+              onClick={submitForm}
+            >
+              SUBMIT
+            </Button>
+          </div>
         </div>
       )}
     </div>
