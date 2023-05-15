@@ -161,7 +161,7 @@ function Education() {
         {isVisible && (
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Update details</h1>
-            <div className={styles.edu_form_left}>
+            
               <label for="degree">
                 <HiAcademicCap />
                 Degree
@@ -199,8 +199,8 @@ function Education() {
                 }}
               />
               <br />
-            </div>
-            <div className={styles.edu_form_right}>
+
+            
               <label for="university">
                 <HiBuildingLibrary />
                 University
@@ -248,7 +248,7 @@ function Education() {
               </label>
               <br />
               <input type="file" id="certificate" />
-            </div>
+            
             <br />
             <div className={styles.edu_form_button}>
               <Button
