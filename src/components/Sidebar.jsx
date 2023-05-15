@@ -4,6 +4,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import CastForEducationIcon from '@mui/icons-material/CastForEducation';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import BiotechIcon from '@mui/icons-material/Biotech';
 import styles from "./Sidebar.module.css";
 
 function Sidebar() {
@@ -33,6 +34,10 @@ function Sidebar() {
                 <li className={styles.sidebar_row} id={window.location.pathname == "/professional" ? "active" : ""} onClick={()=> {window.location.pathname = "/professional"}}>
                     <div className={styles.sidebar_icon}><WorkHistoryIcon /></div>
                     <div className={styles.sidebar_title}>Professional Experience</div>
+                </li>
+                <li className={styles.sidebar_row} id={window.location.pathname == "/research" ? "active" : ""} onClick={()=> {window.location.pathname = "/research"}}>
+                    <div className={styles.sidebar_icon}><BiotechIcon /></div>
+                    <div className={styles.sidebar_title}>Research</div>
                 </li>
             </ul>
         </div>
