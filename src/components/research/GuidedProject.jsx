@@ -10,6 +10,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 
 function GuidedProject() {
   const [sname, setSname] = useState("");
@@ -74,7 +77,7 @@ function GuidedProject() {
   ];
 
   return (
-    <div className={styles.guid_page}>
+    <div className={styles.guid_content}>
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -92,17 +95,23 @@ function GuidedProject() {
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/research/consultancy"
+          href="/guidedproject"
         >
           Guided Project
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.guid_parent}>
+      <div className={styles.guid_div}>
         {!isVisible && (
           <div>
-            <button onClick={toggleVisibilty}>Update</button>
-            <div className={styles.guid_div}>
+           <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibilty}
+            >
+              UPDATE
+            </Button>
+            <div className={styles.guid_list}>
               {data1.map((item) => {
                 return (
                   <Guidrow
@@ -120,8 +129,7 @@ function GuidedProject() {
 
         {isVisible && (
           <div className={styles.guid_form}>
-            <div className={styles.form}>
-              <h1>Update details</h1>
+              <h1 className={styles.cons_form_title}>Update Details</h1>
               <label for="sname">Student Name</label>
               <input
                 type="text"
@@ -159,9 +167,17 @@ function GuidedProject() {
               />
               <br />
               <br />
-              <button onClick={submitForm}>Submit</button>
+              <div className={styles.guid_form_button}>
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<AddIcon />}
+                onClick={submitForm}
+              >
+                SUBMIT
+              </Button>
             </div>
-          </div>
+            </div>
         )}
       </div>
     </div>

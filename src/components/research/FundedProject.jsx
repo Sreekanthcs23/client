@@ -12,6 +12,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 /*import "./CustomDatePicker.css";*/
 
 function FundedProject() {
@@ -87,7 +90,7 @@ function FundedProject() {
   ];
 
   return (
-    <div className={styles.fund_page}>
+    <div className={styles.fund_content}>
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -105,16 +108,22 @@ function FundedProject() {
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/research/consultancy"
+          href="/fundedproject"
         >
           Funded Project
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.fund_parent}>
+      <div className={styles.fund_div}>
         {!isVisible && (
           <div>
-            <button onClick={toggleVisibilty}>Update</button>
+            <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibilty}
+            >
+              UPDATE
+            </Button>
             <div className={styles.fund_div}>
               {data1.map((item) => {
                 return (
@@ -135,10 +144,7 @@ function FundedProject() {
 
         {isVisible && (
           <div className={styles.fund_form}>
-            <div className={styles.form}>
-              <h1>Update details</h1>
-
-              <div className="form">
+            <h1 className={styles.fund_form_title}>Update Details</h1>
                 <label for="name">Project Name</label>
                 <input
                   type="text"
@@ -216,10 +222,18 @@ function FundedProject() {
                 </label>
                 <input type="file" id="letter" />
                 <br />
-                <button onClick={submitForm}>Submit</button>
+                <div className={styles.fund_form_button}>
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<AddIcon />}
+                onClick={submitForm}
+              >
+                SUBMIT
+              </Button>
               </div>
-            </div>
-          </div>
+              </div>
+          
         )}
       </div>
     </div>

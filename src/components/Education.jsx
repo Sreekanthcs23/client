@@ -124,7 +124,7 @@ function Education() {
             underline="hover"
             sx={{ display: "flex", alignItems: "center" }}
             color="inherit"
-            href="/research/consultancy"
+            href="/education"
           >
             Education
           </Link>
@@ -160,7 +160,7 @@ function Education() {
 
         {isVisible && (
           <div className={styles.edu_form}>
-            <h1 className={styles.edu_form_title}>Update details</h1>
+            <h1 className={styles.edu_form_title}>Update Details</h1>
             
               <label for="degree">
                 <HiAcademicCap />
@@ -257,7 +257,7 @@ function Education() {
                 startIcon={<AddIcon />}
                 onClick={submitForm}
               >
-                ADD
+                SUBMIT
               </Button>
             </div>
           </div>

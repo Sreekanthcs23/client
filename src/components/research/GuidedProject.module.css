@@ -1,8 +1,81 @@
-.guid_page {
-    margin-top: 10px;
-    margin-left: 10px;
+.guid_content {
+    margin-left: 280px;
+    margin-top: 90px;
+    
 }
 
-.guid_parent {
+.guid_div {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.guid_list {
     margin-top: 20px;
 }
+
+.guid_page h1 {
+    margin-left: 100px;
+}
+
+.guid_page h2 {
+    margin-left: 200px;
+}
+
+.guid_form {
+    width: 500px;
+    height: 650px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+}
+
+.guid_form_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+.guid_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.guid_form input[type="file"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px
+}
+
+.guid_input {
+    margin-left: 10px;
+    font-weight: 1.1rem;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.guid_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+
+.guid_form_button {
+    text-align: center;
+}
+ 
+

@@ -1,5 +1,6 @@
 import styles from "./Tearow.module.css";
-
+import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import Button from "@mui/material/Button";
 function Tearow(props) {
     return (
         <div className={styles.main_div}>
@@ -19,19 +20,19 @@ function Tearow(props) {
                 <div>
                     <label>Subject Name</label>
                     <input type="text" disabled="disabled" value={props.subname} /><br />
-                    <button type="button" >Internal</button>
+                    <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Internal</Button>
                 </div>
                 <div>
-                    <button type="button" >Attendance</button>
-                    <button type="button" >Feedback</button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Attedance</Button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Feedback</Button>
                 </div>
                 <div>
-                    <button type="button" >Result</button>
-                    <button type="button" >Personal TimeTable</button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Result</Button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Personal Timetable</Button>
                 </div>
                 <div>
-                    <button type="button" >Tutorial</button>
-                    <button type="button" >Special Achievement</button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Tutorial</Button>
+                <Button variant="contained" startIcon={<CardMembershipIcon />} size="small">Special Achievement</Button>
                 </div>
             </div>
             

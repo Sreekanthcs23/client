@@ -1,6 +1,83 @@
+
+
 .cons_content {
-    margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 280px;
+    margin-top: 90px;
+    
 }
 
+.cons_div {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.cons_list {
+    margin-top: 20px;
+}
+
+.cons_page h1 {
+    margin-left: 100px;
+}
+
+.cons_page h2 {
+    margin-left: 200px;
+}
+
+.cons_form {
+    width: 500px;
+    height: 650px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+}
+
+.cons_form_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+.cons_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cons_form input[type="file"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px
+}
+
+.cons_input {
+    margin-left: 10px;
+    font-weight: 1.1rem;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.cons_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+
+.cons_form_button {
+    text-align: center;
+}
+ 
 

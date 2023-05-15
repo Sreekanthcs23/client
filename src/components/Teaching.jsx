@@ -11,6 +11,16 @@ import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import AddIcon from "@mui/icons-material/Add";
+import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import AdjustIcon from "@mui/icons-material/Adjust";
+import Button from "@mui/material/Button";
 //import "./CustomDatePicker.css";
 
 function Teaching() {
@@ -81,23 +91,49 @@ function Teaching() {
     ]
 
     return (
-        <div className={styles.page}>
+        <div className={styles.tea_page}>
             <div className={styles.tea_navbar}>
                 <Navbar />
             </div>
             
-            
-            <div className={styles.tea_parent}>
-                <div className={styles.tea_left}>
-                    <Sidebar />
-                </div>
+            <div className={styles.tea_sidebar}>
+                <Sidebar />
+            </div>
                 
-                <div className={styles.tea_right}>
-                    {!isVisible && <div>
-                        <h1 className={styles.title}>Teaching</h1> <button onClick={toggleVisibilty}>Update</button>
-                        <h2>Batches</h2>
+            <div className={styles.tea_content}>
+            <Breadcrumbs
+            separator={<NavigateNextIcon fontSize="small" />}
+            aria-label="breadcrumb"
+            >
+            <Link
+                underline="hover"
+                sx={{ display: "flex", alignItems: "center" }}
+                color="inherit"
+                href="/home"
+            >
+            <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
+            Home
+            </Link>
+            <Link
+                underline="hover"
+                sx={{ display: "flex", alignItems: "center" }}
+                color="inherit"
+                href="/teaching"
+            >
+            Teaching
+          </Link>
+            </Breadcrumbs>
+                    {!isVisible && (
                         <div className={styles.tea_div}>
-                         {data1.map((item => {
+                        <Button
+                            variant="outlined"
+                            startIcon={<EditIcon />}
+                            onClick={toggleVisibilty}
+                        >
+                        UPDATE
+                        </Button>
+                        <div className={styles.tea_list}>
+                         {data1.map((item) => {
                             return (<Tearow
                                 id={item.id}
                                 year={item.year}
@@ -105,17 +141,17 @@ function Teaching() {
                                 branch={item.branch}
                                 subcode={item.subcode}
                                 subname={item.subname}>
-                             </Tearow>)
-                            }))}
+                             </Tearow>);
+                            })}
                         </div>
-                    </div> }
+                        </div>
+                        )}
                    
 
-                        { isVisible &&
+                        { isVisible && (
                 <div className={styles.tea_form}>
                     
-                    <div className={styles.form}>
-                        <h1>Update details</h1>
+                    <h1 className={styles.tea_form_title}>Update Details</h1>
                         <label for="year">Year</label>
                         <input type="text" id="year" onChange={(e) => {setYear(e.target.value)}} /><br />
 			            <label for="batch">Batch</label>
@@ -140,18 +176,21 @@ function Teaching() {
                         <input type="file" id="result" /><br />
 			            <label for="achievement">Special Achievement</label>
                         <input type="file" id="achievement" /><br />
-                        <button onClick={submitForm}>SUBMIT</button>
+                        <div className={styles.tea_form_button}>
+                            <Button
+                            variant="contained"
+                            color="success"
+                            startIcon={<AddIcon />}
+                            onClick={submitForm}
+                             >
+                                SUBMIT
+                            </Button>
+                        </div>
                     </div>
-                </div> }
+                 )}
                 </div>
-
-                
-                
-                
-            </div>
-            
-        </div>
-    )
+                </div> 
+    );
 }
 
 export default Teaching;

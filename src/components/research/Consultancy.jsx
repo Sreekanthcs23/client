@@ -11,6 +11,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 //import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
@@ -93,7 +96,13 @@ function Consultancy() {
 
       {!isVisible && (
         <div className={styles.cons_div}>
-          <button onClick={toggleVisibilty}>Update</button>
+          <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibilty}
+            >
+              UPDATE
+            </Button>
           <div className={styles.cons_list}>
             {data1.map((item) => {
               return (
@@ -111,7 +120,7 @@ function Consultancy() {
 
       {isVisible && (
         <div className={styles.cons_form}>
-          <h1 className={styles.cons_form_title}>Update details</h1>
+          <h1 className={styles.cons_form_title}>Update Details</h1>
 
           <label for="agency">Agency</label>
           <input
@@ -147,8 +156,15 @@ function Consultancy() {
           <input type="file" id="certificate" />
           <br />
           <div className={styles.cons_form_button}>
-            <button onClick={submitForm}>Add</button>
-          </div>
+              <Button
+                variant="contained"
+                color="success"
+                startIcon={<AddIcon />}
+                onClick={submitForm}
+              >
+                SUBMIT
+              </Button>
+            </div>
         </div>
       )}
     </div>
