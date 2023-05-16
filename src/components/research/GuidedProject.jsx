@@ -10,6 +10,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 
 function GuidedProject() {
   const [sname, setSname] = useState("");
@@ -74,7 +77,7 @@ function GuidedProject() {
   ];
 
   return (
-    <div className={styles.guid_page}>
+    <div className={styles.guid_content}>
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -92,78 +95,94 @@ function GuidedProject() {
           underline="hover"
           sx={{ display: "flex", alignItems: "center" }}
           color="inherit"
-          href="/research/consultancy"
+          href="/guidedproject"
         >
           Guided Project
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.guid_parent}>
-        {!isVisible && (
-          <div>
-            <button onClick={toggleVisibilty}>Update</button>
-            <div className={styles.guid_div}>
-              {data1.map((item) => {
-                return (
-                  <Guidrow
-                    id={item.id}
-                    sname={item.sname}
-                    pname={item.pname}
-                    batch={item.batch}
-                    publication={item.publication}
-                  ></Guidrow>
-                );
-              })}
-            </div>
+      {!isVisible && (
+        <div className={styles.guid_div}>
+          <Button
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={toggleVisibilty}
+            style={{ width: '150px' }}
+          >
+            UPDATE
+          </Button>
+          <div className={styles.guid_list}>
+            {data1.map((item) => {
+              return (
+                <Guidrow
+                  id={item.id}
+                  sname={item.sname}
+                  pname={item.pname}
+                  batch={item.batch}
+                  publication={item.publication}
+                ></Guidrow>
+              );
+            })}
           </div>
-        )}
+        </div>
+      )}
 
-        {isVisible && (
-          <div className={styles.guid_form}>
-            <div className={styles.form}>
-              <h1>Update details</h1>
-              <label for="sname">Student Name</label>
-              <input
-                type="text"
-                id="sname"
-                onChange={(e) => {
-                  setSname(e.target.value);
-                }}
-              />
-              <br />
-              <label for="pname">Project Name</label>
-              <input
-                type="text"
-                id="pname"
-                onChange={(e) => {
-                  setPname(e.target.value);
-                }}
-              />
-              <br />
-              <label for="batch">Batch</label>
-              <input
-                type="text"
-                id="batch"
-                onChange={(e) => {
-                  setBatch(e.target.value);
-                }}
-              />
-              <br />
-              <label for="publication">Publication</label>
-              <input
-                type="text"
-                id="publication"
-                onChange={(e) => {
-                  setPublication(e.target.value);
-                }}
-              />
-              <br />
-              <br />
-              <button onClick={submitForm}>Submit</button>
-            </div>
+      {isVisible && (
+        <div className={styles.guid_form}>
+          <h1 className={styles.guid_form_title}>Update Details</h1>
+          <label for="sname">Student Name</label>
+          <br />
+          <input
+            type="text"
+            id="sname"
+            onChange={(e) => {
+              setSname(e.target.value);
+            }}
+          />
+          <br />
+          <label for="pname">Project Name</label>
+          <br />
+          <input
+            type="text"
+            id="pname"
+            onChange={(e) => {
+              setPname(e.target.value);
+            }}
+          />
+          <br />
+          <label for="batch">Batch</label>
+          <br />
+          <input
+            type="text"
+            id="batch"
+            onChange={(e) => {
+              setBatch(e.target.value);
+            }}
+          />
+          <br />
+          <label for="publication">Publication</label>
+          <br />
+          <input
+            type="text"
+            id="publication"
+            onChange={(e) => {
+              setPublication(e.target.value);
+            }}
+          />
+          <br />
+          <br />
+          <div className={styles.guid_form_button}>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<AddIcon />}
+              onClick={submitForm}
+            >
+              SUBMIT
+            </Button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

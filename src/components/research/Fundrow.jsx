@@ -1,5 +1,6 @@
 import styles from "./Fundrow.module.css";
-
+import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import Button from "@mui/material/Button";
 function Fundrow(props) {
     return (
         <div className={styles.main_div}>
@@ -23,7 +24,13 @@ function Fundrow(props) {
                     <input type="text" disabled="disabled" value={props.status} /><br />
                 </div>
                 <div>
-                    <button type="button" >Sanction Letter</button>
+                <Button
+                     variant="contained"
+                    startIcon={<CardMembershipIcon />}
+                    size="small"
+                    >
+                     Sanction Letter
+                    </Button>
                 </div>
             </div>
             

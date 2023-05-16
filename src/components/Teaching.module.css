@@ -1,86 +1,105 @@
 
-.tea_div {
-    padding-left:5%;
-    padding-right:5%;
-    width:118%
-}
-
-.tea_navbar {
+.tea_page {
     width: 100%;
+    height:100%;
+    font-family: sans-serif;
+}
+.tea_navbar {
+    position: fixed;
     top: 0;
-    position:fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
 }
 
-.tea_parent {
+.tea_sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 99;
     margin-top: 50px;
-    width:100%;
-    padding-left:40px;
-}
-
-.tea_left {
-    height: 100vh;
-    width: 16%;
-    float: left;
-   left: 0;
-   position: fixed;
-}
-
-.tea_right {
     height: 100%;
-    width: 84%;
-    float: right;
-    background-color: rgb(3, 34, 53);
 }
 
-.page h1 {
+.tea_content {
+    margin-left: 280px;
+    margin-top: 90px;
+    
+}
+
+.tea_div {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.tea_list {
+    margin-top: 20px;
+}
+
+.tea_page h1 {
     margin-left: 100px;
 }
 
-.page h2 {
+.tea_page h2 {
     margin-left: 200px;
 }
 
-.form {
-    width: 100%;
-    height: 100%;
-    text-align: center;
+.tea_form {
+    width: 450px;
+    height: 850px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
 }
 
-.form input[type="text"] {
-    margin-left: 50px;
+.tea_form_title {
+    font-size: 20px;
+    font-weight: bold;
     margin-bottom: 20px;
-    font-weight: 1.1rem;
-    font-size: 16px;
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
-    
-    border: none;
-    outline: none;
-    background-color: #fff;
+  }
+
+.tea_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.form input[type="file"] {
+.tea_form input[type="file"] {
     margin-left: 50px;
     margin-bottom: 20px;
+    margin-top: 10px
 }
 
 .date_input {
-    margin-left: 50px;
-    margin-bottom: 20px;
+    margin-left: 10px;
     font-weight: 1.1rem;
     font-size: 16px;
     width: 300px;
-    height: 50px;
     border-radius: 20px;
-    
     border: none;
     outline: none;
     background-color: #fff;
 }
 
-.form label {
-    margin-bottom: 20px;
-    font-weight: 1.3rem;
-    font-size: 18px;
+.tea_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
 }
+
+
+.tea_form_button {
+    text-align: center;
+}
+ 

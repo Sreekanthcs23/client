@@ -11,6 +11,9 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 //import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
@@ -67,7 +70,7 @@ function Consultancy() {
     },
   ];
   return (
-    <div className={styles.cons_page}>
+    <div className={styles.cons_content}>
       <Breadcrumbs
         separator={<NavigateNextIcon fontSize="small" />}
         aria-label="breadcrumb"
@@ -91,72 +94,84 @@ function Consultancy() {
         </Link>
       </Breadcrumbs>
 
-      <div className={styles.cons_parent}>
-        {!isVisible && (
-          <div>
-            <button onClick={toggleVisibilty}>Update</button>
-            <div className={styles.cons_div}>
-              {data1.map((item) => {
-                return (
-                  <Consrow
-                    id={item.id}
-                    agency={item.agency}
-                    amount={item.amount}
-                    year={item.year}
-                  ></Consrow>
-                );
-              })}
-            </div>
+      {!isVisible && (
+        <div className={styles.cons_div}>
+          <Button
+            variant="outlined"
+            startIcon={<EditIcon />}
+            onClick={toggleVisibilty}
+            style={{ width: '150px' }}
+          >
+            UPDATE
+          </Button>
+          <div className={styles.cons_list}>
+            {data1.map((item) => {
+              return (
+                <Consrow
+                  id={item.id}
+                  agency={item.agency}
+                  amount={item.amount}
+                  year={item.year}
+                ></Consrow>
+              );
+            })}
           </div>
-        )}
+        </div>
+      )}
 
-        {isVisible && (
-          <div className={styles.cons_form}>
-            <div className={styles.form}>
-              <h1>Update details</h1>
+      {isVisible && (
+        <div className={styles.cons_form}>
+          <h1 className={styles.cons_form_title}>Update Details</h1>
 
-              <div className={styles.left}>
-                <div className="form">
-                  <label for="agency">Agency</label>
-                  <input
-                    type="text"
-                    id="agency"
-                    onChange={(e) => {
-                      setAgency(e.target.value);
-                    }}
-                  />
-                  <br />
-                  <label for="Amount">Amount</label>
-                  <input
-                    type="text"
-                    id="amount"
-                    onChange={(e) => {
-                      setAmount(e.target.value);
-                    }}
-                  />
-                  <br />
-                  <label for="year">Year</label>
-                  <input
-                    type="text"
-                    id="year"
-                    onChange={(e) => {
-                      setYear(e.target.value);
-                    }}
-                  />
-                  <br />
-                  <label for="certificate">
-                    <HiDocumentArrowUp />
-                    Certificate
-                  </label>
-                  <input type="file" id="certificate" />
-                  <br />
-                  <button onClick={submitForm}>Add</button>
-                </div>
-              </div>
-            </div>
+          <label for="agency">Agency</label>
+          <br />
+          <input
+            type="text"
+            id="agency"
+            onChange={(e) => {
+              setAgency(e.target.value);
+            }}
+          />
+          <br />
+          <label for="Amount">Amount</label>
+          <br />
+          <input
+            type="text"
+            id="amount"
+            onChange={(e) => {
+              setAmount(e.target.value);
+            }}
+          />
+          <br />
+          <label for="year">Year</label>
+          <br />
+          <input
+            type="text"
+            id="year"
+            onChange={(e) => {
+              setYear(e.target.value);
+            }}
+          />
+          <br />
+          <label for="certificate">
+            <HiDocumentArrowUp />
+            Certificate
+          </label>
+          <br />
+          <input type="file" id="certificate" />
+          <br />
+          <div className={styles.cons_form_button}>
+            <Button
+              variant="contained"
+              color="success"
+              startIcon={<AddIcon />}
+              onClick={submitForm}
+            >
+              SUBMIT
+            </Button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

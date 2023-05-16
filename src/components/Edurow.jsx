@@ -32,13 +32,15 @@ function Edurow(props) {
           <br />
         </div>
         <div>
-          <Button
-            variant="contained"
-            startIcon={<CardMembershipIcon />}
-            size="small"
-          >
-            Cerificate
-          </Button>
+          <a href={props.certlink} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="contained"
+              startIcon={<CardMembershipIcon />}
+              size="small"
+            >
+              Cerificate
+            </Button>
+          </a>
         </div>
       </div>
     </div>

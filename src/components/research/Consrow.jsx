@@ -1,5 +1,6 @@
 import styles from "./Consrow.module.css";
-
+import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import Button from "@mui/material/Button";
 function Consrow(props) {
     return (
         <div className={styles.main_div}>
@@ -13,7 +14,13 @@ function Consrow(props) {
                 <div>
                     <label>Amount</label>
                     <input type="text" disabled="disabled" value={props.amount} /><br />
-                    <button type="button" >Certificate</button>
+                    <Button
+                     variant="contained"
+                    startIcon={<CardMembershipIcon />}
+                    size="small"
+                    >
+                     Cerificate
+                    </Button>
                 </div>
             </div>
             
