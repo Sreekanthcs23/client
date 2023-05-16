@@ -124,7 +124,7 @@ function FundedProject() {
           >
             UPDATE
           </Button>
-          <div className={styles.fund_div}>
+          <div className={styles.fund_list}>
             {data1.map((item) => {
               return (
                 <Fundrow
