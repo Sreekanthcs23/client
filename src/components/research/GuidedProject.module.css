@@ -4,8 +4,9 @@
 }
 
 .guid_div {
-    padding-top: 30px;
-    padding-left: 200px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .guid_list {

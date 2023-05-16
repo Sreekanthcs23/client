@@ -30,8 +30,9 @@
 }
 
 .edu_div {
-    margin-top: 30px;
-    margin-left: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .edu_list {

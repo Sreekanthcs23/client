@@ -5,8 +5,9 @@
 }
 
 .fund_div {
-    padding-top: 30px;
-    padding-left: 50px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .fund_list {

@@ -4,8 +4,9 @@
 }
 
 .cons_div {
-    padding-left: 200px;
-    padding-top: 30px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .cons_list {

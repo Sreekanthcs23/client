@@ -107,6 +107,7 @@ function GuidedProject() {
             variant="outlined"
             startIcon={<EditIcon />}
             onClick={toggleVisibilty}
+            style={{ width: '150px' }}
           >
             UPDATE
           </Button>

@@ -4,7 +4,6 @@
     height:100%;
     font-family: sans-serif;
 }
-
 .tea_navbar {
     position: fixed;
     top: 0;
@@ -30,8 +29,9 @@
 }
 
 .tea_div {
-    padding-top: 30px;
-    padding-left: 200px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
 }
 
 .tea_list {
