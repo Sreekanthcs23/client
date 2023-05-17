@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import Profrow from "./Profrow";
+import Prevrow from "./Prevrow";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import styles from "./Professional.module.css";
@@ -32,8 +33,11 @@ function Professional() {
   const[appoinmentorder, setAppoinmentorder]=useState("");
   const[problemdeclaration, setProblemdeclaration]=useState("");
   const[promotionorder, setPromotionorder]=useState("");
+  const[type, setType]=useState("");
+  const[fromdate, setFromdate]=useState("");
+  const[todate, setTodate]=useState("");
+  const[institute, setInstitute]=useState("");
   
-  const [marks, setMarks] = useState("");
   const [data, setData] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -54,16 +58,23 @@ function Professional() {
   }, []);
 
   const submitForm = () => {
+    //toggleVisibilty();
+    let formData = new FormData();
+   // formData.append("pdffile", cert);
+    formData.append("joiningdate ", joiningdate );
+    formData.append("joiningdesignation ", joiningdesignation );
+    formData.append("dateofproblemdeclaration ", dateofproblemdeclaration );
+    formData.append("promotiondate ", promotiondate );
+    formData.append("promotiondesignation ", promotiondesignation );
+
+   // console.log("date" + date);
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/professional/insert", {
-      joiningdate: joiningdate,
-      joiningdesignation: joiningdesignation,
-      dateofproblemdeclaration: dateofproblemdeclaration,
-      promotiondate: promotiondate,
-      promotiondesignation: promotiondesignation,
-     // marks: marks,
+
+    Axios.post("http://localhost:3001/professional/insert", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
-      alert("Submitted");
+      alert("submitted");
     });
   };
 
@@ -78,6 +89,24 @@ function Professional() {
       //date_of_acq: "16-08-2020",
       //marks: "9.5",
     }
+  ];
+
+  const data2 = [
+    {
+      id:1,
+      type: "Asst.Prof",
+      fromdate: "01-08-2012",
+      todate: "30-05-2015",
+      institute: "GEC Calicut",
+    },
+    {
+      id:2,
+      type: "Software Engineer",
+      fromdate: "01-08-2008",
+      todate: "30-05-2012",
+      institute: "IBM",
+    },
+
   ];
 
   return (
@@ -116,7 +145,7 @@ function Professional() {
 
         {!isVisible && (
           <div className={styles.edu_div}>
-            <h2 >CURRENT INSTITUITION</h2>
+            <h2 >CURRENT INSTITUTION</h2>
             <br />
             <Button
               variant="outlined"
@@ -138,6 +167,18 @@ function Professional() {
                     //date={item.date_of_acq.toString().slice(0, 10)}
                     //marks={item.marks}
                   ></Profrow>
+                );
+              })}
+              <h2 >PREVIOUS EXPERIENCE</h2>
+              {data2.map((item) => {
+                return(
+                <Prevrow
+                 key={item.id}
+                 type = {item.type}
+                 fromdate = {item.fromdate}
+                 todate = {item.todate}
+                 institute = {item.institute}
+                  ></Prevrow>
                 );
               })}
             </div>

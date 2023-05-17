@@ -1,4 +1,4 @@
-import styles from "./Prevfrow.module.css";
+import styles from "./Prevrow.module.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
 
