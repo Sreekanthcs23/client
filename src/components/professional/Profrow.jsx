@@ -10,8 +10,7 @@ function Profrow(props) {
         <div>
           <label>Joining Date</label>
           <input type="text" disabled="disabled" value={props.joiningdate} />
-          
-         
+                   
           < br/>
           <label>Joining Designation </label>
           <input type="text" disabled="disabled" value={props.joiningdesignation} />

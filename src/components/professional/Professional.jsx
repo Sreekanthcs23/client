@@ -40,11 +40,16 @@ function Professional() {
   
   const [data, setData] = useState([]);
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible1, setIsVisibile1] = useState(false);
+  const [isVisible2, setIsVisibile2] = useState(false);
 
-  function toggleVisibilty() {
-    setIsVisible(!isVisible);
+  function toggleVisibility1() {
+    setIsVisibile1(!isVisible1);
   }
+  function toggleVisibility2() {
+    setIsVisibile2(!isVisible2);
+  }
+
 
   useEffect(() => {
     try {
@@ -69,14 +74,31 @@ function Professional() {
 
    // console.log("date" + date);
 
-    toggleVisibilty();
-
+    toggleVisibility1();
+    
     Axios.post("http://localhost:3001/professional/insert", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
     });
   };
+
+  const submitForm2 = () => {
+    let formData = new FormData();
+    formData.append("type ", type );
+    formData.append("fromdate ", fromdate );
+    formData.append("todate ", todate );
+    formData.append("institute ", institute );
+
+    toggleVisibility2();
+    
+    Axios.post("http://localhost:3001/professional/insert", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then(() => {
+      alert("submitted");
+    });
+  };
+
 
   const data1 = [
     {
@@ -143,18 +165,19 @@ function Professional() {
           </Link>
         </Breadcrumbs>
 
-        {!isVisible && (
+        {(!isVisible1 && !isVisible2) && (
           <div className={styles.edu_div}>
             <h2 >CURRENT INSTITUTION</h2>
             <br />
             <Button
               variant="outlined"
               startIcon={<EditIcon />}
-              onClick={toggleVisibilty}
+              onClick={toggleVisibility1}
             >
               UPDATE
             </Button>
             <div className={styles.edu_list}>
+
               {data1.map((item) => {
                 return (
                   <Profrow
@@ -164,12 +187,20 @@ function Professional() {
                     dateofproblemdeclaration ={item.dateofproblemdeclaration.toString().slice(0, 10) }
                     promotiondate ={item.promotiondate.toString().slice(0, 10) }
                     promotiondesignation ={item.promotiondesignation }
-                    //date={item.date_of_acq.toString().slice(0, 10)}
-                    //marks={item.marks}
                   ></Profrow>
                 );
               })}
+
               <h2 >PREVIOUS EXPERIENCE</h2>
+              <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibility2}
+            >
+              ADD
+            </Button>
+            </div>
+            <div className={styles.edu_list}>
               {data2.map((item) => {
                 return(
                 <Prevrow
@@ -181,11 +212,11 @@ function Professional() {
                   ></Prevrow>
                 );
               })}
-            </div>
           </div>
-        )}
-
-        {isVisible && (
+          </div>
+          )}
+        
+          {isVisible1 && (
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Update details</h1>
             <div className={styles.edu_form_left}>
@@ -293,6 +324,92 @@ function Professional() {
                 onClick={submitForm}
               >
                UPDATE
+              </Button>
+           
+            </div>
+          </div>
+
+          )}
+        
+
+        {isVisible2 && (
+          <div className={styles.edu_form}>
+            <h1 className={styles.edu_form_title}>Add Details</h1>
+             
+              <label for="type ">
+                <AccountTreeIcon fontSize="small" /> Type
+              </label>
+              <br />
+              <input
+                type="text"
+                id="type "
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+              />
+              <br />
+              
+              <label for="fromdate ">
+                <IoCalendarSharp fontSize="small" /> From 
+              </label>
+              <br />
+              <DatePicker
+                className={styles.date_input}
+                id="fromdate"
+                selected={fromdate}
+                onChange={(fromdate) => setFromdate(fromdate)}
+                dateFormat="dd/MM/yyyy"
+                showYearDropdown
+                scrollableMonthYearDropdown
+              />
+              <br />
+      
+              <label for="todate ">
+                <IoCalendarSharp />
+                To Date 
+              </label>
+              <br />
+              <DatePicker
+                className={styles.date_input}
+                id="todate"
+                selected={todate}
+                onChange={(todate) => setTodate(todate)}
+                dateFormat="dd/MM/yyyy"
+                showYearDropdown
+                scrollableMonthYearDropdown
+              />
+              <br />
+              <label for="institute ">
+              <HiBuildingLibrary />
+                Institute
+              </label>
+              <br />
+              
+              <input
+                type="text"
+                id="institute "
+                onChange={(e) => {
+                  setInstitute(e.target.value);
+                }}
+              />
+              <br />
+              <label for="experiencecertificate">
+                <HiDocumentArrowUp />
+                Experience Certificate
+              </label>
+             
+              <input type="file" id="experiencecertificate" />
+              <br />
+          
+            <br />
+            <div className={styles.edu_form_button}>
+              <Button
+                variant="contained"
+                color="success"
+                
+                onClick={submitForm2}
+              >
+               ADD
               </Button>
            
             </div>

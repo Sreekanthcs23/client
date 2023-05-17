@@ -3,7 +3,7 @@ import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
 
 function Prevrow(props) {
-  return (
+  return ( 
     <div className={styles.main_div}>
       < br/>
       <div className={styles.col_div}>
