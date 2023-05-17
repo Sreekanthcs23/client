@@ -161,7 +161,7 @@ function Education() {
                     specialization={item.specialization}
                     university={item.university}
                     college={item.college}
-                    date={item.date_of_acq.toString().slice(0, 10)}
+                    date={item.date_of_acq.toString().slice(0, 11)}
                     marks={item.marks}
                     certlink={item.certificate_link}
                   ></Edurow>
