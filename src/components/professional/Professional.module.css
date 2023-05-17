@@ -1,152 +1,111 @@
-.page {
-    background-color: #7e7b7b9b;
+
+.edu_page {
+    width: 100%;
+    height:100%;
+    font-family: sans-serif;
 }
 
-.edu_div {
-    padding-left:5%;
-    padding-right:5%;
-    width:118%
+h2{
+    color: rgb(104, 101, 101);
+    text-align: left;
+    font-family: sans-serif;
 }
 
 .edu_navbar {
-    width: 100%;
+    position: fixed;
     top: 0;
-    position:fixed;
+    left: 0;
+    right: 0;
+    z-index: 100;
 }
 
-.edu_parent {
+.edu_sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 99;
     margin-top: 50px;
-}
-
-.edu_left {
-    height: 100vh;
-    width: 16%;
-    float: left;
-   left: 0;
-   position: fixed;
-}
-
-.edu_right {
-    height: 00%;
-    width: 85%;
-    float: right;
-    background-color: rgb(3, 34, 53);
-}
-
-.page h1 {
-    margin-left: 100px;
-	color: #ddd3d3;
-}
-
-.page h2 {
-    margin-left: 100px;
-	color: #eee1e1;
-}
-
-.form {
-    width: 100%;
     height: 100%;
-    text-align: center;
-    color:rgb(155, 166, 173);
 }
 
-.form input[type="text"] {
-    margin-left: 50px;
-    margin-bottom: 20px;
-    font-weight: 1.1rem;
-    font-size: 16px;
-    width: 300px;
-    height: 50px;
-    border-radius: 20px;
+.edu_content {
+    margin-left: 280px;
+    margin-top: 90px;
     
-    border: none;
-    outline: none;
-    background-color: #fff;
 }
 
-.form input[type="file"] {
+.edu_div {
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.edu_list {
+    margin-top: 20px;
+}
+
+.edu_page h1 {
+    margin-left: 100px;
+}
+
+.edu_page h2 {
+    margin-left: 200px;
+}
+
+.edu_form {
+    width: 500px;
+    height: 650px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+}
+
+.edu_form_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+.edu_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edu_form input[type="file"] {
     margin-left: 50px;
     margin-bottom: 20px;
+    margin-top: 10px
 }
 
 .date_input {
-    margin-left: 50px;
-    margin-bottom: 20px;
+    margin-left: 10px;
     font-weight: 1.1rem;
     font-size: 16px;
     width: 300px;
-    height: 50px;
     border-radius: 20px;
-    
     border: none;
     outline: none;
     background-color: #fff;
 }
 
-.form label {
-    margin-bottom: 20px;
-    font-weight: 1.3rem;
-    font-size: 18px;
-}
-
-.submit_button {
-    background-color: #4CAF50;
-    color: white;
-    margin-left: 100px;
-    border: 2px solid #008CBA;
-    cursor: pointer;
-    
+.edu_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
 }
 
 
-/* CSS */
-.submit_button {
-  align-items: center;
-  background-color: #0A66C2;
-  border: 0;
-  border-radius: 100px;
-  box-sizing: border-box;
-  color: #ffffff;
-  cursor: pointer;
-  display: inline-flex;
-  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  justify-content: center;
-  line-height: 20px;
-  max-width: 480px;
-  min-height: 40px;
-  min-width: 0px;
-  overflow: hidden;
-  padding: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  text-align: center;
-  touch-action: manipulation;
-  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  user-select: none;
-  -webkit-user-select: none;
-  vertical-align: middle;
-  top: 50%;
-  transition: .2s ;
+.edu_form_button {
+    text-align: center;
 }
-
-.submit_button:hover,
-.submit_button:focus { 
-  background-color: #061281;
-  color: #ffffff;
-  font-size: 17px;
-  
-
-}
-
-.submit_button:active {
-  background: #09223b;
-  color: rgb(255, 255, 255, .7);
-}
-
-.submit_button:disabled { 
-  cursor: not-allowed;
-  background: rgba(0, 0, 0, .08);
-  color: rgba(0, 0, 0, .3);
-}
+ 
