@@ -181,7 +181,7 @@ function Professional() {
               {data1.map((item) => {
                 return (
                   <Profrow
-                    key={item.id}
+                    key={item.cur_ins_id}
                     joiningdate={item.joiningdate.toString().slice(0, 10)}
                     joiningdesignation={item.joiningdesignation}
                     dateofproblemdeclaration ={item.dateofproblemdeclaration.toString().slice(0, 10) }
@@ -408,7 +408,7 @@ function Professional() {
                 color="success"
                 
                 onClick={submitForm2}
-              >
+              >< AddIcon size="small"/>
                ADD
               </Button>
            

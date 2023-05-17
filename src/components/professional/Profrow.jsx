@@ -9,26 +9,27 @@ function Profrow(props) {
       <div className={styles.col_div}>
         <div>
           <label>Joining Date</label>
-          <input type="text" disabled="disabled" value={props.joiningdate} />
-                   
+          <input type="text" disabled="disabled" value={props.joiningdate} />         
           < br/>
           <label>Joining Designation </label>
           <input type="text" disabled="disabled" value={props.joiningdesignation} />
           <br />
-        </div>
-        <div>
           <label>Date of Problem Declaration </label>
           <input type="text" disabled="disabled" value={props.dateofproblemdeclaration} />
           <br />
+        </div>
+        <div> 
           <label>Promotion Date </label>
           <input type="text" disabled="disabled" value={props.promotiondate} />
           <br />
-        </div>
-        <div>
           <label>Promotion Designation </label>
           <input type="text" disabled="disabled" value={props.promotiondesignation} />
           <br />
-          <a href={props.problemdeclarationcertlink} target="_blank" rel="noopener noreferrer">
+        </div>
+        <br />
+        <div className={styles.but_cert}> 
+        <div>
+        <a href={props.problemdeclarationcertlink} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -37,10 +38,8 @@ function Profrow(props) {
             Problem Declaration
             </Button>
           </a>
-        </div>
-        <br />
-        <div className={styles.but_cert}> 
-          
+          </div>
+          <br />
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}

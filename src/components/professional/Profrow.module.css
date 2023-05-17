@@ -1,6 +1,6 @@
 
 .main_div {
-    width: 90%;
+    width: 95%;
     border-radius: 20px;
     -moz-border-radius: 0px;
     background-color: white;
@@ -35,4 +35,5 @@
 }
 .but_cert{
     width: 30%;
+    margin-left: 10px;
 }
