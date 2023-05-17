@@ -2,47 +2,65 @@ import styles from "./Profrow.module.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
 
-function Edurow(props) {
+function Profrow(props) {
   return (
     <div className={styles.main_div}>
-      <h1>{props.degree}</h1>
+      < br/>
       <div className={styles.col_div}>
         <div>
-          <label>Branch</label>
-          <input type="text" disabled="disabled" value={props.branch} />
-          <br />
-          <label>Specialization</label>
-          <input type="text" disabled="disabled" value={props.specialization} />
-          <br />
-        </div>
-        <div>
-          <label>University</label>
-          <input type="text" disabled="disabled" value={props.university} />
-          <br />
-          <label>College</label>
-          <input type="text" disabled="disabled" value={props.college} />
+          <label>Joining Date</label>
+          <input type="text" disabled="disabled" value={props.joiningdate} />
+          
+         
+          < br/>
+          <label>Joining Designation </label>
+          <input type="text" disabled="disabled" value={props.joiningdesignation} />
           <br />
         </div>
         <div>
-          <label>Date of acquiry</label>
-          <input type="text" disabled="disabled" value={props.date} />
+          <label>Date of Problem Declaration </label>
+          <input type="text" disabled="disabled" value={props.dateofproblemdeclaration} />
           <br />
-          <label>Marks</label>
-          <input type="text" disabled="disabled" value={props.marks} />
+          <label>Promotion Date </label>
+          <input type="text" disabled="disabled" value={props.promotiondate} />
           <br />
         </div>
         <div>
+          <label>Promotion Designation </label>
+          <input type="text" disabled="disabled" value={props.promotiondesignation} />
+          <br />
+          <a href={props.problemdeclarationcertlink} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
           >
-            Cerificate
-          </Button>
+            Problem Declaration
+            </Button>
+          </a>
         </div>
+        <br />
+        <div className={styles.but_cert}> 
+          
+          <Button
+            variant="contained"
+            startIcon={<CardMembershipIcon />}
+            size="small"
+          >
+            Appoinment Order
+          </Button>
+          < br/>< br/>
+          <Button
+            variant="contained"
+            startIcon={<CardMembershipIcon />}
+            size="small"
+          >
+            Promotion Order
+          </Button>
+      </div>
       </div>
     </div>
   );
 }
 
-export default Edurow;
+export default Profrow;

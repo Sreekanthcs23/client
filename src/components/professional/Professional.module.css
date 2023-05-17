@@ -5,6 +5,12 @@
     font-family: sans-serif;
 }
 
+h2{
+    color: rgb(104, 101, 101);
+    text-align: left;
+    font-family: sans-serif;
+}
+
 .edu_navbar {
     position: fixed;
     top: 0;
