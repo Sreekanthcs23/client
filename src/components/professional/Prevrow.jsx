@@ -7,7 +7,7 @@ function Prevrow(props) {
     <div className={styles.main_div}>
       < br/>
       <div className={styles.col_div}>
-        <div>
+        <div className={styles.sub_div}>
           <label>Type</label>
           <input type="text" disabled="disabled" value={props.type} />
             
@@ -16,15 +16,15 @@ function Prevrow(props) {
           <input type="text" disabled="disabled" value={props.fromdate} />
           <br />
         </div>
-        <div>
-          <label>To </label>
-          <input type="text" disabled="disabled" value={props.todate} />
-          <br />
+        <div className={styles.sub_div}>
           <label>Institute</label>
           <input type="text" disabled="disabled" value={props.institute} />
           <br />
+          <label>To </label>
+          <input type="text" disabled="disabled" value={props.todate} />
+          <br />
         </div>
-        <div>
+        <div className={styles.sub_div}>
         
           <br />
           <a href={props.experience_cert_link} target="_blank" rel="noopener noreferrer">

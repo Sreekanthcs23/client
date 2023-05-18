@@ -7,7 +7,7 @@ function Profrow(props) {
     <div className={styles.main_div}>
       < br/>
       <div className={styles.col_div}>
-        <div>
+        <div className={styles.sub_div}>
           <label>Joining Date</label>
           <input type="text" disabled="disabled" value={props.joiningdate} />         
           < br/>
@@ -18,7 +18,7 @@ function Profrow(props) {
           <input type="text" disabled="disabled" value={props.dateofproblemdeclaration} />
           <br />
         </div>
-        <div> 
+        <div className={styles.sub_div}> 
           <label>Promotion Date </label>
           <input type="text" disabled="disabled" value={props.promotiondate} />
           <br />
@@ -28,7 +28,7 @@ function Profrow(props) {
         </div>
         <br />
         <div className={styles.but_cert}> 
-        <div>
+        <div className={styles.sub_div}>
         <a href={props.problemdeclarationcertlink} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"

@@ -5,7 +5,7 @@ function Tearow(props) {
   return (
     <div className={styles.main_div}>
       <div className={styles.col_div}>
-        <div>
+        <div className={styles.sub_div}>
           <label>Year</label>
           <input type="text" disabled="disabled" value={props.year} />
           <br />
@@ -16,7 +16,7 @@ function Tearow(props) {
           <input type="text" disabled="disabled" value={props.branch} />
           <br />
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <label>Subject Code</label>
           <input type="text" disabled="disabled" value={props.subcode} />
           <br />
@@ -32,7 +32,7 @@ function Tearow(props) {
             Internal
           </Button>
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -58,7 +58,7 @@ function Tearow(props) {
             Result
           </Button>
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}

@@ -7,7 +7,7 @@ function Edurow(props) {
     <div className={styles.main_div}>
       <h1>{props.degree}</h1>
       <div className={styles.col_div}>
-        <div>
+        <div className={styles.sub_div}>
           <label>Branch</label>
           <input type="text" disabled="disabled" value={props.branch} />
           <br />
@@ -15,15 +15,15 @@ function Edurow(props) {
           <input type="text" disabled="disabled" value={props.specialization} />
           <br />
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <label>University</label>
           <input type="text" disabled="disabled" value={props.university} />
           <br />
-          <label>College</label>
+          <label>Collage</label>
           <input type="text" disabled="disabled" value={props.college} />
           <br />
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <label>Date of acquiry</label>
           <input type="text" disabled="disabled" value={props.date} />
           <br />
@@ -31,14 +31,14 @@ function Edurow(props) {
           <input type="text" disabled="disabled" value={props.marks} />
           <br />
         </div>
-        <div>
+        <div className={styles.sub_div}>
           <a href={props.certlink} target="_blank" rel="noopener noreferrer">
             <Button
               variant="contained"
               startIcon={<CardMembershipIcon />}
               size="small"
             >
-              Cerificate
+              Certificate
             </Button>
           </a>
         </div>
