@@ -30,13 +30,13 @@ function Professional() {
   const [dateofproblemdeclaration, setDateofproblemdeclaration] = useState("");
   const [promotiondate, setPromotiondate] = useState("");
   const [promotiondesignation, setPromotiondesignation] = useState("");
-  const[appoinmentorder, setAppoinmentorder]=useState("");
-  const[problemdeclaration, setProblemdeclaration]=useState("");
-  const[promotionorder, setPromotionorder]=useState("");
-  const[type, setType]=useState("");
-  const[fromdate, setFromdate]=useState("");
-  const[todate, setTodate]=useState("");
-  const[institute, setInstitute]=useState("");
+  const [appointmentorder, setAppointmentorder]=useState(null);
+  const [problemdeclaration, setProblemdeclaration]=useState(null);
+  const [promotionorder, setPromotionorder]=useState(null);
+  const [type, setType]=useState("");
+  const [fromdate, setFromdate]=useState("");
+  const [todate, setTodate]=useState("");
+  const [institute, setInstitute]=useState("");
   
   const [data, setData] = useState([]);
 
@@ -64,13 +64,20 @@ function Professional() {
 
   const submitForm = () => {
     //toggleVisibilty();
+    let appointmentorder1 = appointmentorder[0];
+    let problemdeclaration1 = problemdeclaration[0];
+    let promotionorder1 = promotionorder[0];
     let formData = new FormData();
    // formData.append("pdffile", cert);
+    formData.append("appointmentorder ", appointmentorder1 );
+    formData.append("problemdeclaration ", problemdeclaration1 );
+    formData.append("promotionorder ", promotionorder1 );
     formData.append("joiningdate ", joiningdate );
     formData.append("joiningdesignation ", joiningdesignation );
     formData.append("dateofproblemdeclaration ", dateofproblemdeclaration );
     formData.append("promotiondate ", promotiondate );
     formData.append("promotiondesignation ", promotiondesignation );
+    
 
    // console.log("date" + date);
 
@@ -294,26 +301,49 @@ function Professional() {
                 }}
               />
               <br />
-              <label for="appoinmentorder">
+              <label for="appointmentorder">
                 <HiDocumentArrowUp />
-                Appoinment Order
+                Appointment Order
               </label>
-             
-              <input type="file" id="appoinmentorder" />
+              <input
+              type="file"
+              name="appointmentorder"
+              accept="application/pdf"
+              id="appointmentorder"
+              onChange={(e) => {
+                setAppointmentorder(e.target.files);
+              }}
+            />
               <br />
+
               <label for="problemdeclaration">
                 <HiDocumentArrowUp />
                 Problem Declaration
               </label>
-             
-              <input type="file" id="problemdeclaration" />
+              <input
+              type="file"
+              name="problemdeclaration"
+              accept="application/pdf"
+              id="problemdeclaration"
+              onChange={(e) => {
+                setProblemdeclaration(e.target.files);
+              }}
+            />
+            
               <br />
               <label for="promotionorder">
                 <HiDocumentArrowUp />
                 Promotion Order
               </label>
-             
-              <input type="file" id="promotionorder" />
+              <input
+              type="file"
+              name="promotionorder"
+              accept="application/pdf"
+              id="promotionorder"
+              onChange={(e) => {
+                setPromotionorder(e.target.files);
+              }}
+            />
             </div>
             <br />
             <div className={styles.edu_form_button}>
