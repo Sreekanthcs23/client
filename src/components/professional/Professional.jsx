@@ -93,11 +93,13 @@ function Professional() {
   const submitForm2 = () => {
     toggleVisibility2();
     let formData2 = new FormData();
+
     formData2.append("type", type );
     formData2.append("fromdate", fromdate );
     formData2.append("todate", todate );
     formData2.append("designation", designation); 
     formData2.append("institute", institute );
+    formData2.append("experiencecertificate", experiencecertificate);
 
     toggleVisibility2();
     
