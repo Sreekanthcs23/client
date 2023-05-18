@@ -17,15 +17,18 @@ function Prevrow(props) {
           <br />
         </div>
         <div className={styles.sub_div}>
-          <label>Institute</label>
-          <input type="text" disabled="disabled" value={props.institute} />
-          <br />
-          <label>To </label>
+        <label>To </label>
           <input type="text" disabled="disabled" value={props.todate} />
           <br />
+          <label>Designation</label>
+          <input type="text" disabled="disabled" value={props.designation} />
+          <br />          
         </div>
+
         <div className={styles.sub_div}>
-        
+        <label>Institute</label>
+          <input type="text" disabled="disabled" value={props.institute} />
+          <br />
           <br />
           <a href={props.experience_cert_link} target="_blank" rel="noopener noreferrer">
           <Button

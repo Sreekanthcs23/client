@@ -33,11 +33,13 @@ function Professional() {
   const [appointmentorder, setAppointmentorder]=useState(null);
   const [problemdeclaration, setProblemdeclaration]=useState(null);
   const [promotionorder, setPromotionorder]=useState(null);
+  
   const [type, setType]=useState("");
   const [fromdate, setFromdate]=useState("");
   const [todate, setTodate]=useState("");
+  const [designation, setDesignation]=useState("");
   const [institute, setInstitute]=useState("");
-  
+  const [experiencecertificate, setExperiencecertificate]=useState(null);
   const [data, setData] = useState([]);
 
   const [isVisible1, setIsVisibile1] = useState(false);
@@ -49,7 +51,6 @@ function Professional() {
   function toggleVisibility2() {
     setIsVisibile2(!isVisible2);
   }
-
 
   useEffect(() => {
     try {
@@ -63,26 +64,25 @@ function Professional() {
   }, []);
 
   const submitForm = () => {
-    //toggleVisibilty();
-    let appointmentorder1 = appointmentorder[0];
-    let problemdeclaration1 = problemdeclaration[0];
-    let promotionorder1 = promotionorder[0];
-    let formData = new FormData();
-   // formData.append("pdffile", cert);
-    formData.append("appointmentorder ", appointmentorder1 );
-    formData.append("problemdeclaration ", problemdeclaration1 );
-    formData.append("promotionorder ", promotionorder1 );
-    formData.append("joiningdate ", joiningdate );
-    formData.append("joiningdesignation ", joiningdesignation );
-    formData.append("dateofproblemdeclaration ", dateofproblemdeclaration );
-    formData.append("promotiondate ", promotiondate );
-    formData.append("promotiondesignation ", promotiondesignation );
-    
-
-   // console.log("date" + date);
 
     toggleVisibility1();
+
+    let appointmentorder1 = appointmentorder;
+    let problemdeclaration1 = problemdeclaration;
+    let promotionorder1 = promotionorder;
+    let formData = new FormData();
+
+    formData.append("appointmentorder", appointmentorder);
+    formData.append("problemdeclaration", problemdeclaration );
+    formData.append("promotionorder", promotionorder );
+    formData.append("joiningdate", joiningdate );
+    formData.append("joiningdesignation", joiningdesignation );
+    formData.append("dateofproblemdeclaration", dateofproblemdeclaration );
+    formData.append("promotiondate", promotiondate );
+    formData.append("promotiondesignation", promotiondesignation );
     
+   // console.log("date" + date);
+ 
     Axios.post("http://localhost:3001/professional/insert", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
@@ -91,15 +91,17 @@ function Professional() {
   };
 
   const submitForm2 = () => {
-    let formData = new FormData();
-    formData.append("type ", type );
-    formData.append("fromdate ", fromdate );
-    formData.append("todate ", todate );
-    formData.append("institute ", institute );
+    toggleVisibility2();
+    let formData2 = new FormData();
+    formData2.append("type", type );
+    formData2.append("fromdate", fromdate );
+    formData2.append("todate", todate );
+    formData2.append("designation", designation); 
+    formData2.append("institute", institute );
 
     toggleVisibility2();
     
-    Axios.post("http://localhost:3001/professional/insert", formData, {
+    Axios.post("http://localhost:3001/professional/insert2", formData2, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
@@ -123,16 +125,18 @@ function Professional() {
   const data2 = [
     {
       id:1,
-      type: "Asst.Prof",
+      type: "Teaching",
       fromdate: "01-08-2012",
       todate: "30-05-2015",
+      designation: "Asst.Prof",
       institute: "GEC Calicut",
     },
     {
       id:2,
-      type: "Software Engineer",
+      type: "Industry",
       fromdate: "01-08-2008",
       todate: "30-05-2012",
+      designation: "Software Engineer",
       institute: "IBM",
     },
 
@@ -215,6 +219,7 @@ function Professional() {
                  type = {item.type}
                  fromdate = {item.fromdate}
                  todate = {item.todate}
+                 designation = {item.designation}
                  institute = {item.institute}
                   ></Prevrow>
                 );
@@ -243,20 +248,20 @@ function Professional() {
               />
               <br />
           
-              <label for="joiningdesignation ">
+              <label for="joiningdesignation">
                 <AccountTreeIcon fontSize="small" /> Joining Designation
               </label>
               <br />
               <input
                 type="text"
-                id="joiningdesignation "
+                id="joiningdesignation"
                 onChange={(e) => {
                   setJoiningdesignation(e.target.value);
                 }}
               />
               <br />
               
-              <label for="dateofproblemdeclaration ">
+              <label for="dateofproblemdeclaration">
                 <IoCalendarSharp fontSize="small" /> Date of Problem Declaration 
               </label>
               <br />
@@ -272,7 +277,7 @@ function Professional() {
               <br />
             </div>
             <div className={styles.edu_form_right}>
-              <label for="promotiondate ">
+              <label for="promotiondate">
                 <IoCalendarSharp />
                 Promotion Date 
               </label>
@@ -287,7 +292,7 @@ function Professional() {
                 scrollableMonthYearDropdown
               />
               <br />
-              <label for="promotiondesignation ">
+              <label for="promotiondesignation">
               <HiBuildingLibrary />
                 Promotion Designation 
               </label>
@@ -295,7 +300,7 @@ function Professional() {
               
               <input
                 type="text"
-                id="promotiondesignation "
+                id="promotiondesignation"
                 onChange={(e) => {
                   setPromotiondesignation(e.target.value);
                 }}
@@ -366,20 +371,20 @@ function Professional() {
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Add Details</h1>
              
-              <label for="type ">
+              <label for="type">
                 <AccountTreeIcon fontSize="small" /> Type
               </label>
               <br />
               <input
                 type="text"
-                id="type "
+                id="type"
                 onChange={(e) => {
                   setType(e.target.value);
                 }}
               />
               <br />
               
-              <label for="fromdate ">
+              <label for="fromdate">
                 <IoCalendarSharp fontSize="small" /> From 
               </label>
               <br />
@@ -394,7 +399,7 @@ function Professional() {
               />
               <br />
       
-              <label for="todate ">
+              <label for="todate">
                 <IoCalendarSharp />
                 To Date 
               </label>
@@ -409,7 +414,21 @@ function Professional() {
                 scrollableMonthYearDropdown
               />
               <br />
-              <label for="institute ">
+              <label for="designation">
+              <HiBuildingLibrary />
+                Designation
+              </label>
+              <br />
+              
+              <input
+                type="text"
+                id="designation"
+                onChange={(e) => {
+                  setDesignation(e.target.value);
+                }}
+              />
+              <br />
+              <label for="institute">
               <HiBuildingLibrary />
                 Institute
               </label>
@@ -417,7 +436,7 @@ function Professional() {
               
               <input
                 type="text"
-                id="institute "
+                id="institute"
                 onChange={(e) => {
                   setInstitute(e.target.value);
                 }}
@@ -428,7 +447,15 @@ function Professional() {
                 Experience Certificate
               </label>
              
-              <input type="file" id="experiencecertificate" />
+              <input
+              type="file"
+              name="experiencecertificate"
+              accept="application/pdf"
+              id="experiencecertificate"
+              onChange={(e) => {
+                setExperiencecertificate(e.target.files);
+              }}
+            />
               <br />
           
             <br />
