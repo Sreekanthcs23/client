@@ -63,7 +63,7 @@ function Professional() {
     }
   }, []);
 
-  const submitForm = () => {
+  /*const submitForm = () => {
 
     toggleVisibility1();
 
@@ -89,21 +89,21 @@ function Professional() {
       alert("submitted");
     });
   };
-
-  const submitForm2 = () => {
+*/
+  const submitForm = () => {
     toggleVisibility2();
-    let formData2 = new FormData();
+    let formData = new FormData();
 
-    formData2.append("type", type );
-    formData2.append("fromdate", fromdate );
-    formData2.append("todate", todate );
-    formData2.append("designation", designation); 
-    formData2.append("institute", institute );
-    formData2.append("experiencecertificate", experiencecertificate);
+    formData.append("type", type );
+    formData.append("fromdate", fromdate );
+    formData.append("todate", todate );
+    formData.append("designation", designation); 
+    formData.append("institute", institute );
+    formData.append("experiencecertificate", experiencecertificate);
 
     toggleVisibility2();
     
-    Axios.post("http://localhost:3001/professional/insert2", formData2, {
+    Axios.post("http://localhost:3001/professional/insert", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
@@ -358,7 +358,7 @@ function Professional() {
                 variant="contained"
                 color="success"
                 
-                onClick={submitForm}
+             //   onClick={submitForm}
               >
                UPDATE
               </Button>
@@ -466,7 +466,7 @@ function Professional() {
                 variant="contained"
                 color="success"
                 
-                onClick={submitForm2}
+                onClick={submitForm}
               >< AddIcon size="small"/>
                ADD
               </Button>
