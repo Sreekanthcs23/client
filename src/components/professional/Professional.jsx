@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Table from "react-bootstrap/Table";
+//import Table from "react-bootstrap/Table";
 import Axios from "axios";
 import Profrow from "./Profrow";
 import Prevrow from "./Prevrow";
 import Navbar from "../Navbar";
 import Sidebar from "../Sidebar";
 import styles from "./Professional.module.css";
-import { HiAcademicCap } from "react-icons/hi2";
+//import { HiAcademicCap } from "react-icons/hi2";
 import { HiBuildingLibrary } from "react-icons/hi2";
 import { HiDocumentArrowUp } from "react-icons/hi2";
 import { IoCalendarSharp } from "react-icons/io5";
@@ -18,9 +18,9 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
 import EditIcon from "@mui/icons-material/Edit";
 import AddIcon from "@mui/icons-material/Add";
-import ScoreboardIcon from "@mui/icons-material/Scoreboard";
+//import ScoreboardIcon from "@mui/icons-material/Scoreboard";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import AdjustIcon from "@mui/icons-material/Adjust";
+//import AdjustIcon from "@mui/icons-material/Adjust";
 import Button from "@mui/material/Button";
 //import "./CustomDatePicker.css";
 
@@ -139,7 +139,7 @@ function Professional() {
   };
 
 
-  const dataeg1 = [
+  /*const dataeg1 = [
     {
       id: 1,
       joiningDate: "16-08-2015",
@@ -171,6 +171,8 @@ function Professional() {
     },
 
   ];
+
+  */
 
   return (
     <div className={styles.edu_page}>
@@ -223,10 +225,10 @@ function Professional() {
                 return (
                   <Profrow
                     key={item.cur_ins_id}
-                    joiningDate={item.joining_date.toString().slice(0, 10)}
+                    joiningDate={item.joining_date}
                     joiningDesignation={item.joining_designation}
-                    dateofProblemDeclaration ={item.date_of_problem_declaration.toString().slice(0, 10) }
-                    promotionDate ={item.promotion_date.toString().slice(0, 10) }
+                    dateofProblemDeclaration ={item.date_of_problem_declaration } //.toString().slice(0, 10)
+                    promotionDate ={item.promotion_date/*.toString().slice(0, 10)*/ }
                     promotionDesignation ={item.promotion_designation}
                     appointmentOrder = {item.appointment_order_link}
                     problemDeclaration = {item.problem_declaration_link}
@@ -259,14 +261,15 @@ function Professional() {
                 );
               })}
           </div>
-          </div>
+          < br/>
+          </div>          
           )}
         
           {isVisible1 && (
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Update details</h1>
             <div className={styles.edu_form_left}>
-              <label for="joiningdate">
+              <label for="joiningDate">
               <IoCalendarSharp />
                 Joining Date 
               </label>
