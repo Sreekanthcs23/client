@@ -3,11 +3,11 @@ import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
 
 function Prevrow(props) {
-  return (
+  return ( 
     <div className={styles.main_div}>
       < br/>
       <div className={styles.col_div}>
-        <div>
+        <div className={styles.sub_div}>
           <label>Type</label>
           <input type="text" disabled="disabled" value={props.type} />
             
@@ -16,16 +16,19 @@ function Prevrow(props) {
           <input type="text" disabled="disabled" value={props.fromdate} />
           <br />
         </div>
-        <div>
-          <label>To </label>
+        <div className={styles.sub_div}>
+        <label>To </label>
           <input type="text" disabled="disabled" value={props.todate} />
           <br />
-          <label>Institute</label>
+          <label>Designation</label>
+          <input type="text" disabled="disabled" value={props.designation} />
+          <br />          
+        </div>
+
+        <div className={styles.sub_div}>
+        <label>Institute</label>
           <input type="text" disabled="disabled" value={props.institute} />
           <br />
-        </div>
-        <div>
-        
           <br />
           <a href={props.experience_cert_link} target="_blank" rel="noopener noreferrer">
           <Button

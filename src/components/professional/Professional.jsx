@@ -30,20 +30,26 @@ function Professional() {
   const [dateofproblemdeclaration, setDateofproblemdeclaration] = useState("");
   const [promotiondate, setPromotiondate] = useState("");
   const [promotiondesignation, setPromotiondesignation] = useState("");
-  const[appoinmentorder, setAppoinmentorder]=useState("");
-  const[problemdeclaration, setProblemdeclaration]=useState("");
-  const[promotionorder, setPromotionorder]=useState("");
-  const[type, setType]=useState("");
-  const[fromdate, setFromdate]=useState("");
-  const[todate, setTodate]=useState("");
-  const[institute, setInstitute]=useState("");
+  const [appointmentorder, setAppointmentorder]=useState(null);
+  const [problemdeclaration, setProblemdeclaration]=useState(null);
+  const [promotionorder, setPromotionorder]=useState(null);
   
+  const [type, setType]=useState("");
+  const [fromdate, setFromdate]=useState("");
+  const [todate, setTodate]=useState("");
+  const [designation, setDesignation]=useState("");
+  const [institute, setInstitute]=useState("");
+  const [experiencecertificate, setExperiencecertificate]=useState(null);
   const [data, setData] = useState([]);
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible1, setIsVisibile1] = useState(false);
+  const [isVisible2, setIsVisibile2] = useState(false);
 
-  function toggleVisibilty() {
-    setIsVisible(!isVisible);
+  function toggleVisibility1() {
+    setIsVisibile1(!isVisible1);
+  }
+  function toggleVisibility2() {
+    setIsVisibile2(!isVisible2);
   }
 
   useEffect(() => {
@@ -57,26 +63,53 @@ function Professional() {
     }
   }, []);
 
-  const submitForm = () => {
-    //toggleVisibilty();
+  /*const submitForm = () => {
+
+    toggleVisibility1();
+
+    let appointmentorder1 = appointmentorder;
+    let problemdeclaration1 = problemdeclaration;
+    let promotionorder1 = promotionorder;
     let formData = new FormData();
-   // formData.append("pdffile", cert);
-    formData.append("joiningdate ", joiningdate );
-    formData.append("joiningdesignation ", joiningdesignation );
-    formData.append("dateofproblemdeclaration ", dateofproblemdeclaration );
-    formData.append("promotiondate ", promotiondate );
-    formData.append("promotiondesignation ", promotiondesignation );
 
+    formData.append("appointmentorder", appointmentorder);
+    formData.append("problemdeclaration", problemdeclaration );
+    formData.append("promotionorder", promotionorder );
+    formData.append("joiningdate", joiningdate );
+    formData.append("joiningdesignation", joiningdesignation );
+    formData.append("dateofproblemdeclaration", dateofproblemdeclaration );
+    formData.append("promotiondate", promotiondate );
+    formData.append("promotiondesignation", promotiondesignation );
+    
    // console.log("date" + date);
-
-    toggleVisibilty();
-
+ 
     Axios.post("http://localhost:3001/professional/insert", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
     });
   };
+*/
+  const submitForm = () => {
+    toggleVisibility2();
+    let formData = new FormData();
+
+    formData.append("type", type );
+    formData.append("fromdate", fromdate );
+    formData.append("todate", todate );
+    formData.append("designation", designation); 
+    formData.append("institute", institute );
+    formData.append("experiencecertificate", experiencecertificate);
+
+    toggleVisibility2();
+    
+    Axios.post("http://localhost:3001/professional/insert", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then(() => {
+      alert("submitted");
+    });
+  };
+
 
   const data1 = [
     {
@@ -94,16 +127,18 @@ function Professional() {
   const data2 = [
     {
       id:1,
-      type: "Asst.Prof",
+      type: "Teaching",
       fromdate: "01-08-2012",
       todate: "30-05-2015",
+      designation: "Asst.Prof",
       institute: "GEC Calicut",
     },
     {
       id:2,
-      type: "Software Engineer",
+      type: "Industry",
       fromdate: "01-08-2008",
       todate: "30-05-2012",
+      designation: "Software Engineer",
       institute: "IBM",
     },
 
@@ -143,33 +178,42 @@ function Professional() {
           </Link>
         </Breadcrumbs>
 
-        {!isVisible && (
+        {(!isVisible1 && !isVisible2) && (
           <div className={styles.edu_div}>
             <h2 >CURRENT INSTITUTION</h2>
             <br />
             <Button
               variant="outlined"
               startIcon={<EditIcon />}
-              onClick={toggleVisibilty}
+              onClick={toggleVisibility1}
             >
               UPDATE
             </Button>
             <div className={styles.edu_list}>
+
               {data1.map((item) => {
                 return (
                   <Profrow
-                    key={item.id}
+                    key={item.cur_ins_id}
                     joiningdate={item.joiningdate.toString().slice(0, 10)}
                     joiningdesignation={item.joiningdesignation}
                     dateofproblemdeclaration ={item.dateofproblemdeclaration.toString().slice(0, 10) }
                     promotiondate ={item.promotiondate.toString().slice(0, 10) }
                     promotiondesignation ={item.promotiondesignation }
-                    //date={item.date_of_acq.toString().slice(0, 10)}
-                    //marks={item.marks}
                   ></Profrow>
                 );
               })}
+
               <h2 >PREVIOUS EXPERIENCE</h2>
+              <Button
+              variant="outlined"
+              startIcon={<EditIcon />}
+              onClick={toggleVisibility2}
+            >
+              ADD
+            </Button>
+            </div>
+            <div className={styles.edu_list}>
               {data2.map((item) => {
                 return(
                 <Prevrow
@@ -177,15 +221,16 @@ function Professional() {
                  type = {item.type}
                  fromdate = {item.fromdate}
                  todate = {item.todate}
+                 designation = {item.designation}
                  institute = {item.institute}
                   ></Prevrow>
                 );
               })}
-            </div>
           </div>
-        )}
-
-        {isVisible && (
+          </div>
+          )}
+        
+          {isVisible1 && (
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Update details</h1>
             <div className={styles.edu_form_left}>
@@ -205,20 +250,20 @@ function Professional() {
               />
               <br />
           
-              <label for="joiningdesignation ">
+              <label for="joiningdesignation">
                 <AccountTreeIcon fontSize="small" /> Joining Designation
               </label>
               <br />
               <input
                 type="text"
-                id="joiningdesignation "
+                id="joiningdesignation"
                 onChange={(e) => {
                   setJoiningdesignation(e.target.value);
                 }}
               />
               <br />
               
-              <label for="dateofproblemdeclaration ">
+              <label for="dateofproblemdeclaration">
                 <IoCalendarSharp fontSize="small" /> Date of Problem Declaration 
               </label>
               <br />
@@ -234,7 +279,7 @@ function Professional() {
               <br />
             </div>
             <div className={styles.edu_form_right}>
-              <label for="promotiondate ">
+              <label for="promotiondate">
                 <IoCalendarSharp />
                 Promotion Date 
               </label>
@@ -249,7 +294,7 @@ function Professional() {
                 scrollableMonthYearDropdown
               />
               <br />
-              <label for="promotiondesignation ">
+              <label for="promotiondesignation">
               <HiBuildingLibrary />
                 Promotion Designation 
               </label>
@@ -257,32 +302,55 @@ function Professional() {
               
               <input
                 type="text"
-                id="promotiondesignation "
+                id="promotiondesignation"
                 onChange={(e) => {
                   setPromotiondesignation(e.target.value);
                 }}
               />
               <br />
-              <label for="appoinmentorder">
+              <label for="appointmentorder">
                 <HiDocumentArrowUp />
-                Appoinment Order
+                Appointment Order
               </label>
-             
-              <input type="file" id="appoinmentorder" />
+              <input
+              type="file"
+              name="appointmentorder"
+              accept="application/pdf"
+              id="appointmentorder"
+              onChange={(e) => {
+                setAppointmentorder(e.target.files);
+              }}
+            />
               <br />
+
               <label for="problemdeclaration">
                 <HiDocumentArrowUp />
                 Problem Declaration
               </label>
-             
-              <input type="file" id="problemdeclaration" />
+              <input
+              type="file"
+              name="problemdeclaration"
+              accept="application/pdf"
+              id="problemdeclaration"
+              onChange={(e) => {
+                setProblemdeclaration(e.target.files);
+              }}
+            />
+            
               <br />
               <label for="promotionorder">
                 <HiDocumentArrowUp />
                 Promotion Order
               </label>
-             
-              <input type="file" id="promotionorder" />
+              <input
+              type="file"
+              name="promotionorder"
+              accept="application/pdf"
+              id="promotionorder"
+              onChange={(e) => {
+                setPromotionorder(e.target.files);
+              }}
+            />
             </div>
             <br />
             <div className={styles.edu_form_button}>
@@ -290,9 +358,117 @@ function Professional() {
                 variant="contained"
                 color="success"
                 
-                onClick={submitForm}
+             //   onClick={submitForm}
               >
                UPDATE
+              </Button>
+           
+            </div>
+          </div>
+
+          )}
+        
+
+        {isVisible2 && (
+          <div className={styles.edu_form}>
+            <h1 className={styles.edu_form_title}>Add Details</h1>
+             
+              <label for="type">
+                <AccountTreeIcon fontSize="small" /> Type
+              </label>
+              <br />
+              <input
+                type="text"
+                id="type"
+                onChange={(e) => {
+                  setType(e.target.value);
+                }}
+              />
+              <br />
+              
+              <label for="fromdate">
+                <IoCalendarSharp fontSize="small" /> From 
+              </label>
+              <br />
+              <DatePicker
+                className={styles.date_input}
+                id="fromdate"
+                selected={fromdate}
+                onChange={(fromdate) => setFromdate(fromdate)}
+                dateFormat="dd/MM/yyyy"
+                showYearDropdown
+                scrollableMonthYearDropdown
+              />
+              <br />
+      
+              <label for="todate">
+                <IoCalendarSharp />
+                To Date 
+              </label>
+              <br />
+              <DatePicker
+                className={styles.date_input}
+                id="todate"
+                selected={todate}
+                onChange={(todate) => setTodate(todate)}
+                dateFormat="dd/MM/yyyy"
+                showYearDropdown
+                scrollableMonthYearDropdown
+              />
+              <br />
+              <label for="designation">
+              <HiBuildingLibrary />
+                Designation
+              </label>
+              <br />
+              
+              <input
+                type="text"
+                id="designation"
+                onChange={(e) => {
+                  setDesignation(e.target.value);
+                }}
+              />
+              <br />
+              <label for="institute">
+              <HiBuildingLibrary />
+                Institute
+              </label>
+              <br />
+              
+              <input
+                type="text"
+                id="institute"
+                onChange={(e) => {
+                  setInstitute(e.target.value);
+                }}
+              />
+              <br />
+              <label for="experiencecertificate">
+                <HiDocumentArrowUp />
+                Experience Certificate
+              </label>
+             
+              <input
+              type="file"
+              name="experiencecertificate"
+              accept="application/pdf"
+              id="experiencecertificate"
+              onChange={(e) => {
+                setExperiencecertificate(e.target.files);
+              }}
+            />
+              <br />
+          
+            <br />
+            <div className={styles.edu_form_button}>
+              <Button
+                variant="contained"
+                color="success"
+                
+                onClick={submitForm}
+              >< AddIcon size="small"/>
+               ADD
               </Button>
            
             </div>
