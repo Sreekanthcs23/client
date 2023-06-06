@@ -1,6 +1,6 @@
 .resguid_content {
-    padding-left: 20px;
-    padding-top: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .resguid_div {
@@ -23,7 +23,7 @@
 
 .resguid_form {
     width: 350px;
-    height: 400px;
+    height: 500px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
