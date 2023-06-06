@@ -14,8 +14,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
-import { RadioGroup } from "react-radio-buttons";
-import { RadioButton } from "react-radio-buttons";
 
 function Publications() {
     const [type,setType] = useState("");
@@ -31,11 +29,12 @@ function Publications() {
         setIsVisible(!isVisible);
     }
 
-    function onValueChange(event) {
-        this.setState({
-            selectedOption: event.target.value
-        });        
-    }
+    const [selectedOption, setSelectedOption] = useState('');
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
     useEffect(() => {
       try{
         Axios.get('http://localhost:3001/publications/select').then((response) => {
@@ -145,57 +144,57 @@ function Publications() {
                 <div className={styles.publ_form}>
                 <h1 className={styles.publ_form_title}>Update Details</h1>
                 
-                <label for="type">Type</label><br />  
+                <label for="type">Type</label><br /><br />  
                 <label>
                 <input
                 type="radio"
                 value="JOURNAL"
-                checked={this.state.selectedOption === "JOURNAL"}
-                onChange={onValueChange}
+                checked={selectedOption === "JOURNAL"}
+                onChange={handleOptionChange}
                 />
                 JOURNAL
-                </label> 
+                </label> <br />  
                 <label>
                 <input
                 type="radio"
                 value="CONFERENCE"
-                checked={this.state.selectedOption === "CONFERENCE"}
-                onChange={onValueChange}
+                checked={selectedOption === "CONFERENCE"}
+                onChange={handleOptionChange}
                 />
                 CONFERENCE
-                </label> 
+                </label> <br />  
                 <label>
                 <input
                 type="radio"
                 value="PATENT"
-                checked={this.state.selectedOption === "PATENT"}
-                onChange={onValueChange}
+                checked={selectedOption === "PATENT"}
+                onChange={handleOptionChange}
                 />
                 PATENT
-                </label> 
+                </label> <br />  
                 <label>
                 <input
                 type="radio"
                 value="PROCEEDING"
-                checked={this.state.selectedOption === "PROCEEDING"}
-                onChange={onValueChange}
+                checked={selectedOption === "PROCEEDING"}
+                onChange={handleOptionChange}
                 />
                 CONFERENCE PROCEEDING
-                </label>  
+                </label>  <br />  
                 <label>
                 <input
                 type="radio"
                 value="POSTER"
-                checked={this.state.selectedOption === "POSTER"}
-                onChange={onValueChange}
+                checked={selectedOption === "POSTER"}
+                onChange={handleOptionChange}
                 />
                 POSTER
-                </label>
-                <label for="title">TITLE</label>
+                </label><br />  
+                <label for="title">Title</label>
                 <input type="text" id="title" onChange={(e) => {setTitle(e.target.value)}}/><br />            
                 <label for="name">Name of Publication</label>
                 <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />        
-                <label for="period">START DATE</label>
+                <label for="period">Start Date</label>
                 <DatePicker
                     className="custom-datepicker"
                     id="startDate"
@@ -205,7 +204,7 @@ function Publications() {
                     showYearDropdown
                     scrollableMonthYearDropdown
                 /><br />
-                <label for="period">END DATE</label>
+                <label for="period">End Date</label>
                 <DatePicker
                     className="custom-datepicker"
                     id="endDate"
@@ -232,7 +231,7 @@ function Publications() {
                 <br />
                 <input type="file" id="certificate" />
                 <br />
-                <div className={styles.cons_form_button}>
+                <div className={styles.publ_form_button}>
                     <Button
                     variant="contained"
                     color="success"

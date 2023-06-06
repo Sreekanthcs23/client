@@ -130,9 +130,9 @@ function ResearchGuide() {
                 <div className={styles.resguid_form}>
                 <h1 className={styles.resguid_form_title}>Update Details</h1>
                 
-                <label for="name">Name of Publication</label>
+                <label for="name">Name of Publication</label><br />
                 <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />                    
-                <label for="date"><IoCalendarSharp/>Date Of Publication</label>
+                <label for="date"><IoCalendarSharp/>Date Of Publication</label><br />
                 <DatePicker
                     className="custom-datepicker"
                     id="date"
@@ -142,13 +142,13 @@ function ResearchGuide() {
                     showYearDropdown
                     scrollableMonthYearDropdown
                 /><br />
-                <label for="area">Area</label>
+                <label for="area">Area</label><br />
                 <input type="text" id="area" onChange={(e) => {setArea(e.target.value)}}/><br />
-                <label for="topic">Topic</label>
+                <label for="topic">Topic</label><br />
                 <input type="text" id="topic" onChange={(e) => {setTopic(e.target.value)}}/><br />
-                <label for="publication">Publication</label>
+                <label for="publication">Publication</label><br />
                 <input type="text" id="publication" onChange={(e) => {setPublication(e.target.value)}}/><br />
-                <div className={styles.cons_form_button}>
+                <div className={styles.resguid_form_button}>
                     <Button
                     variant="contained"
                     color="success"

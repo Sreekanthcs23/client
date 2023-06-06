@@ -5,25 +5,25 @@ function Publrow(props) {
     return (
         <div className={styles.main_div}>
             <div className={styles.col_div}>
-                <div>
+                <div className={styles.sub_div}>
                     <label>Type</label>
                     <input type="text" disabled="disabled" value={props.type} /><br />
-                    <label>TITLE</label>
+                    <label>Title</label>
                     <input type="text" disabled="disabled" value={props.title} /><br />
                 </div>
-                <div>
+                <div className={styles.sub_div}>
                     <label>Name of Publication</label>
                     <input type="text" disabled="disabled" value={props.name} /><br />
-                    <label>START DATE</label>
+                    <label>Start Date</label>
                     <input type="text" disabled="disabled" value={props.startdate} /><br />
                 </div>
-                <div>
-                    <label>END DATE</label>
+                <div className={styles.sub_div}>
+                    <label>End Date</label>
                     <input type="text" disabled="disabled" value={props.enddate} /><br />
-                    <label>DATE</label>
+                    <label>Date</label>
                     <input type="text" disabled="disabled" value={props.date} /><br />
                 </div>
-                <div>
+                <div className={styles.sub_div}>
                     <Button
                      variant="contained"
                     startIcon={<CardMembershipIcon />}
