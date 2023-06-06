@@ -248,6 +248,7 @@ function Professional() {
             </div>
             <div className={styles.edu_list}>
               {data2.map((item) => {
+                console.log(item.from_date)
                 return(
                 <Prevrow
                  key={item.prev_exp_id}

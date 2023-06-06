@@ -13,12 +13,12 @@ function Prevrow(props) {
             
           < br/>
           <label>From </label>
-          <input type="text" disabled="disabled" value={props.fromdate} />
+          <input type="text" disabled="disabled" value={props.fromDate.toString()} />
           <br />
         </div>
         <div className={styles.sub_div}>
         <label>To </label>
-          <input type="text" disabled="disabled" value={props.todate} />
+          <input type="text" disabled="disabled" value={props.toDate} />
           <br />
           <label>Designation</label>
           <input type="text" disabled="disabled" value={props.designation} />
@@ -30,7 +30,7 @@ function Prevrow(props) {
           <input type="text" disabled="disabled" value={props.institute} />
           <br />
           <br />
-          <a href={props.experience_cert_link} target="_blank" rel="noopener noreferrer">
+          <a href={props.experienceCertificate} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
