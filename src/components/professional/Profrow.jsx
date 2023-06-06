@@ -9,27 +9,27 @@ function Profrow(props) {
       <div className={styles.col_div}>
         <div className={styles.sub_div}>
           <label>Joining Date</label>
-          <input type="text" disabled="disabled" value={props.joiningdate} />         
+          <input type="text" disabled="disabled" value={props.joiningDate} />         
           < br/>
           <label>Joining Designation </label>
-          <input type="text" disabled="disabled" value={props.joiningdesignation} />
+          <input type="text" disabled="disabled" value={props.joiningDesignation} />
           <br />
           <label>Date of Problem Declaration </label>
-          <input type="text" disabled="disabled" value={props.dateofproblemdeclaration} />
+          <input type="text" disabled="disabled" value={props.dateofProblemDeclaration} />
           <br />
         </div>
         <div className={styles.sub_div}> 
           <label>Promotion Date </label>
-          <input type="text" disabled="disabled" value={props.promotiondate} />
+          <input type="text" disabled="disabled" value={props.promotionDate} />
           <br />
           <label>Promotion Designation </label>
-          <input type="text" disabled="disabled" value={props.promotiondesignation} />
+          <input type="text" disabled="disabled" value={props.promotionDesignation} />
           <br />
         </div>
         <br />
         <div className={styles.but_cert}> 
         <div className={styles.sub_div}>
-        <a href={props.problemdeclarationcertlink} target="_blank" rel="noopener noreferrer">
+        <a href={props.problemDeclaration} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -40,14 +40,17 @@ function Profrow(props) {
           </a>
           </div>
           <br />
+          <a href={props.appointmentOrder} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
           >
-            Appoinment Order
+            Appointment Order
           </Button>
+          </a>
           < br/>< br/>
+          <a href={props.promotionOrder} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -55,6 +58,7 @@ function Profrow(props) {
           >
             Promotion Order
           </Button>
+          </a>
       </div>
       </div>
     </div>
