@@ -79,8 +79,6 @@ function Home() {
           <button className={styles.gridItem}><BorderColorIcon className={styles.svg_icons} /><br></br>Examination</button>
           <button className={styles.gridItem}>
             <Link to="/education" style={{ textDecoration: "none" }}>
-            
-            
             <SchoolIcon className={styles.svg_icons} /><br></br>
               Education
             </Link>
