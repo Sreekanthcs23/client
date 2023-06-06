@@ -42,7 +42,11 @@ function Education() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/education/select").then((response) => {
+      Axios.get("http://localhost:3001/education/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData(response.data);
         console.log(response.data);
       });

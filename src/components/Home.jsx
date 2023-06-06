@@ -9,6 +9,10 @@ import Linkmui from "@mui/material/Link";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import HomeIcon from "@mui/icons-material/Home";
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import CastForEducationIcon from '@mui/icons-material/CastForEducation';
+import BiotechIcon from '@mui/icons-material/Biotech';
+import BorderColorIcon from '@mui/icons-material/BorderColor';
+import SchoolIcon from '@mui/icons-material/School';
 
 function Home() {
   return (
@@ -58,6 +62,8 @@ function Home() {
           </button>
           <button className={styles.gridItem}>
             <Link to="/teaching" style={{ textDecoration: "none" }}>
+            <CastForEducationIcon className={styles.svg_icons} /><br></br>
+            
               Teaching
             </Link>
           </button>
@@ -66,12 +72,14 @@ function Home() {
               to="/research"
               style={{ textDecoration: "none", color: "#474748" }}
             >
+              <BiotechIcon className={styles.svg_icons} /><br></br>
               Research
             </Link>
           </button>
-          <button className={styles.gridItem}>Examination</button>
+          <button className={styles.gridItem}><BorderColorIcon className={styles.svg_icons} /><br></br>Examination</button>
           <button className={styles.gridItem}>
             <Link to="/education" style={{ textDecoration: "none" }}>
+            <SchoolIcon className={styles.svg_icons} /><br></br>
               Education
             </Link>
           </button>
