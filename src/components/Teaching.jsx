@@ -27,9 +27,15 @@ function Teaching() {
   const [year, setYear] = useState("");
   const [batch, setBatch] = useState("");
   const [branch, setBranch] = useState("");
-
   const [subcode, setCode] = useState("");
   const [subname, setSub] = useState("");
+  const [cert_tutorial, setCertTutorial] = useState(null);
+  const [cert_internal, setCertInternal] = useState(null);
+  const [cert_attendance, setCertAttendance] = useState(null);
+  const [cert_feedback, setCertFeedback] = useState(null);
+  const [cert_table, setCerttable] = useState(null);
+  const [cert_result, setCertResult] = useState(null);
+  const [cert_achievement, setCertAchievement] = useState(null);
   const [data, setData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -49,13 +55,35 @@ function Teaching() {
   }, []);
 
   const submitForm = () => {
+    let cert1 = cert_tutorial[0];
+    let cert2 = cert_internal[0];
+    let cert3 = cert_attendance[0];
+    let cert4 = cert_feedback[0];
+    let cert5 = cert_table[0];
+    let cert6 = cert_result[0];
+    let cert7 = cert_achievement[0];
+    let formData = new FormData();
+    formData.append("tutorial", cert1);
+    formData.append("internal", cert2);
+    formData.append("attendance", cert3);
+    formData.append("feedback", cert4);
+    formData.append("timetable", cert5);
+    formData.append("result", cert6);
+    formData.append("achievement", cert7);
+    formData.append("year", year);
+    formData.append("batch", batch);
+    formData.append("branch", branch);
+    formData.append("subcode", subcode);
+    formData.append("subname", subname);
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/teaching/insert", {
-      year: year,
+    Axios.post("http://localhost:3001/teaching/insert", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+      /*year: year,
       batch: batch,
       branch: branch,
       subcode: subcode,
-      subname: subname,
+  subname: subname,*/
     }).then(() => {
       alert("submitted");
     });
@@ -141,6 +169,13 @@ function Teaching() {
                     branch={item.branch}
                     subcode={item.subcode}
                     subname={item.subname}
+                    tutorial={item.certificate1_link}
+                    internal={item.certificate2_link}
+                    attendance={item.certificate3_link}
+                    feedback={item.certificate4_link}
+                    timetable={item.certificate5_link}
+                    result={item.certificate6_link}
+                    achievement={item.certificate7_link}
                   ></Tearow>
                 );
               })}
