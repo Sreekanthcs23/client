@@ -128,7 +128,7 @@ function Professional() {
     formData2.append("toDate", toDate );
     formData2.append("designation", designation); 
     formData2.append("institute", institute );
-  
+    console.log("inside submitForm2");
     toggleVisibility2();
    
     Axios.post("http://localhost:3001/professional/insert2", formData2, {
