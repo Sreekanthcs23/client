@@ -1,34 +1,48 @@
 import React,{useState,useEffect} from "react";
 import Axios from "axios";
 import styles from "./ResearchGuide.module.css";
+import Resguidrow from "./Resguidrow";
 import {HiAcademicCap} from "react-icons/hi2";
 import {HiBuildingLibrary} from "react-icons/hi2";
 import {HiDocumentArrowUp} from "react-icons/hi2";
 import {IoCalendarSharp} from "react-icons/io5";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Link from '@mui/material/Link';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import HomeIcon from '@mui/icons-material/Home';
+import EditIcon from "@mui/icons-material/Edit";
+import Button from "@mui/material/Button";
+import AddIcon from "@mui/icons-material/Add";
 /*import "./CustomDatePicker.css";*/
 
 function ResearchGuide() {
     const [name,setName] = useState("");
-    const [date,setDate] = useState("");
+    const [date,setDate] = useState("");//
     const [area,setArea] = useState("");
     const [topic,setTopic] = useState("");
     const [publication,setPublication] = useState("");
     const [data,setData] = useState([]);
+    const [isVisible, setIsVisible] = useState(false);
+
+    function toggleVisibilty() {
+        setIsVisible(!isVisible);
+    }
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/researchguide/data').then((response) => {
-            setData(response.data)
-        });
-    },[]);
+        try{
+          Axios.get('http://localhost:3001/researchguide/select').then((response) => {
+              setData(response.data);
+              console.log(response.data);
+          });
+        } catch (e) {
+          console.log(e);
+        }  
+      }, []);
 
     const submitForm = () => {
-        Axios.post('http://localhost:3001/researchguide',{
+        toggleVisibilty();
+        Axios.post('http://localhost:3001/researchguide/insert',{
             name:name,
             date:date,
             area:area,
@@ -36,9 +50,34 @@ function ResearchGuide() {
             publication:publication
         }).then(() => { alert("submitted") });
     } 
-
+    const data1 = [
+        {
+          id: 1,
+          name: "AAAA",
+          date: "7-05-2023",
+          area: "A",
+          topic: "DR",
+          publication: "kk",
+        },
+        {
+          id: 2,
+          name: "BBBB",
+          date: "16-08-2020",
+          area: "BA",
+          topic: "OP",
+          publication: "HI",
+        },
+        {
+          id: 3,
+          name: "CCCC",
+          date: "6-01-2022",
+          area: "C",
+          topic: "RD",
+          publication: "GGGG",
+        },
+    ];
     return (
-        <div className={styles.resguid_page}>
+        <div className={styles.resguid_content}>
             <Breadcrumbs
                 separator={<NavigateNextIcon fontSize="small" />}
                 aria-label="breadcrumb"
@@ -56,62 +95,71 @@ function ResearchGuide() {
                     underline="hover"
                     sx={{ display: 'flex', alignItems: 'center' }}
                     color="inherit"
-                    href="/research/consultancy"
+                    href="/research/researchguide"
                 >
                     Research Guide
                 </Link>
             </Breadcrumbs>
-
-            <div className={styles.resguid_parent}>
-                <div className={styles.left}>
-                    <div className="form">
-                        <label for="name">Scholar Name</label>
-                        <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />
-                        <label for="date"><IoCalendarSharp/>Date Of Joining</label>
-                        <DatePicker
-                            className="custom-datepicker"
-                            id="date"
-                            selected={date}
-                            onChange={(date) => setDate(date)}
-                            dateFormat="dd/MM/yyyy"
-                            showYearDropdown
-                            scrollableMonthYearDropdown
-                        />
-                        <label for="area">Area</label>
-                        <input type="text" id="area" onChange={(e) => {setArea(e.target.value)}} /><br />
-                        <label for="topic">Topic</label>
-                        <input type="text" id="topic" onChange={(e) => {setTopic(e.target.value)}} /><br />
-                        <label for="publication">Publication</label>
-                        <input type="text" id="publication" onChange={(e) => {setPublication(e.target.value)}} /><br /><br/>
-                      
-                        <button onClick={submitForm}>Add</button>
-                    </div>
+           
+            {!isVisible && (
+                <div className={styles.resguid_div}>
+                 <Button
+                    variant="outlined"
+                    startIcon={<EditIcon />}
+                    onClick={toggleVisibilty}
+                    style={{ width: '150px' }}
+                 >
+                UPDATE
+                </Button>
+                <div className={styles.resguid_list}>
+                    {data1.map((item) => {
+                    return (
+                        <Resguidrow
+                        name={item.name}
+                        date={item.date}
+                        area={item.area}
+                        topic={item.topic}
+                        publication={item.publication}
+                        ></Resguidrow>
+                    );
+                    })}
                 </div>
-            
-                {/*<div className={styles.right}>
-                    <h2>Degrees</h2>
-                    <table>
-                        <tr>
-                            <th>Degree</th>
-                            <th>Branch</th>
-                            <th>Specialization</th>
-                            <th>University</th>
-                            <th>Date of acquiring</th>
-                            <th>Marks</th>
-                        </tr>
-                        {data.map((item => {
-                            return (<tr>
-                                <td>{item.degree}</td>
-                                <td>{item.branch}</td>
-                                <td>{item.specialization}</td>
-                                <td>{item.university}</td>
-                                <td>{item.dateofacq.toString().slice(0,10)}</td>
-                                <td>{item.marks}</td>
-                            </tr>)
-                        }))}
-                    </table>
-                    </div>*/}
             </div>
+           )}
+            {isVisible && (
+                <div className={styles.resguid_form}>
+                <h1 className={styles.resguid_form_title}>Update Details</h1>
+                
+                <label for="name">Name of Publication</label>
+                <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />                    
+                <label for="date"><IoCalendarSharp/>Date Of Publication</label>
+                <DatePicker
+                    className="custom-datepicker"
+                    id="date"
+                    selected={date}
+                    onChange={(date) => setDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    showYearDropdown
+                    scrollableMonthYearDropdown
+                /><br />
+                <label for="area">Area</label>
+                <input type="text" id="area" onChange={(e) => {setArea(e.target.value)}}/><br />
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" onChange={(e) => {setTopic(e.target.value)}}/><br />
+                <label for="publication">Publication</label>
+                <input type="text" id="publication" onChange={(e) => {setPublication(e.target.value)}}/><br />
+                <div className={styles.cons_form_button}>
+                    <Button
+                    variant="contained"
+                    color="success"
+                    startIcon={<AddIcon />}
+                    onClick={submitForm}
+                    >
+                    SUBMIT
+                    </Button>
+                </div>
+                </div>       
+                )}
             
         </div>
     )

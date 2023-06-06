@@ -1,8 +1,82 @@
-.publ_page {
-    margin-top: 10px;
-    margin-left: 10px;
+.publ_content {
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
-.publ_parent {
+.publ_div {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.publ_list {
     margin-top: 20px;
 }
+
+.publ_page h1 {
+    margin-left: 100px;
+}
+
+.publ_page h2 {
+    margin-left: 200px;
+}
+
+.publ_form {
+    width: 350px;
+    height: 400px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-left: 60px;
+    background-color: #ffffff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
+}
+
+.publ_form_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-left: 60px;
+  }
+
+.publ_form input[type="text"] {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.publ_form input[type="file"] {
+    margin-left: 50px;
+    margin-bottom: 20px;
+    margin-top: 10px
+}
+
+.publ_input {
+    margin-left: 10px;
+    font-weight: 1.1rem;
+    font-size: 16px;
+    width: 300px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+
+.publ_form label {
+    font-size: 16px;
+    font-weight: normal;
+    margin: 10px;
+}
+
+
+.publ_form_button {
+    text-align: center;
+}
+ 
+
