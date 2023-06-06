@@ -21,6 +21,7 @@ function Consultancy() {
   const [agency, setAgency] = useState("");
   const [amount, setAmount] = useState("");
   const [year, setYear] = useState("");
+  const [certFile, setCertFile] = useState(null);
   const [data, setData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -40,15 +41,24 @@ function Consultancy() {
   }, []);
 
   const submitForm = () => {
+    let cert = certFile[0];
+    let formData = new FormData();
+    formData.append("pdffile", cert);
+    formData.append("agency", agency);
+    formData.append("amount", amount);
+    formData.append("year", year);
+    
+
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/consultancy/insert", {
-      agency: agency,
-      amount: amount,
-      year: year,
+
+    Axios.post("http://localhost:3001/consultancy/insert", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
     });
   };
+
   const data1 = [
     {
       id: 1,

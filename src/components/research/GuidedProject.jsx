@@ -18,7 +18,7 @@ function GuidedProject() {
   const [sname, setSname] = useState("");
   const [pname, setPname] = useState("");
   const [batch, setBatch] = useState("");
-  const [publication, setPublication] = useState([]);
+  const [publication, setPublication] = useState("");
   const [data, setData] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +29,11 @@ function GuidedProject() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/guidedproject/select").then(
+      Axios.get("http://localhost:3001/guidedproject/select",{
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then(
         (response) => {
           setData(response.data);
           console.log(response.data);
@@ -41,13 +45,23 @@ function GuidedProject() {
   }, []);
 
   const submitForm = () => {
+
+    let formData = new FormData();
+    formData.append("sname", sname);
+    formData.append("pname", pname);
+    formData.append("batch", batch);
+    formData.append("publication", publication);
+    console.log(sname);
+
+    let axiosConfig = {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+         "Content-Type": "multipart/form-data" },
+    }
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/guidedproject/insert", {
-      sname: sname,
-      pname: pname,
-      batch: batch,
-      publication: publication,
-    }).then(() => {
+
+    Axios.post("http://localhost:3001/guidedproject/insert", formData, axiosConfig).then(() => {
       alert("submitted");
     });
   };
@@ -112,7 +126,7 @@ function GuidedProject() {
             UPDATE
           </Button>
           <div className={styles.guid_list}>
-            {data1.map((item) => {
+            {data.map((item) => {
               return (
                 <Guidrow
                   id={item.id}

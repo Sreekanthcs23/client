@@ -72,7 +72,9 @@ function Education() {
     toggleVisibilty();
 
     Axios.post("http://localhost:3001/education/insert", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
+      headers: {
+        "x-access-token": localStorage.getItem("token"), 
+        "Content-Type": "multipart/form-data" },
     }).then(() => {
       alert("submitted");
     });
