@@ -52,7 +52,9 @@ function Professional() {
   function toggleVisibility2() {
     setIsVisibile2(!isVisible2);
   }
-
+  function refresh() {
+    window.location.reload(); 
+  }
   useEffect(() => {
     try {
       Axios.get("http://localhost:3001/professional/select1").then((response) => {
@@ -116,6 +118,7 @@ function Professional() {
     }).then(() => {
       alert("submitted");
     });
+    refresh(); 
   };
 
   const submitForm2 = () => {
@@ -136,6 +139,7 @@ function Professional() {
     }).then(() => {
       alert("submitted");
     });
+    refresh();
   };
 
 
