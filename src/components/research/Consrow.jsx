@@ -14,13 +14,15 @@ function Consrow(props) {
                 <div className={styles.sub_div}>
                     <label>Amount</label>
                     <input type="text" disabled="disabled" value={props.amount} /><br />
-                    <Button
-                     variant="contained"
-                    startIcon={<CardMembershipIcon />}
-                    size="small"
-                    >
-                     Cerificate
-                    </Button>
+                    <a href={props.certlink} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="contained"
+              startIcon={<CardMembershipIcon />}
+              size="small"
+            >
+              Certificate
+            </Button>
+          </a>
                 </div>
             </div>
             

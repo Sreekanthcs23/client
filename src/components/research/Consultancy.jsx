@@ -21,6 +21,7 @@ function Consultancy() {
   const [agency, setAgency] = useState("");
   const [amount, setAmount] = useState("");
   const [year, setYear] = useState("");
+  const [certFile, setCertFile] = useState(null);
   const [data, setData] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -30,7 +31,11 @@ function Consultancy() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/consultancy/select").then((response) => {
+      Axios.get("http://localhost:3001/consultancy/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData(response.data);
         console.log(response.data);
       });
@@ -40,15 +45,32 @@ function Consultancy() {
   }, []);
 
   const submitForm = () => {
+    let cert = certFile[0];
+    let formData = new FormData();
+    formData.append("pdffile", cert);
+    formData.append("agency", agency);
+    formData.append("amount", amount);
+    formData.append("year", year);
+    
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
+
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/consultancy/insert", {
-      agency: agency,
-      amount: amount,
-      year: year,
-    }).then(() => {
+
+    Axios.post(
+      "http://localhost:3001/consultancy/insert",
+      formData,
+      axiosConfig
+    ).then(() => {
       alert("submitted");
     });
   };
+
   const data1 = [
     {
       id: 1,
@@ -105,13 +127,14 @@ function Consultancy() {
             UPDATE
           </Button>
           <div className={styles.cons_list}>
-            {data1.map((item) => {
+            {data.map((item) => {
               return (
                 <Consrow
                   id={item.id}
                   agency={item.agency}
                   amount={item.amount}
                   year={item.year}
+                  certlink={item.certificate}
                 ></Consrow>
               );
             })}
@@ -157,8 +180,15 @@ function Consultancy() {
             <HiDocumentArrowUp />
             Certificate
           </label>
-          <br />
-          <input type="file" id="certificate" />
+          <input
+              type="file"
+              name="pdffile"
+              accept="application/pdf"
+              id="pdffile"
+              onChange={(e) => {
+                setCertFile(e.target.files);
+              }}
+          />
           <br />
           <div className={styles.cons_form_button}>
             <Button
@@ -177,4 +207,3 @@ function Consultancy() {
 }
 
 export default Consultancy;
-//
