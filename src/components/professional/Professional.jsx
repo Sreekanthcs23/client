@@ -52,12 +52,25 @@ function Professional() {
   function toggleVisibility2() {
     setIsVisibile2(!isVisible2);
   }
+
+  const handleTypeChange = (e) => {
+    setType(e.target.value);
+  };
+
+  const handleInputChange = (e) => {
+    console.log(e.target.value);
+  };
+
   function refresh() {
     window.location.reload(); 
   }
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/professional/select1").then((response) => {
+      Axios.get("http://localhost:3001/professional/select1", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData1(response.data);
         console.log(response.data);
       });
@@ -68,7 +81,11 @@ function Professional() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/professional/select2").then((response) => {
+      Axios.get("http://localhost:3001/professional/select2", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData2(response.data);
         console.log(response.data);
       });
@@ -98,24 +115,27 @@ function Professional() {
     formData1.append("promotionDesignation", promotionDesignation);
     
    // console.log("date" + date);
- 
-    Axios.post("http://localhost:3001/professional/insert1", formData1, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
+
+    Axios.post("http://localhost:3001/professional/insert1", formData1,axiosConfig
+    ).then(() => {
       alert("submitted");
     });
 
     //uploading problem declaration
-    Axios.post("http://localhost:3001/professional/insert1Pdf2", formData1Pdf2, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    Axios.post("http://localhost:3001/professional/insert1Pdf2", formData1Pdf2,axiosConfig
+    ).then(() => {
       alert("submitted");
     });
 
     //uploading promotion order
-    Axios.post("http://localhost:3001/professional/insert1Pdf3", formData1Pdf3, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    Axios.post("http://localhost:3001/professional/insert1Pdf3", formData1Pdf3, axiosConfig
+    ).then(() => {
       alert("submitted");
     });
     refresh(); 
@@ -134,9 +154,15 @@ function Professional() {
     console.log("inside submitForm2");
     toggleVisibility2();
    
-    Axios.post("http://localhost:3001/professional/insert2", formData2, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };  
+    
+    Axios.post("http://localhost:3001/professional/insert2", formData2,axiosConfig 
+    ).then(() => {
       alert("submitted");
     });
     refresh();
@@ -304,7 +330,7 @@ function Professional() {
               <br />
               
               <label for="dateofProblemDeclaration">
-                <IoCalendarSharp fontSize="small" /> Date of Problem Declaration 
+                <IoCalendarSharp fontSize="small" /> Date of Probation Declaration 
               </label>
               <br />
               <DatePicker
@@ -365,7 +391,7 @@ function Professional() {
 
               <label for="problemDeclaration">
                 <HiDocumentArrowUp />
-                Problem Declaration
+                Probation Declaration
               </label>
               <input
               type="file"
@@ -417,15 +443,17 @@ function Professional() {
                 <AccountTreeIcon fontSize="small" /> Type
               </label>
               <br />
-              <input
-                type="text"
-                id="type"
-                onChange={(e) => {
-                  setType(e.target.value);
-                }}
-              />
-              <br />
-              
+              <select value={type} onChange={handleTypeChange} className={styles.dropdown_input}>
+                <option value="teaching">Teaching</option>
+                <option value="industry">Industry</option>
+                <option value="custom">Custom</option>
+              </select>
+
+              {type === 'custom' && (
+                <input type="text" id="customInput" onChange={handleInputChange} />
+              )}
+            
+              <br />        
               <label for="fromDate">
                 <IoCalendarSharp fontSize="small" /> From 
               </label>
