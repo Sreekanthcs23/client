@@ -46,22 +46,19 @@ function GuidedProject() {
 
   const submitForm = () => {
 
-    let formData = new FormData();
-    formData.append("sname", sname);
-    formData.append("pname", pname);
-    formData.append("batch", batch);
-    formData.append("publication", publication);
+
     console.log(sname);
 
     let axiosConfig = {
       headers: {
+
         "x-access-token": localStorage.getItem("token"),
-         "Content-Type": "multipart/form-data" },
-    }
+      },
+    };
 
     toggleVisibilty();
 
-    Axios.post("http://localhost:3001/guidedproject/insert", formData, axiosConfig).then(() => {
+    Axios.post("http://localhost:3001/guidedproject/insert", {"sname":sname,"pname":pname,"batch":batch,"publication":publication}, axiosConfig).then(() => {
       alert("submitted");
     });
   };

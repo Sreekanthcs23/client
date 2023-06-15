@@ -67,15 +67,20 @@ function Education() {
     formData.append("date", date);
     formData.append("marks", marks);
 
-    console.log("date" + date);
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
 
     toggleVisibilty();
 
-    Axios.post("http://localhost:3001/education/insert", formData, {
-      headers: {
-        "x-access-token": localStorage.getItem("token"), 
-        "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    Axios.post(
+      "http://localhost:3001/education/insert",
+      formData,
+      axiosConfig
+    ).then(() => {
       alert("submitted");
     });
   };

@@ -31,7 +31,11 @@ function Consultancy() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/consultancy/select").then((response) => {
+      Axios.get("http://localhost:3001/consultancy/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData(response.data);
         console.log(response.data);
       });
@@ -48,13 +52,21 @@ function Consultancy() {
     formData.append("amount", amount);
     formData.append("year", year);
     
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
 
 
     toggleVisibilty();
 
-    Axios.post("http://localhost:3001/consultancy/insert", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    Axios.post(
+      "http://localhost:3001/consultancy/insert",
+      formData,
+      axiosConfig
+    ).then(() => {
       alert("submitted");
     });
   };
@@ -115,13 +127,14 @@ function Consultancy() {
             UPDATE
           </Button>
           <div className={styles.cons_list}>
-            {data1.map((item) => {
+            {data.map((item) => {
               return (
                 <Consrow
                   id={item.id}
                   agency={item.agency}
                   amount={item.amount}
                   year={item.year}
+                  certlink={item.certificate}
                 ></Consrow>
               );
             })}
@@ -167,8 +180,15 @@ function Consultancy() {
             <HiDocumentArrowUp />
             Certificate
           </label>
-          <br />
-          <input type="file" id="certificate" />
+          <input
+              type="file"
+              name="pdffile"
+              accept="application/pdf"
+              id="pdffile"
+              onChange={(e) => {
+                setCertFile(e.target.files);
+              }}
+          />
           <br />
           <div className={styles.cons_form_button}>
             <Button
@@ -187,4 +207,3 @@ function Consultancy() {
 }
 
 export default Consultancy;
-//
