@@ -31,9 +31,9 @@ function Publications() {
 
     const [selectedOption, setSelectedOption] = useState('');
 
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
 
     useEffect(() => {
       try{
@@ -144,55 +144,19 @@ function Publications() {
                 <div className={styles.publ_form}>
                 <h1 className={styles.publ_form_title}>Update Details</h1>
                 
-                <label for="type">Type</label><br /><br />  
-                <label>
-                <input
-                type="radio"
-                value="JOURNAL"
-                checked={selectedOption === "JOURNAL"}
-                onChange={handleOptionChange}
-                />
-                JOURNAL
-                </label> <br />  
-                <label>
-                <input
-                type="radio"
-                value="CONFERENCE"
-                checked={selectedOption === "CONFERENCE"}
-                onChange={handleOptionChange}
-                />
-                CONFERENCE
-                </label> <br />  
-                <label>
-                <input
-                type="radio"
-                value="PATENT"
-                checked={selectedOption === "PATENT"}
-                onChange={handleOptionChange}
-                />
-                PATENT
-                </label> <br />  
-                <label>
-                <input
-                type="radio"
-                value="PROCEEDING"
-                checked={selectedOption === "PROCEEDING"}
-                onChange={handleOptionChange}
-                />
-                CONFERENCE PROCEEDING
-                </label>  <br />  
-                <label>
-                <input
-                type="radio"
-                value="POSTER"
-                checked={selectedOption === "POSTER"}
-                onChange={handleOptionChange}
-                />
-                POSTER
-                </label><br />  
-                <label for="title">Title</label>
+                <label for="type">Type</label><br />  
+                <select value={selectedOption} onChange={handleOptionChange} className={styles.select_box}>
+                    <option value="">Select an option</option>
+                    <option value="JOURNAL">JOURNAL</option>
+                    <option value="CONFERENCE">CONFERENCE</option>
+                    <option value="PATENT">PATENT</option>
+                    <option value="CONFERENCE PROCEEDING">CONFERENCE PROCEEDING</option>
+                    <option value="POSTER">POSTER</option>
+                </select>
+                <br /> 
+                <label for="title">Title</label><br />
                 <input type="text" id="title" onChange={(e) => {setTitle(e.target.value)}}/><br />            
-                <label for="name">Name of Publication</label>
+                <label for="name">Name of Publication</label><br />
                 <input type="text" id="name" onChange={(e) => {setName(e.target.value)}} /><br />        
                 <label for="period">Start Date</label>
                 <DatePicker
