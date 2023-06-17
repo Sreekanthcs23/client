@@ -24,13 +24,15 @@ function Fundrow(props) {
                     <input type="text" disabled="disabled" value={props.status} /><br />
                 </div>
                 <div className={styles.sub_div}>
-                <Button
-                     variant="contained"
-                    startIcon={<CardMembershipIcon />}
-                    size="small"
+                    <a href={props.certlink} target="_blank" rel="noopener noreferrer">
+                    <Button
+                        variant="contained"
+                        startIcon={<CardMembershipIcon />}
+                        size="small"
                     >
                      Sanction Letter
                     </Button>
+                    </a>
                 </div>
             </div>
             

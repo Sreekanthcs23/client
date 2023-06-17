@@ -14,7 +14,7 @@ function Profrow(props) {
           <label>Joining Designation </label>
           <input type="text" disabled="disabled" value={props.joiningDesignation} />
           <br />
-          <label>Date of Problem Declaration </label>
+          <label>Date of Probation Declaration </label>
           <input type="text" disabled="disabled" value={props.dateofProblemDeclaration} />
           <br />
         </div>
@@ -35,7 +35,7 @@ function Profrow(props) {
             startIcon={<CardMembershipIcon />}
             size="small"
           >
-            Problem Declaration
+            Probation Declaration
             </Button>
           </a>
           </div>

@@ -28,7 +28,7 @@
     margin-bottom: 0px;
     font-weight: 1.1rem;
     font-size: 16px;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
 }
 
 .col_div input {
@@ -36,8 +36,26 @@
     margin-bottom: 0px;
     font-weight: 1.1rem;
     font-size: 14px;
-    padding: 0px;
+    padding: 4px;
 }
 .but_cert{
     width: 30%;
 }
+.edit-button {
+    background-color: #da0db8;
+    border: none;
+    color: #4551f3;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-button:hover {
+    background-color: #2980b9;
+  }
+  
+ 
+
+  

@@ -24,6 +24,7 @@ function FundedProject() {
   const [period, setPeriod] = useState("");
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
+  const [certFile, setCertFile] = useState(null);
   const [data, setData] = useState([]);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -34,27 +35,43 @@ function FundedProject() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/fundedproject/select").then(
-        (response) => {
-          setData(response.data);
-          console.log(response.data);
-        }
-      );
+      Axios.get("http://localhost:3001/fundedproject/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
+        setData(response.data);
+        console.log(response.data);
+      });
     } catch (e) {
       console.log(e);
     }
   }, []);
-
   const submitForm = () => {
+    let cert = certFile[0];
+    let formData = new FormData();
+    formData.append("pdffile", cert);
+    formData.append("name", name);
+    formData.append("agency", agency);
+    formData.append("amount", amount);
+    formData.append("period", period);
+    formData.append("date", date);
+    formData.append("status", status);
+
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
+
     toggleVisibilty();
-    Axios.post("http://localhost:3001/fundedproject/insert", {
-      name: name,
-      agency: agency,
-      amount: amount,
-      period: period,
-      date: date,
-      status: status,
-    }).then(() => {
+
+    Axios.post(
+      "http://localhost:3001/fundedproject/insert",
+      formData,
+      axiosConfig
+    ).then(() => {
       alert("submitted");
     });
   };
@@ -125,7 +142,7 @@ function FundedProject() {
             UPDATE
           </Button>
           <div className={styles.fund_list}>
-            {data1.map((item) => {
+            {data.map((item) => {
               return (
                 <Fundrow
                   id={item.id}
@@ -135,6 +152,7 @@ function FundedProject() {
                   period={item.period}
                   date={item.date.toString().slice(0, 10)}
                   status={item.status}
+                  certlink={item.letter}
                 ></Fundrow>
               );
             })}
@@ -213,7 +231,7 @@ function FundedProject() {
           <input
             type="radio"
             id="closed"
-            name="types"
+            name="status"
             value="Closed"
             onChange={(e) => {
               setStatus(e.target.value);
@@ -226,7 +244,15 @@ function FundedProject() {
             Sanction Letter
           </label>
           <br />
-          <input type="file" id="letter" />
+          <input
+              type="file"
+              name="pdffile"
+              accept="application/pdf"
+              id="pdffile"
+              onChange={(e) => {
+                setCertFile(e.target.files);
+              }}
+            />
           <br />
           <div className={styles.fund_form_button}>
             <Button

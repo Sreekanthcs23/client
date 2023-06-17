@@ -42,7 +42,11 @@ function Education() {
 
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/education/select").then((response) => {
+      Axios.get("http://localhost:3001/education/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData(response.data);
         console.log(response.data);
       });
@@ -63,13 +67,20 @@ function Education() {
     formData.append("date", date);
     formData.append("marks", marks);
 
-    console.log("date" + date);
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
 
     toggleVisibilty();
 
-    Axios.post("http://localhost:3001/education/insert", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    }).then(() => {
+    Axios.post(
+      "http://localhost:3001/education/insert",
+      formData,
+      axiosConfig
+    ).then(() => {
       alert("submitted");
     });
   };

@@ -1,6 +1,9 @@
 import styles from "./Prevrow.module.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Button from "@mui/material/Button";
+
 
 function Prevrow(props) {
   return ( 
@@ -31,7 +34,7 @@ function Prevrow(props) {
           <br />
           <br />
           <a href={props.experienceCertificate} target="_blank" rel="noopener noreferrer">
-          <Button
+          <Button 
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
@@ -40,6 +43,25 @@ function Prevrow(props) {
             </Button>
           </a>
         </div>
+        <div className={styles.edit}>
+          <br />
+        <Button  class="edit-button"
+            variant="contained"
+            startIcon={<EditIcon />}
+            size="small"
+          >   
+            Edit
+            </Button>
+          <br /><br /><br />
+          <Button
+            variant="contained"
+            startIcon={<DeleteIcon />}
+            size="small"
+          >
+            Delete
+            </Button>   
+        </div>
+
         <br />
       </div>
     </div>
