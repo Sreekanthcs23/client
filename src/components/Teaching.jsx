@@ -37,6 +37,12 @@ function Teaching() {
     setIsVisible(!isVisible);
   }
 
+  const [selectedOption, setSelectedOption] = useState('');
+
+    const handleOptionChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+    
   useEffect(() => {
     try {
       Axios.get("http://localhost:3001/teaching/select").then((response) => {
@@ -151,15 +157,14 @@ function Teaching() {
         {isVisible && (
           <div className={styles.tea_form}>
             <h1 className={styles.tea_form_title}>Update Details</h1>
-            <label for="year">Year</label>
-            <br />
-            <input
-              type="text"
-              id="year"
-              onChange={(e) => {
-                setYear(e.target.value);
-              }}
-            />
+            <label for="year">Year</label><br />
+            <select value={selectedOption} onChange={handleOptionChange} className={styles.select_box}>
+                    <option value="">Select an option</option>
+                    <option value="First">First</option>
+                    <option value="Second">Second</option>
+                    <option value="Third">Third</option>
+                    <option value="Fourth">Fourth</option>
+                </select>
             <br />
             <label for="batch">Batch</label>
             <br />
