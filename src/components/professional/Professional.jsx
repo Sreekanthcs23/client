@@ -27,6 +27,7 @@ import Button from "@mui/material/Button";
 function Professional() {
   const [joiningDate, setJoiningDate] = useState("");
   const [joiningDesignation, setJoiningDesignation] = useState("");
+  const [copy, setCopy] = useState("");
   const [dateofProblemDeclaration, setDateofProblemDeclaration] = useState("");
   const [promotionDate, setPromotionDate] = useState("");
   const [promotionDesignation, setPromotionDesignation] = useState("");
@@ -323,24 +324,25 @@ function Professional() {
               <br />
               <select
                 value={joiningDesignation}
-                onChange={handleInputChange}
+                onChange={(e) => setJoiningDesignation(e.target.value)}
                 className={styles.dropdown_input}
               >
                 <option value="Principal">Principal</option>
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
-                <option value="Asst. Professor">Asst. Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
                 <option value="others">Others</option>
               </select>
 
-              {joiningDesignation === 'others' && (
+              {joiningDesignation === 'others' && (               
                 <input
                   type="text"
                   id="otherJoiningDesignation"
-                  value={''}
-                  onChange={(e) => setJoiningDesignation(e.target.value)}
+                  onChange={(e) => setCopy(e.target.value)}
                   className={styles.dropdown_input}
                   placeholder="Enter Joining Designation"
+                  value={copy}
+                  
                 />
               )}
 
@@ -382,14 +384,29 @@ function Professional() {
                 Promotion Designation 
               </label>
               <br />
-              
-              <input
-                type="text"
-                id="promotionDesignation"
-                onChange={(e) => {
-                  setPromotionDesignation(e.target.value);
-                }}
-              />
+              <select
+                value={promotionDesignation}
+                onChange={(e) => {setPromotionDesignation(e.target.value)}}
+                className={styles.dropdown_input}
+              >
+                <option value="Principal">Principal</option>
+                <option value="Professor">Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="others">Others</option>
+              </select>
+
+              {promotionDesignation === 'others' && (
+                <input
+                  type="text"
+                  id="otherPromotionDesignation"
+                  onChange={(e) => setCopy(e.target.value)}
+                  className={styles.dropdown_input}
+                  placeholder="Enter Promotion Designation"
+                  promotionDesignation = {copy}
+                  
+                />
+              )}
               <br />
               <label for="appointmentOrder">
                 <HiDocumentArrowUp />

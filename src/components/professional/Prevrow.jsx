@@ -53,15 +53,14 @@ function Prevrow(props) {
             Edit
             </Button>
           <br /><br /><br />
-          <Button
+          <Button 
             variant="contained"
             startIcon={<DeleteIcon />}
             size="small"
           >
             Delete
-            </Button>   
+          </Button>        
         </div>
-
         <br />
       </div>
     </div>
