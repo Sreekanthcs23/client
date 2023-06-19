@@ -242,7 +242,6 @@ function Professional() {
             Professional Experience
           </Link>
         </Breadcrumbs>
-
         {(!isVisible1 && !isVisible2) && (
           <div className={styles.edu_div}>
             <h2 >CURRENT INSTITUTION</h2>
