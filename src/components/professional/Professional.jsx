@@ -27,6 +27,7 @@ import Button from "@mui/material/Button";
 function Professional() {
   const [joiningDate, setJoiningDate] = useState("");
   const [joiningDesignation, setJoiningDesignation] = useState("");
+  const [copy, setCopy] = useState("");
   const [dateofProblemDeclaration, setDateofProblemDeclaration] = useState("");
   const [promotionDate, setPromotionDate] = useState("");
   const [promotionDesignation, setPromotionDesignation] = useState("");
@@ -56,9 +57,11 @@ function Professional() {
   const handleTypeChange = (e) => {
     setType(e.target.value);
   };
-
+  const otherHandleTypeChange = (e) => {
+    setType(e.target.value);
+  };
   const handleInputChange = (e) => {
-    console.log(e.target.value);
+    setJoiningDesignation(e.target.value);
   };
 
   function refresh() {
@@ -102,7 +105,7 @@ function Professional() {
     let promotionOrder1 = promotionOrder[0];
     
     let formData1 = new FormData();
-    let formData1Pdf2 = new FormData(); // for uploading problem declaration only
+    let formData1Pdf2 = new FormData(); // for uploading probation declaration only
     let formData1Pdf3 = new FormData(); // for uploading promotion order only
 
     formData1.append("appointmentOrder", appointmentOrder1);
@@ -114,7 +117,6 @@ function Professional() {
     formData1.append("promotionDate", promotionDate);
     formData1.append("promotionDesignation", promotionDesignation);
     
-   // console.log("date" + date);
     let axiosConfig = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -298,7 +300,7 @@ function Professional() {
         
           {isVisible1 && (
           <div className={styles.edu_form}>
-            <h1 className={styles.edu_form_title}>Update details</h1>
+            <h1 className={styles.edu_form_title}>Update Details</h1>
             <div className={styles.edu_form_left}>
               <label for="joiningDate">
               <IoCalendarSharp />
@@ -316,19 +318,36 @@ function Professional() {
               />
               <br />
           
-              <label for="joiningDesignation">
+              <label htmlFor="joiningDesignation">
                 <AccountTreeIcon fontSize="small" /> Joining Designation
               </label>
               <br />
-              <input
-                type="text"
-                id="joiningDesignation"
-                onChange={(e) => {
-                  setJoiningDesignation(e.target.value);
-                }}
-              />
+              <select
+                value={joiningDesignation}
+                onChange={(e) => setJoiningDesignation(e.target.value)}
+                className={styles.dropdown_input}
+              >
+                <option value="Principal">Principal</option>
+                <option value="Professor">Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="others">Others</option>
+              </select>
+
+              {joiningDesignation === 'others' && (               
+                <input
+                  type="text"
+                  id="otherJoiningDesignation"
+                  onChange={(e) => setCopy(e.target.value)}
+                  className={styles.dropdown_input}
+                  placeholder="Enter Joining Designation"
+                  value={copy}
+                  
+                />
+              )}
+
+      
               <br />
-              
               <label for="dateofProblemDeclaration">
                 <IoCalendarSharp fontSize="small" /> Date of Probation Declaration 
               </label>
@@ -365,14 +384,29 @@ function Professional() {
                 Promotion Designation 
               </label>
               <br />
-              
-              <input
-                type="text"
-                id="promotionDesignation"
-                onChange={(e) => {
-                  setPromotionDesignation(e.target.value);
-                }}
-              />
+              <select
+                value={promotionDesignation}
+                onChange={(e) => {setPromotionDesignation(e.target.value)}}
+                className={styles.dropdown_input}
+              >
+                <option value="Principal">Principal</option>
+                <option value="Professor">Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="others">Others</option>
+              </select>
+
+              {promotionDesignation === 'others' && (
+                <input
+                  type="text"
+                  id="otherPromotionDesignation"
+                  onChange={(e) => setCopy(e.target.value)}
+                  className={styles.dropdown_input}
+                  placeholder="Enter Promotion Designation"
+                  promotionDesignation = {copy}
+                  
+                />
+              )}
               <br />
               <label for="appointmentOrder">
                 <HiDocumentArrowUp />
@@ -439,19 +473,31 @@ function Professional() {
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Add Details</h1>
              
-              <label for="type">
-                <AccountTreeIcon fontSize="small" /> Type
-              </label>
-              <br />
-              <select value={type} onChange={handleTypeChange} className={styles.dropdown_input}>
-                <option value="teaching">Teaching</option>
-                <option value="industry">Industry</option>
-                <option value="custom">Custom</option>
-              </select>
+            <label htmlFor="type">
+              <AccountTreeIcon fontSize="small" /> Type
+            </label>
+            <br />
+            <select
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+              className={styles.dropdown_input}
+            >
+              <option value="teaching">Teaching</option>
+              <option value="industry">Industry</option>
+              <option value="others">Others</option>
+            </select>
 
-              {type === 'custom' && (
-                <input type="text" id="customInput" onChange={handleInputChange} />
-              )}
+            {type === 'others' && (
+              <input
+                type="text"
+                id="otherType"
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+                className={styles.dropdown_input}
+                placeholder="Enter Type"
+              />
+            )}
+
             
               <br />        
               <label for="fromDate">
