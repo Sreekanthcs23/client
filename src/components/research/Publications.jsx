@@ -19,9 +19,10 @@ function Publications() {
     const [type,setType] = useState("");
     const [title,setTitle] = useState("");
     const [name,setName] = useState("");
-    const [startDate,setStartDate] = useState("");
-    const [endDate,setEndDate] = useState("");
+    const [startdate,setStartDate] = useState("");
+    const [enddate,setEndDate] = useState("");
     const [date,setDate] = useState("");
+    const [certFile, setCertFile] = useState(null);
     const [data,setData] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -29,36 +30,57 @@ function Publications() {
         setIsVisible(!isVisible);
     }
 
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState("");
 
     const handleOptionChange = (event) => {
         setSelectedOption(event.target.value);
+        console.log(event.target.value);
     };
 
     useEffect(() => {
-      try{
-        Axios.get('http://localhost:3001/publications/select').then((response) => {
+        try {
+          Axios.get("http://localhost:3001/publication/select", {
+            headers: {
+              "x-access-token": localStorage.getItem("token"),
+            },
+          }).then((response) => {
             setData(response.data);
             console.log(response.data);
-        });
-      } catch (e) {
-        console.log(e);
-      }  
-    }, []);
+          });
+        } catch (e) {
+          console.log(e);
+        }
+      }, []);
 
     const submitForm = () => {
+        let cert = certFile[0];
+        let formData = new FormData();
+        formData.append("pdffile", cert);
+        formData.append("type", selectedOption);
+        formData.append("title", title);
+        formData.append("name", name);
+        formData.append("startdate", startdate);
+        formData.append("enddate", enddate);
+        formData.append("date", date);
+    
+        let axiosConfig = {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-access-token": localStorage.getItem("token"),
+          },
+        };
+    
         toggleVisibilty();
-        Axios.post('http://localhost:3001/publications/insert',{
-            type:type,
-            title:title,
-            name:name,
-            startDate:startDate,
-            endDate:endDate,
-            date:date
-        }).then(() => { 
-            alert("submitted");
+    
+        Axios.post(
+          "http://localhost:3001/publication/insert",
+          formData,
+          axiosConfig
+        ).then(() => {
+          alert("submitted");
         });
-    };
+      };
+
     const data1 = [
         {
           id: 1,
@@ -124,15 +146,17 @@ function Publications() {
                 UPDATE
                 </Button>
                 <div className={styles.publ_list}>
-                    {data1.map((item) => {
+                    {data.map((item) => {
                     return (
                         <Publrow
-                        type={item.type}
+                        key={item.idpublication}
+                        type={item.publ_type}
                         title={item.title}
-                        name={item.name}
-                        startdate={item.startdate}
-                        enddate={item.enddate}
-                        date={item.date}
+                        name={item.publ_name}
+                        startdate={item.sdate.toString().slice(0, 11)}
+                        enddate={item.edate.toString().slice(0, 11)}
+                        date={item.publ_date.toString().slice(0, 11)}
+                        certlink={item.certi_link}
                         ></Publrow>
                     );
                     })}
@@ -162,7 +186,7 @@ function Publications() {
                 <DatePicker
                     className="custom-datepicker"
                     id="startDate"
-                    selected={startDate}
+                    selected={startdate}
                     onChange={(date) => setStartDate(date)}
                     dateFormat="dd/MM/yyyy"
                     showYearDropdown
@@ -172,7 +196,7 @@ function Publications() {
                 <DatePicker
                     className="custom-datepicker"
                     id="endDate"
-                    selected={endDate}
+                    selected={enddate}
                     onChange={(date) => setEndDate(date)}
                     dateFormat="dd/MM/yyyy"
                     showYearDropdown
@@ -193,7 +217,15 @@ function Publications() {
                    Certificate
                 </label>
                 <br />
-                <input type="file" id="certificate" />
+                <input
+                    type="file"
+                    name="pdffile"
+                    accept="application/pdf"
+                    id="pdffile"
+                    onChange={(e) => {
+                        setCertFile(e.target.files);
+                    }}
+                />
                 <br />
                 <div className={styles.publ_form_button}>
                     <Button

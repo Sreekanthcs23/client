@@ -24,13 +24,15 @@ function Publrow(props) {
                     <input type="text" disabled="disabled" value={props.date} /><br />
                 </div>
                 <div className={styles.sub_div}>
-                    <Button
-                     variant="contained"
-                    startIcon={<CardMembershipIcon />}
-                    size="small"
-                    >
-                     Cerificate
-                    </Button>
+                <a href={props.certlink} target="_blank" rel="noopener noreferrer">
+            <Button
+              variant="contained"
+              startIcon={<CardMembershipIcon />}
+              size="small"
+            >
+              Certificate
+            </Button>
+          </a>
                 </div>
             </div>
             

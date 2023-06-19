@@ -20,13 +20,15 @@ function Resguidrow(props) {
                 <div className={styles.sub_div}>
                     <label>Publication</label>
                     <input type="text" disabled="disabled" value={props.publication} /><br />
+                    <a href={props.certlink} target="_blank" rel="noopener noreferrer">
                     <Button
-                     variant="contained"
-                    startIcon={<CardMembershipIcon />}
-                    size="small"
+                        variant="contained"
+                        startIcon={<CardMembershipIcon />}
+                        size="small"
                     >
-                     Cerificate
+                        Certificate
                     </Button>
+                    </a>
                 </div>
             </div>
             
