@@ -34,7 +34,6 @@ function Professional() {
   const [appointmentOrder, setAppointmentOrder]=useState(null);
   const [problemDeclaration, setProblemDeclaration]=useState(null);
   const [promotionOrder, setPromotionOrder]=useState(null);
-  
   const [type, setType]=useState("");
   const [fromDate, setFromDate]=useState("");
   const [toDate, setToDate]=useState("");
@@ -54,14 +53,15 @@ function Professional() {
     setIsVisibile2(!isVisible2);
   }
 
-  const handleTypeChange = (e) => {
-    setType(e.target.value);
-  };
-  const otherHandleTypeChange = (e) => {
-    setType(e.target.value);
-  };
-  const handleInputChange = (e) => {
-    setJoiningDesignation(e.target.value);
+  function handleJoiningDesignationChange(){
+    if (joiningDesignation === "others"){
+       setJoiningDesignation(copy);
+       console.log(copy);
+    }
+      };
+ 
+  const handlePromotionDesignationChange = (e) => {
+    setPromotionDesignation(e.target.value);
   };
 
   function refresh() {
@@ -99,7 +99,10 @@ function Professional() {
   const submitForm1 = () => {
 
     toggleVisibility1();
-
+    handleJoiningDesignationChange();
+   /* if (joiningDesignation === "others"){
+      setJoiningDesignation(copy);
+    }*/
     let appointmentOrder1 = appointmentOrder[0];
     let problemDeclaration1 = problemDeclaration[0];
     let promotionOrder1 = promotionOrder[0];
@@ -239,7 +242,6 @@ function Professional() {
             Professional Experience
           </Link>
         </Breadcrumbs>
-
         {(!isVisible1 && !isVisible2) && (
           <div className={styles.edu_div}>
             <h2 >CURRENT INSTITUTION</h2>
@@ -324,9 +326,10 @@ function Professional() {
               <br />
               <select
                 value={joiningDesignation}
-                onChange={(e) => setJoiningDesignation(e.target.value)}
+                onChange={(event) => setJoiningDesignation(event.target.value)}
                 className={styles.dropdown_input}
               >
+                <option value="">Select an option</option>
                 <option value="Principal">Principal</option>
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
@@ -334,18 +337,14 @@ function Professional() {
                 <option value="others">Others</option>
               </select>
 
-              {joiningDesignation === 'others' && (               
+              {joiningDesignation === 'others' && (                            
                 <input
                   type="text"
-                  id="otherJoiningDesignation"
-                  onChange={(e) => setCopy(e.target.value)}
-                  className={styles.dropdown_input}
-                  placeholder="Enter Joining Designation"
-                  value={copy}
-                  
+                  id="copy"
+                  onChange={(event) => setCopy(event.target.value)}
+                  className={styles.dropdown_input}               
                 />
               )}
-
       
               <br />
               <label for="dateofProblemDeclaration">
