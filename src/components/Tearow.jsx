@@ -23,66 +23,73 @@ function Tearow(props) {
           <label>Subject Name</label>
           <input type="text" disabled="disabled" value={props.subname} />
           <br />
+          <a href={props.certInternal} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Internal
           </Button>
+          </a>
         </div>
         <div className={styles.sub_div}>
+        <a href={props.certAttendance} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
-            Attedance
+            Attendance
           </Button>
+          </a>
+          <a href={props.certFeedback} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Feedback
           </Button>
+          </a>
+          <a href={props.certResult} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Result
           </Button>
+          </a>
         </div>
         <div className={styles.sub_div}>
+        <a href={props.certTimetable} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Timetable
           </Button>
+          </a>
+          <a href={props.certTutorial} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Tutorial
           </Button>
+          </a>
+          <a href={props.certAchievement} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
             size="small"
-            sx={{ m: 2 }}
           >
             Achievement
           </Button>
+          </a>
         </div>
       </div>
     </div>
