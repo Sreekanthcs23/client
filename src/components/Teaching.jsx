@@ -43,11 +43,6 @@ function Teaching() {
     setIsVisible(!isVisible);
   }
  
-
-  const handleInputChange = (e) => {
-    console.log(e.target.value);
-  };
-
   function refresh() {
     window.location.reload(); 
   }
@@ -67,6 +62,7 @@ function Teaching() {
   }, []);
 
   const submitForm = () => {
+    toggleVisibilty();
     let cert1 = cert_tutorial[0];
     let cert2 = cert_internal[0];
     let cert3 = cert_attendance[0];
@@ -202,10 +198,10 @@ function Teaching() {
               UPDATE
             </Button>
             <div className={styles.tea_list}>
-              {data.map((item) => {
+              {data1.map((item) => {
                 return (
                   <Tearow
-                    id={item.id}
+                    key={item.tea_id}
                     year={item.year}
                     batch={item.batch}
                     branch={item.branch}
