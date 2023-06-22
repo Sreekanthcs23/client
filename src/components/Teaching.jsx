@@ -42,10 +42,22 @@ function Teaching() {
   function toggleVisibilty() {
     setIsVisible(!isVisible);
   }
+ 
 
+  const handleInputChange = (e) => {
+    console.log(e.target.value);
+  };
+
+  function refresh() {
+    window.location.reload(); 
+  }
   useEffect(() => {
     try {
-      Axios.get("http://localhost:3001/teaching/select").then((response) => {
+      Axios.get("http://localhost:3001/teaching/select", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
         setData(response.data);
         console.log(response.data);
       });
@@ -63,30 +75,60 @@ function Teaching() {
     let cert6 = cert_result[0];
     let cert7 = cert_achievement[0];
     let formData = new FormData();
+    let formData2 = new FormData();
+    let formData3 = new FormData();
+    let formData4 = new FormData();
+    let formData5 = new FormData();
+    let formData6 = new FormData();
+    let formData7 = new FormData();
     formData.append("tutorial", cert1);
-    formData.append("internal", cert2);
-    formData.append("attendance", cert3);
-    formData.append("feedback", cert4);
-    formData.append("timetable", cert5);
-    formData.append("result", cert6);
-    formData.append("achievement", cert7);
+    formData2.append("internal", cert2);
+    formData3.append("attendance", cert3);
+    formData4.append("feedback", cert4);
+    formData5.append("timetable", cert5);
+    formData6.append("result", cert6);
+    formData7.append("achievement", cert7);
     formData.append("year", year);
     formData.append("batch", batch);
     formData.append("branch", branch);
     formData.append("subcode", subcode);
     formData.append("subname", subname);
 
-    toggleVisibilty();
-    Axios.post("http://localhost:3001/teaching/insert", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-      /*year: year,
-      batch: batch,
-      branch: branch,
-      subcode: subcode,
-  subname: subname,*/
-    }).then(() => {
+    let axiosConfig = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
+    Axios.post("http://localhost:3001/teaching/insert", formData,axiosConfig
+    ).then(() => {
       alert("submitted");
     });
+    Axios.post("http://localhost:3001/teaching/insert2", formData2,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    Axios.post("http://localhost:3001/teaching/insert3", formData3,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    Axios.post("http://localhost:3001/teaching/insert4", formData4,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    Axios.post("http://localhost:3001/teaching/insert5", formData5,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    Axios.post("http://localhost:3001/teaching/insert6", formData6,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    Axios.post("http://localhost:3001/teaching/insert7", formData7,axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    refresh(); 
   };
 
   const data1 = [
@@ -160,7 +202,7 @@ function Teaching() {
               UPDATE
             </Button>
             <div className={styles.tea_list}>
-              {data1.map((item) => {
+              {data.map((item) => {
                 return (
                   <Tearow
                     id={item.id}
@@ -169,13 +211,13 @@ function Teaching() {
                     branch={item.branch}
                     subcode={item.subcode}
                     subname={item.subname}
-                    tutorial={item.certificate1_link}
-                    internal={item.certificate2_link}
-                    attendance={item.certificate3_link}
-                    feedback={item.certificate4_link}
-                    timetable={item.certificate5_link}
-                    result={item.certificate6_link}
-                    achievement={item.certificate7_link}
+                    tutorial={item.tutorial}
+                    internal={item.internal}
+                    attendance={item.attendance}
+                    feedback={item.feedback}
+                    timetable={item.timetable}
+                    result={item.result}
+                    achievement={item.achievement}
                   ></Tearow>
                 );
               })}
@@ -236,26 +278,103 @@ function Teaching() {
               }}
             />
             <br />
-            <label for="tutorial">Tutorial</label>
-            <input type="file" id="tutorial" />
+            <label for="tutorial">
+                <HiDocumentArrowUp />
+                Tutorial
+              </label>
+              <input
+              type="file"
+              name="tutorial"
+              accept="application/pdf"
+              id="tutorial"
+              onChange={(e) => {
+                setCertTutorial(e.target.files);
+              }}
+            />
             <br />
-            <label for="internal">Internal</label>
-            <input type="file" id="internal" />
+            <label for="internal">
+                <HiDocumentArrowUp />
+                Internal
+              </label>
+              <input
+              type="file"
+              name="internal"
+              accept="application/pdf"
+              id="internal"
+              onChange={(e) => {
+                setCertInternal(e.target.files);
+              }}
+            />
             <br />
-            <label for="attendance">Attendance</label>
-            <input type="file" id="attendance" />
+            <label for="attendance">
+                <HiDocumentArrowUp />
+                Attendance
+              </label>
+              <input
+              type="file"
+              name="attendance"
+              accept="application/pdf"
+              id="attendance"
+              onChange={(e) => {
+                setCertAttendance(e.target.files);
+              }}
+            />
             <br />
-            <label for="feedback">Feedback</label>
-            <input type="file" id="feedback" />
+            <label for="feedback">
+                <HiDocumentArrowUp />
+                Feedback
+              </label>
+              <input
+              type="file"
+              name="feedback"
+              accept="application/pdf"
+              id="feedback"
+              onChange={(e) => {
+                setCertFeedback(e.target.files);
+              }}
+            />
             <br />
-            <label for="timetable">Time Table</label>
-            <input type="file" id="timetable" />
+            <label for="timeTable">
+                <HiDocumentArrowUp />
+                Time Table
+              </label>
+              <input
+              type="file"
+              name="timeTable"
+              accept="application/pdf"
+              id="timeTable"
+              onChange={(e) => {
+                setCerttable(e.target.files);
+              }}
+            />
             <br />
-            <label for="result">Result</label>
-            <input type="file" id="result" />
+            <label for="result">
+                <HiDocumentArrowUp />
+                Result
+              </label>
+              <input
+              type="file"
+              name="result"
+              accept="application/pdf"
+              id="result"
+              onChange={(e) => {
+                setCertResult(e.target.files);
+              }}
+            />
             <br />
-            <label for="achievement">Special Achievement</label>
-            <input type="file" id="achievement" />
+            <label for="achievement">
+                <HiDocumentArrowUp />
+                Achievement
+              </label>
+              <input
+              type="file"
+              name="achievement"
+              accept="application/pdf"
+              id="achievement"
+              onChange={(e) => {
+                setCertAchievement(e.target.files);
+              }}
+            />
             <br />
             <div className={styles.tea_form_button}>
               <Button

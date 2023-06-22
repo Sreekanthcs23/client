@@ -103,3 +103,10 @@
     text-align: center;
 }
  
+.select_box {
+    width: 70%;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
