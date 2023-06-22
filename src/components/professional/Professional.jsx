@@ -28,11 +28,11 @@ function Professional() {
   const [joiningDate, setJoiningDate] = useState("");
   const [joiningDesignation, setJoiningDesignation] = useState("");
   const [copy, setCopy] = useState("");
-  const [dateofProblemDeclaration, setDateofProblemDeclaration] = useState("");
+  const [dateofProbationDeclaration, setDateofProbationDeclaration] = useState("");
   const [promotionDate, setPromotionDate] = useState("");
   const [promotionDesignation, setPromotionDesignation] = useState("");
   const [appointmentOrder, setAppointmentOrder]=useState(null);
-  const [problemDeclaration, setProblemDeclaration]=useState(null);
+  const [probationDeclaration, setProbationDeclaration]=useState(null);
   const [promotionOrder, setPromotionOrder]=useState(null);
   const [type, setType]=useState("");
   const [fromDate, setFromDate]=useState("");
@@ -104,7 +104,7 @@ function Professional() {
       setJoiningDesignation(copy);
     }*/
     let appointmentOrder1 = appointmentOrder[0];
-    let problemDeclaration1 = problemDeclaration[0];
+    let probationDeclaration1 = probationDeclaration[0];
     let promotionOrder1 = promotionOrder[0];
     
     let formData1 = new FormData();
@@ -112,11 +112,11 @@ function Professional() {
     let formData1Pdf3 = new FormData(); // for uploading promotion order only
 
     formData1.append("appointmentOrder", appointmentOrder1);
-    formData1Pdf2.append("problemDeclaration", problemDeclaration1);
+    formData1Pdf2.append("probationDeclaration", probationDeclaration1);
     formData1Pdf3.append("promotionOrder", promotionOrder1);
     formData1.append("joiningDate", joiningDate);
     formData1.append("joiningDesignation", joiningDesignation);
-    formData1.append("dateofProblemDeclaration", dateofProblemDeclaration);
+    formData1.append("dateofProbationDeclaration", dateofProbationDeclaration);
     formData1.append("promotionDate", promotionDate);
     formData1.append("promotionDesignation", promotionDesignation);
     
@@ -330,7 +330,6 @@ function Professional() {
                 className={styles.dropdown_input}
               >
                 <option value="">Select an option</option>
-                <option value="Principal">Principal</option>
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
                 <option value="Assistant Professor">Assistant Professor</option>
@@ -347,15 +346,15 @@ function Professional() {
               )}
       
               <br />
-              <label for="dateofProblemDeclaration">
+              <label for="dateofProbationDeclaration">
                 <IoCalendarSharp fontSize="small" /> Date of Probation Declaration 
               </label>
               <br />
               <DatePicker
                 className={styles.date_input}
                 id="dateofProblemDeclaration"
-                selected={dateofProblemDeclaration}
-                onChange={(dateofProblemDeclaration) => setDateofProblemDeclaration(dateofProblemDeclaration)}
+                selected={dateofProbationDeclaration}
+                onChange={(dateofProblemDeclaration) => setDateofProbationDeclaration(dateofProblemDeclaration)}
                 dateFormat="dd/MM/yyyy"
                 showYearDropdown
                 scrollableMonthYearDropdown
@@ -388,7 +387,6 @@ function Professional() {
                 onChange={(e) => {setPromotionDesignation(e.target.value)}}
                 className={styles.dropdown_input}
               >
-                <option value="Principal">Principal</option>
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
                 <option value="Assistant Professor">Assistant Professor</option>
@@ -432,7 +430,7 @@ function Professional() {
               accept="application/pdf"
               id="problemDeclaration"
               onChange={(e) => {
-                setProblemDeclaration(e.target.files);
+                setProbationDeclaration(e.target.files);
               }}
             />
             
