@@ -126,7 +126,8 @@ function GuidedProject() {
             {data.map((item) => {
               return (
                 <Guidrow
-                  id={item.id}
+                  guiid={item.guid_id}
+                  key={item.id}
                   sname={item.sname}
                   pname={item.pname}
                   batch={item.batch}

@@ -145,7 +145,8 @@ function FundedProject() {
             {data.map((item) => {
               return (
                 <Fundrow
-                  id={item.id}
+                  funid={item.fund_id}
+                  key={item.id}
                   name={item.name}
                   agency={item.agency}
                   amount={item.amount}

@@ -130,7 +130,8 @@ function Consultancy() {
             {data.map((item) => {
               return (
                 <Consrow
-                  id={item.id}
+                  conid={item.cons_id}
+                  key={item.id}
                   agency={item.agency}
                   amount={item.amount}
                   year={item.year}
