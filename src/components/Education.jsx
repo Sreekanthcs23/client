@@ -167,6 +167,7 @@ function Education() {
                 return (
                   <Edurow
                     key={item.edu_id}
+                    edid={item.edu_id}
                     degree={item.degree}
                     branch={item.branch}
                     specialization={item.specialization}
