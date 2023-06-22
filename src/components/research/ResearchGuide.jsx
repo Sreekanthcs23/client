@@ -139,6 +139,7 @@ function ResearchGuide() {
                     return (
                         <Resguidrow
                         key={item.idresearchguide}
+                        resid={item.idresearchguide}
                         name={item.name}
                         date={item.resguid_date.toString().slice(0, 11)}
                         area={item.area}

@@ -1,7 +1,28 @@
 import styles from "./Publrow.module.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
+import Axios from "axios";
+
 function Publrow(props) {
+    const deletefun = () => {
+        let axiosConfig = {
+          headers: {
+            "x-access-token": localStorage.getItem("token"),
+          },
+        };
+    
+        const idpublication = props.pubid;
+        console.log(idpublication);
+    
+        Axios.post(
+          "http://localhost:3001/publication/delete",
+          { pub_id: idpublication},
+          axiosConfig
+        ).then(() => {
+          alert("submitted");
+        });
+      };
+
     return (
         <div className={styles.main_div}>
             <div className={styles.col_div}>
@@ -33,6 +54,10 @@ function Publrow(props) {
               Certificate
             </Button>
           </a>
+          < br /><br />
+          <Button variant="contained" color="error" onClick={deletefun}>
+            Delete
+          </Button>
                 </div>
             </div>
             

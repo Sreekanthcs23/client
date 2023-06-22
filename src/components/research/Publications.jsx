@@ -150,6 +150,7 @@ function Publications() {
                     return (
                         <Publrow
                         key={item.idpublication}
+                        pubid={item.idpublication}
                         type={item.publ_type}
                         title={item.title}
                         name={item.publ_name}
