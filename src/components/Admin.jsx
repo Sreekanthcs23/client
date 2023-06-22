@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import Adduser from "./admin/Adduser";
+import CurrentUsers from "./admin/CurrentUsers";
 import Report from "./admin/Report";
 import styles from "./Admin.module.css";
 import Paper from "@mui/material/Paper";
@@ -32,12 +33,14 @@ function Admin() {
               centered
             >
               <Tab value="Adduser" label="Adduser" />
+              <Tab value="View Users" label="View Users" />
               <Tab value="Report" label="Report" />
             </Tabs>
           </Paper>
         </div>
         <div className={styles.adm_current}>
           {currentTab == "Adduser" && <Adduser />}
+          {currentTab == "View Users" && <CurrentUsers />}
           {currentTab == "Report" && <Report />}
         </div>
       </div>
