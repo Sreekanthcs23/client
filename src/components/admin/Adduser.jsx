@@ -13,6 +13,13 @@ import HomeIcon from "@mui/icons-material/Home";
 import EditIcon from "@mui/icons-material/Edit";
 import Button from "@mui/material/Button";
 import AddIcon from "@mui/icons-material/Add";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 //import "react-datepicker/dist/react-datepicker.css";
 /*import "./CustomDatePicker.css";*/
 
@@ -20,27 +27,6 @@ function Adduser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [type, setType] = useState("");
-  const [data, setData] = useState([]);
-  const [isVisible, setIsVisible] = useState(true);
-
-  function toggleVisibilty() {
-    setIsVisible(!isVisible);
-  }
-
-  useEffect(() => {
-    try {
-      Axios.get("http://localhost:3001/consultancy/select", {
-        headers: {
-          "x-access-token": localStorage.getItem("token"),
-        },
-      }).then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }, []);
 
   const submitForm = () => {
     let axiosConfig = {
@@ -48,8 +34,6 @@ function Adduser() {
         "x-access-token": localStorage.getItem("token"),
       },
     };
-
-    toggleVisibilty();
 
     Axios.post(
       "http://localhost:3001/adduser/insert",
@@ -101,70 +85,53 @@ function Adduser() {
           color="inherit"
           href="/research/consultancy"
         >
-          Consultancy
+          Add faculty
         </Link>
       </Breadcrumbs>
+      <div className={styles.addu_form}>
+        <h1 className={styles.addu_form_title}>Add Faculty</h1>
 
-      {!isVisible && (
-        <div className={styles.addu_div}>
+        <label for="username">Username</label>
+        <br />
+        <input
+          type="text"
+          id="username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <br />
+        <label for="Password">Password</label>
+        <br />
+        <input
+          type="text"
+          id="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <br />
+        <label for="type">Type</label>
+        <br />
+        <input
+          type="text"
+          id="type"
+          onChange={(e) => {
+            setType(e.target.value);
+          }}
+        />
+        <br />
+        <div className={styles.addu_form_button}>
           <Button
-            variant="outlined"
-            startIcon={<EditIcon />}
-            onClick={toggleVisibilty}
-            style={{ width: "150px" }}
+            variant="contained"
+            color="success"
+            startIcon={<AddIcon />}
+            onClick={submitForm}
           >
-            ADD
+            SUBMIT
           </Button>
-          <div className={styles.addu_list}>users</div>
         </div>
-      )}
-
-      {isVisible && (
-        <div className={styles.addu_form}>
-          <h1 className={styles.addu_form_title}>Enter Details</h1>
-
-          <label for="username">Username</label>
-          <br />
-          <input
-            type="text"
-            id="username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-          <br />
-          <label for="Password">Password</label>
-          <br />
-          <input
-            type="text"
-            id="Password"
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-          <br />
-          <label for="type">Type</label>
-          <br />
-          <input
-            type="text"
-            id="type"
-            onChange={(e) => {
-              setType(e.target.value);
-            }}
-          />
-          <br />
-          <div className={styles.addu_form_button}>
-            <Button
-              variant="contained"
-              color="success"
-              startIcon={<AddIcon />}
-              onClick={submitForm}
-            >
-              SUBMIT
-            </Button>
-          </div>
-        </div>
-      )}
+      </div>
     </div>
   );
 }

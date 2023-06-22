@@ -22,6 +22,7 @@ function ResearchGuide() {
     const [area,setArea] = useState("");
     const [topic,setTopic] = useState("");
     const [publication,setPublication] = useState("");
+    const [certFile, setCertFile] = useState(null);
     const [data,setData] = useState([]);
     const [isVisible, setIsVisible] = useState(false);
 
@@ -30,26 +31,48 @@ function ResearchGuide() {
     }
 
     useEffect(() => {
-        try{
-          Axios.get('http://localhost:3001/researchguide/select').then((response) => {
-              setData(response.data);
-              console.log(response.data);
+        try {
+          Axios.get("http://localhost:3001/researchguide/select", {
+            headers: {
+              "x-access-token": localStorage.getItem("token"),
+            },
+          }).then((response) => {
+            setData(response.data);
+            console.log(response.data);
           });
         } catch (e) {
           console.log(e);
-        }  
+        }
       }, []);
-
-    const submitForm = () => {
+    
+      const submitForm = () => {
+        let cert = certFile[0];
+        let formData = new FormData();
+        formData.append("pdffile", cert);
+        formData.append("name", name);
+        formData.append("date", date);
+        formData.append("area", area);
+        formData.append("topic", topic);
+        formData.append("publication", publication);
+    
+        let axiosConfig = {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "x-access-token": localStorage.getItem("token"),
+          },
+        };
+    
         toggleVisibilty();
-        Axios.post('http://localhost:3001/researchguide/insert',{
-            name:name,
-            date:date,
-            area:area,
-            topic:topic,
-            publication:publication
-        }).then(() => { alert("submitted") });
-    } 
+    
+        Axios.post(
+          "http://localhost:3001/researchguide/insert",
+          formData,
+          axiosConfig
+        ).then(() => {
+          alert("submitted");
+        });
+      };
+
     const data1 = [
         {
           id: 1,
@@ -112,14 +135,17 @@ function ResearchGuide() {
                 UPDATE
                 </Button>
                 <div className={styles.resguid_list}>
-                    {data1.map((item) => {
+                    {data.map((item) => {
                     return (
                         <Resguidrow
+                        key={item.idresearchguide}
+                        resid={item.idresearchguide}
                         name={item.name}
-                        date={item.date}
+                        date={item.resguid_date.toString().slice(0, 11)}
                         area={item.area}
                         topic={item.topic}
                         publication={item.publication}
+                        certlink={item.certi_link}
                         ></Resguidrow>
                     );
                     })}
@@ -148,6 +174,20 @@ function ResearchGuide() {
                 <input type="text" id="topic" onChange={(e) => {setTopic(e.target.value)}}/><br />
                 <label for="publication">Publication</label><br />
                 <input type="text" id="publication" onChange={(e) => {setPublication(e.target.value)}}/><br />
+                <label for="certificate">
+                <HiDocumentArrowUp />
+                Certificate
+                </label>
+                <br />
+                <input
+                type="file"
+                name="pdffile"
+                accept="application/pdf"
+                id="pdffile"
+                onChange={(e) => {
+                    setCertFile(e.target.files);
+                }}
+                />
                 <div className={styles.resguid_form_button}>
                     <Button
                     variant="contained"
