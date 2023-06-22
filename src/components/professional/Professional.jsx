@@ -27,14 +27,16 @@ import Button from "@mui/material/Button";
 function Professional() {
   const [joiningDate, setJoiningDate] = useState("");
   const [joiningDesignation, setJoiningDesignation] = useState("");
-  const [copy, setCopy] = useState("");
+  const [joiningDesignationCopy, setJoiningDesignationCopy] = useState("");
   const [dateofProbationDeclaration, setDateofProbationDeclaration] = useState("");
   const [promotionDate, setPromotionDate] = useState("");
   const [promotionDesignation, setPromotionDesignation] = useState("");
+  const [promotionDesignationCopy, setPromotionDesignationCopy] = useState("");
   const [appointmentOrder, setAppointmentOrder]=useState(null);
   const [probationDeclaration, setProbationDeclaration]=useState(null);
   const [promotionOrder, setPromotionOrder]=useState(null);
   const [type, setType]=useState("");
+  const [typeCopy, setTypeCopy]=useState("");
   const [fromDate, setFromDate]=useState("");
   const [toDate, setToDate]=useState("");
   const [designation, setDesignation]=useState("");
@@ -55,14 +57,10 @@ function Professional() {
 
   function handleJoiningDesignationChange(){
     if (joiningDesignation === "others"){
-       setJoiningDesignation(copy);
-       console.log(copy);
+       setJoiningDesignation(joiningDesignationCopy);
+       console.log(joiningDesignationCopy);
     }
       };
- 
-  const handlePromotionDesignationChange = (e) => {
-    setPromotionDesignation(e.target.value);
-  };
 
   function refresh() {
     window.location.reload(); 
@@ -100,9 +98,10 @@ function Professional() {
 
     toggleVisibility1();
     handleJoiningDesignationChange();
-   /* if (joiningDesignation === "others"){
-      setJoiningDesignation(copy);
-    }*/
+    if (promotionDesignation === "others"){
+      setPromotionDesignation(promotionDesignationCopy);
+    }
+
     let appointmentOrder1 = appointmentOrder[0];
     let probationDeclaration1 = probationDeclaration[0];
     let promotionOrder1 = promotionOrder[0];
@@ -148,6 +147,9 @@ function Professional() {
 
   const submitForm2 = () => {
     toggleVisibility2();
+    if (type === "others"){
+      setType(typeCopy);
+    }
     let formData2 = new FormData();
     let certFile = experienceCertificate[0];
     formData2.append("experienceCertificate",certFile);
@@ -286,6 +288,7 @@ function Professional() {
                 return(
                 <Prevrow
                  key={item.prev_exp_id}
+                 pre={item.prev_exp_id}
                  type = {item.prof_type}
                  fromDate = {item.from_date}
                  toDate = {item.to_date}
@@ -339,8 +342,8 @@ function Professional() {
               {joiningDesignation === 'others' && (                            
                 <input
                   type="text"
-                  id="copy"
-                  onChange={(event) => setCopy(event.target.value)}
+                  id="joiningDesignationCopy"
+                  onChange={(event) => setJoiningDesignationCopy(event.target.value)}
                   className={styles.dropdown_input}               
                 />
               )}
@@ -387,6 +390,7 @@ function Professional() {
                 onChange={(e) => {setPromotionDesignation(e.target.value)}}
                 className={styles.dropdown_input}
               >
+                <option value="">Select an option</option>
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
                 <option value="Assistant Professor">Assistant Professor</option>
@@ -396,11 +400,11 @@ function Professional() {
               {promotionDesignation === 'others' && (
                 <input
                   type="text"
-                  id="otherPromotionDesignation"
-                  onChange={(e) => setCopy(e.target.value)}
+                  id="promotionDesignationCopy"
+                  onChange={(e) => setPromotionDesignationCopy(e.target.value)}
                   className={styles.dropdown_input}
                   placeholder="Enter Promotion Designation"
-                  promotionDesignation = {copy}
+                  promotionDesignation = {promotionDesignationCopy}
                   
                 />
               )}
@@ -458,8 +462,7 @@ function Professional() {
               onClick={submitForm1}
               >
                UPDATE
-              </Button>
-           
+              </Button>           
             </div>
           </div>
 
@@ -479,6 +482,7 @@ function Professional() {
               onChange={(e) => setType(e.target.value)}
               className={styles.dropdown_input}
             >
+              <option value="">Select an option</option>
               <option value="teaching">Teaching</option>
               <option value="industry">Industry</option>
               <option value="others">Others</option>
@@ -487,9 +491,8 @@ function Professional() {
             {type === 'others' && (
               <input
                 type="text"
-                id="otherType"
-                value={type}
-                onChange={(e) => setType(e.target.value)}
+                id="typeCopy"
+                onChange={(e) => setTypeCopy(e.target.value)}
                 className={styles.dropdown_input}
                 placeholder="Enter Type"
               />
