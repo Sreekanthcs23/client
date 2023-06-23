@@ -1,11 +1,34 @@
 import styles from "./Prevrow.module.css";
+import Axios from "axios";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Button from "@mui/material/Button";
 
 
 function Prevrow(props) {
+  function refresh() {
+    window.location.reload(); 
+  }
+  const deletefun = () => {
+    let axiosConfig = {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+      
+    };
+
+    const prof_id = props.pre;
+    console.log(prof_id);
+
+    Axios.post(
+      "http://localhost:3001/professional/delete",
+      { profid: prof_id },
+      axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+    refresh();
+  };
   return ( 
     <div className={styles.main_div}>
       < br/>
@@ -45,18 +68,10 @@ function Prevrow(props) {
         </div>
         <div className={styles.edit}>
           <br />
-        <Button  class="edit-button"
-            variant="contained"
-            startIcon={<EditIcon />}
-            size="small"
-          >   
-            Edit
-            </Button>
-          <br /><br /><br />
-          <Button 
-            variant="contained"
+        
+          <br /><br />
+          <Button variant="contained" color="error" onClick={deletefun}         
             startIcon={<DeleteIcon />}
-            size="small"
           >
             Delete
           </Button>        
