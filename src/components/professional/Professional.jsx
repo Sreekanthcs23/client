@@ -45,14 +45,14 @@ function Professional() {
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
 
-  const [isVisible1, setIsVisibile1] = useState(false);
-  const [isVisible2, setIsVisibile2] = useState(false);
+  const [isVisible1, setIsVisible1] = useState(false);
+  const [isVisible2, setIsVisible2] = useState(false);
 
   function toggleVisibility1() {
-    setIsVisibile1(!isVisible1);
+    setIsVisible1(!isVisible1);
   }
   function toggleVisibility2() {
-    setIsVisibile2(!isVisible2);
+    setIsVisible2(!isVisible2);
   }
 
   function handleJoiningDesignationChange(){
@@ -73,14 +73,28 @@ function Professional() {
         },
       }).then((response) => {
         setData1(response.data);
+        Axios.get("http://localhost:3001/professional/select2", {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }).then((response) => {
+        setData2(response.data);
+        console.log(response.data);
+      });
         console.log(response.data);
       });
     } catch (e) {
       console.log(e);
     }
+    try {
+      console.log("inside select axios");
+      
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     try {
       Axios.get("http://localhost:3001/professional/select2", {
         headers: {
@@ -93,7 +107,7 @@ function Professional() {
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, []);*/
   const submitForm1 = () => {
 
     toggleVisibility1();
@@ -148,6 +162,7 @@ function Professional() {
   const submitForm2 = () => {
     toggleVisibility2();
     if (type === "others"){
+      console.log("type is others");
       setType(typeCopy);
     }
     let formData2 = new FormData();
@@ -261,6 +276,7 @@ function Professional() {
                 return (
                   <Profrow
                     key={item.cur_ins_id}
+                    cur_id={item.cur_ins_id}
                     joiningDate={item.joining_date}
                     joiningDesignation={item.joining_designation}
                     dateofProblemDeclaration ={item.date_of_problem_declaration } //.toString().slice(0, 10)
@@ -483,8 +499,8 @@ function Professional() {
               className={styles.dropdown_input}
             >
               <option value="">Select an option</option>
-              <option value="teaching">Teaching</option>
-              <option value="industry">Industry</option>
+              <option value="Teaching">Teaching</option>
+              <option value="Industry">Industry</option>
               <option value="others">Others</option>
             </select>
 

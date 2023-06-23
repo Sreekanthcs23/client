@@ -14,7 +14,6 @@ import Consultancy from "./components/research/Consultancy";
 import GuidedProject from "./components/research/GuidedProject"
 import ResearchGuide from "./components/research/ResearchGuide"
 import Teaching from "./components/Teaching";
-import ReportGenerator from "./components/ReportGenerator";
 import Admin from "./components/Admin";
 
 function App() {
@@ -36,7 +35,6 @@ function App() {
           <Route exact path = "/guidedproject" element = {<GuidedProject />}></Route>
           <Route exact path = "/researchguide" element = {<ResearchGuide />}></Route>
           <Route exact path = "/teaching" element = {<Teaching/>}></Route>
-          <Route exact path = "/report" element = {<ReportGenerator/>}></Route>
           <Route exact path = "/admin" element = {<Admin/>}></Route>
         </Routes>
      </div>

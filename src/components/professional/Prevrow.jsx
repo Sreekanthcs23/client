@@ -69,7 +69,7 @@ function Prevrow(props) {
         <div className={styles.edit}>
           <br />
         
-          <br /><br /><br />
+          <br /><br />
           <Button variant="contained" color="error" onClick={deletefun}         
             startIcon={<DeleteIcon />}
           >
