@@ -1,29 +1,29 @@
-.publ_content {
+.curs_content {
     padding-left: 20px;
     padding-top: 20px;
 }
 
-.publ_div {
+.curs_div {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
 }
 
-.publ_list {
+.curs_list {
     margin-top: 20px;
 }
 
-.publ_page h1 {
+.curs_page h1 {
     margin-left: 100px;
 }
 
-.publ_page h2 {
+.curs_page h2 {
     margin-left: 200px;
 }
 
-.publ_form {
+.curs_form {
     width: 350px;
-    height: 650px;
+    height: 400px;
     margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -36,14 +36,14 @@
     box-shadow: 11px 12px 13px 12px rgb(207, 207, 207);
 }
 
-.publ_form_title {
+.curs_form_title {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 20px;
     margin-left: 60px;
   }
 
-.publ_form input[type="text"] {
+.curs_form input[type="text"] {
     width: 70%;
     margin: 10px;
     padding: 10px;
@@ -51,13 +51,13 @@
     border-radius: 5px;
 }
 
-.publ_form input[type="file"] {
+.curs_form input[type="file"] {
     margin-left: 50px;
     margin-bottom: 20px;
     margin-top: 10px
 }
 
-.publ_input {
+.curs_input {
     margin-left: 10px;
     font-weight: 1.1rem;
     font-size: 16px;
@@ -68,22 +68,15 @@
     background-color: #fff;
 }
 
-.publ_form label {
+.curs_form label {
     font-size: 16px;
     font-weight: normal;
     margin: 10px;
 }
 
 
-.publ_form_button {
+.curs_form_button {
     text-align: center;
 }
  
 
-.select_box {
-    width: 70%;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}

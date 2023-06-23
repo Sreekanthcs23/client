@@ -43,6 +43,7 @@ function Tearow(props) {
             Attendance
           </Button>
           </a>
+          <br />
           <a href={props.certFeedback} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
@@ -52,6 +53,7 @@ function Tearow(props) {
             Feedback
           </Button>
           </a>
+          <br />
           <a href={props.certResult} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
@@ -72,6 +74,8 @@ function Tearow(props) {
             Timetable
           </Button>
           </a>
+          <br />
+
           <a href={props.certTutorial} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
@@ -81,6 +85,8 @@ function Tearow(props) {
             Tutorial
           </Button>
           </a>
+          <br />
+
           <a href={props.certAchievement} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
