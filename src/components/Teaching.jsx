@@ -61,7 +61,7 @@ function Teaching() {
     }
   }, []);
 
-  const submitForm = () => {
+  const submitForm = async () => {
     toggleVisibilty();
     let cert1 = cert_tutorial[0];
     let cert2 = cert_internal[0];
@@ -89,44 +89,42 @@ function Teaching() {
     formData.append("branch", branch);
     formData.append("subcode", subcode);
     formData.append("subname", subname);
-
+  
     let axiosConfig = {
       headers: {
         "Content-Type": "multipart/form-data",
         "x-access-token": localStorage.getItem("token"),
       },
     };
-    Axios.post("http://localhost:3001/teaching/insert", formData,axiosConfig
-    ).then(() => {
+  
+    try {
+      await Axios.post("http://localhost:3001/teaching/insert", formData, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert2", formData2,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert2", formData2, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert3", formData3,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert3", formData3, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert4", formData4,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert4", formData4, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert5", formData5,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert5", formData5, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert6", formData6,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert6", formData6, axiosConfig);
       alert("submitted");
-    });
-    Axios.post("http://localhost:3001/teaching/insert7", formData7,axiosConfig
-    ).then(() => {
+  
+      await Axios.post("http://localhost:3001/teaching/insert7", formData7, axiosConfig);
       alert("submitted");
-    });
-    refresh(); 
+  
+      refresh();
+    } catch (error) {
+      console.error("Error occurred:", error);
+      // Handle error if needed
+    }
   };
-
   const data1 = [
     {
       id: 1,
@@ -198,10 +196,11 @@ function Teaching() {
               UPDATE
             </Button>
             <div className={styles.tea_list}>
-              {data1.map((item) => {
+              {data.map((item) => {
                 return (
                   <Tearow
                     key={item.tea_id}
+                    teid={item.tea_id}
                     year={item.year}
                     batch={item.batch}
                     branch={item.branch}

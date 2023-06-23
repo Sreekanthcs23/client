@@ -1,7 +1,26 @@
 import styles from "./Tearow.module.css";
 import CardMembershipIcon from "@mui/icons-material/CardMembership";
 import Button from "@mui/material/Button";
+import Axios from "axios";
 function Tearow(props) {
+  const deletefun = () => {
+    let axiosConfig = {
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    };
+
+    const tea_id = props.teid;
+    console.log(tea_id);
+
+    Axios.post(
+      "http://localhost:3001/teaching/delete",
+      { teaid: tea_id },
+      axiosConfig
+    ).then(() => {
+      alert("submitted");
+    });
+  };
   return (
     <div className={styles.main_div}>
       <div className={styles.col_div}>
@@ -23,7 +42,7 @@ function Tearow(props) {
           <label>Subject Name</label>
           <input type="text" disabled="disabled" value={props.subname} />
           <br />
-          <a href={props.certInternal} target="_blank" rel="noopener noreferrer">
+          <a href={props.internal} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -34,7 +53,7 @@ function Tearow(props) {
           </a>
         </div>
         <div className={styles.sub_div}>
-        <a href={props.certAttendance} target="_blank" rel="noopener noreferrer">
+        <a href={props.attendance} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -44,7 +63,7 @@ function Tearow(props) {
           </Button>
           </a>
           <br />
-          <a href={props.certFeedback} target="_blank" rel="noopener noreferrer">
+          <a href={props.feedback} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -54,7 +73,7 @@ function Tearow(props) {
           </Button>
           </a>
           <br />
-          <a href={props.certResult} target="_blank" rel="noopener noreferrer">
+          <a href={props.result} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -65,7 +84,7 @@ function Tearow(props) {
           </a>
         </div>
         <div className={styles.sub_div}>
-        <a href={props.certTimetable} target="_blank" rel="noopener noreferrer">
+        <a href={props.timetable} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -76,7 +95,7 @@ function Tearow(props) {
           </a>
           <br />
 
-          <a href={props.certTutorial} target="_blank" rel="noopener noreferrer">
+          <a href={props.tutorial} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -87,7 +106,7 @@ function Tearow(props) {
           </a>
           <br />
 
-          <a href={props.certAchievement} target="_blank" rel="noopener noreferrer">
+          <a href={props.achievement} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
@@ -97,8 +116,14 @@ function Tearow(props) {
           </Button>
           </a>
         </div>
+        <div className={styles.sub_div}>
+                <Button variant="contained" color="error" onClick={deletefun}>
+                    Delete
+                </Button>
+        </div>
       </div>
-    </div>
+      
+      </div>
   );
 }
 
