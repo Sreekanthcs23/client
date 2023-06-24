@@ -27,16 +27,13 @@ import Button from "@mui/material/Button";
 function Professional() {
   const [joiningDate, setJoiningDate] = useState("");
   const [joiningDesignation, setJoiningDesignation] = useState("");
-  const [joiningDesignationCopy, setJoiningDesignationCopy] = useState("");
   const [dateofProbationDeclaration, setDateofProbationDeclaration] = useState("");
   const [promotionDate, setPromotionDate] = useState("");
   const [promotionDesignation, setPromotionDesignation] = useState("");
-  const [promotionDesignationCopy, setPromotionDesignationCopy] = useState("");
   const [appointmentOrder, setAppointmentOrder]=useState(null);
   const [probationDeclaration, setProbationDeclaration]=useState(null);
   const [promotionOrder, setPromotionOrder]=useState(null);
   const [type, setType]=useState("");
-  const [typeCopy, setTypeCopy]=useState("");
   const [fromDate, setFromDate]=useState("");
   const [toDate, setToDate]=useState("");
   const [designation, setDesignation]=useState("");
@@ -54,13 +51,6 @@ function Professional() {
   function toggleVisibility2() {
     setIsVisible2(!isVisible2);
   }
-
-  function handleJoiningDesignationChange(){
-    if (joiningDesignation === "others"){
-       setJoiningDesignation(joiningDesignationCopy);
-       console.log(joiningDesignationCopy);
-    }
-      };
 
   function refresh() {
     window.location.reload(); 
@@ -111,11 +101,7 @@ function Professional() {
   const submitForm1 = () => {
 
     toggleVisibility1();
-    handleJoiningDesignationChange();
-    if (promotionDesignation === "others"){
-      setPromotionDesignation(promotionDesignationCopy);
-    }
-
+  
     let appointmentOrder1 = appointmentOrder[0];
     let probationDeclaration1 = probationDeclaration[0];
     let promotionOrder1 = promotionOrder[0];
@@ -161,10 +147,7 @@ function Professional() {
 
   const submitForm2 = () => {
     toggleVisibility2();
-    if (type === "others"){
-      console.log("type is others");
-      setType(typeCopy);
-    }
+  
     let formData2 = new FormData();
     let certFile = experienceCertificate[0];
     formData2.append("experienceCertificate",certFile);
@@ -283,7 +266,7 @@ function Professional() {
                     promotionDate ={item.promotion_date/*.toString().slice(0, 10)*/ }
                     promotionDesignation ={item.promotion_designation}
                     appointmentOrder = {item.appointment_order_link}
-                    problemDeclaration = {item.problem_declaration_link}
+                    probationDeclaration = {item.probation_declaration_link}
                     promotionOrder = {item.promotion_order_link}
                   ></Profrow>
                 );
@@ -343,26 +326,19 @@ function Professional() {
                 <AccountTreeIcon fontSize="small" /> Joining Designation
               </label>
               <br />
-              <select
+              <input
+                type="text"
                 value={joiningDesignation}
                 onChange={(event) => setJoiningDesignation(event.target.value)}
                 className={styles.dropdown_input}
-              >
-                <option value="">Select an option</option>
+                placeholder="Select or Enter an option"
+                list="joiningDesignationOptions"
+              />
+              <datalist id="joiningDesignationOptions">
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
                 <option value="Assistant Professor">Assistant Professor</option>
-                <option value="others">Others</option>
-              </select>
-
-              {joiningDesignation === 'others' && (                            
-                <input
-                  type="text"
-                  id="joiningDesignationCopy"
-                  onChange={(event) => setJoiningDesignationCopy(event.target.value)}
-                  className={styles.dropdown_input}               
-                />
-              )}
+              </datalist>
       
               <br />
               <label for="dateofProbationDeclaration">
@@ -401,29 +377,20 @@ function Professional() {
                 Promotion Designation 
               </label>
               <br />
-              <select
+              <input
+                type="text"
                 value={promotionDesignation}
-                onChange={(e) => {setPromotionDesignation(e.target.value)}}
+                onChange={(event) => setPromotionDesignation(event.target.value)}
                 className={styles.dropdown_input}
-              >
-                <option value="">Select an option</option>
+                placeholder="Select or Enter an option"
+                list="promotionDesignationOptions"
+              />
+              <datalist id="promotionDesignationOptions">
                 <option value="Professor">Professor</option>
                 <option value="Associate Professor">Associate Professor</option>
                 <option value="Assistant Professor">Assistant Professor</option>
-                <option value="others">Others</option>
-              </select>
-
-              {promotionDesignation === 'others' && (
-                <input
-                  type="text"
-                  id="promotionDesignationCopy"
-                  onChange={(e) => setPromotionDesignationCopy(e.target.value)}
-                  className={styles.dropdown_input}
-                  placeholder="Enter Promotion Designation"
-                  promotionDesignation = {promotionDesignationCopy}
-                  
-                />
-              )}
+              </datalist>
+              
               <br />
               <label for="appointmentOrder">
                 <HiDocumentArrowUp />
@@ -440,15 +407,15 @@ function Professional() {
             />
               <br />
 
-              <label for="problemDeclaration">
+              <label for="probationDeclaration">
                 <HiDocumentArrowUp />
                 Probation Declaration
               </label>
               <input
               type="file"
-              name="problemDeclaration"
+              name="probationDeclaration"
               accept="application/pdf"
-              id="problemDeclaration"
+              id="probationDeclaration"
               onChange={(e) => {
                 setProbationDeclaration(e.target.files);
               }}
@@ -488,32 +455,21 @@ function Professional() {
         {isVisible2 && (
           <div className={styles.edu_form}>
             <h1 className={styles.edu_form_title}>Add Details</h1>
-             
-            <label htmlFor="type">
-              <AccountTreeIcon fontSize="small" /> Type
-            </label>
-            <br />
-            <select
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-              className={styles.dropdown_input}
-            >
-              <option value="">Select an option</option>
-              <option value="Teaching">Teaching</option>
-              <option value="Industry">Industry</option>
-              <option value="others">Others</option>
-            </select>
 
-            {type === 'others' && (
-              <input
+
+            <input
                 type="text"
-                id="typeCopy"
-                onChange={(e) => setTypeCopy(e.target.value)}
+                value={type}
+                onChange={(event) => setType(event.target.value)}
                 className={styles.dropdown_input}
-                placeholder="Enter Type"
+                placeholder="Select or Enter an option"
+                list="typeOptions"
               />
-            )}
-
+              <datalist id="typeOptions">
+                <option value="Professor">Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+              </datalist>
             
               <br />        
               <label for="fromDate">

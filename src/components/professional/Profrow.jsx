@@ -29,7 +29,7 @@ function Profrow(props) {
         <br />
         <div className={styles.but_cert}> 
         <div className={styles.sub_div}>
-        <a href={props.problemDeclaration} target="_blank" rel="noopener noreferrer">
+        <a href={props.probationDeclaration} target="_blank" rel="noopener noreferrer">
           <Button
             variant="contained"
             startIcon={<CardMembershipIcon />}
